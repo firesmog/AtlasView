@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         TreeModel model = new TreeModel();
         model.setAtlasBean(data);
         model.setCanvasBean(canvasBean);
+        model.setModels(models);
         editMapTreeView.setTreeModel(model);
     }
 

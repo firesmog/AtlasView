@@ -2,10 +2,15 @@ package com.readboy.atlasview.model;
 
 import com.readboy.atlasview.bean.AtlasBean;
 import com.readboy.atlasview.bean.CanvasBean;
+import com.readboy.atlasview.bean.Node;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class TreeModel {
     private AtlasBean atlasBean;
     private CanvasBean canvasBean;
+    private LinkedHashMap<Long, Node> models;
 
     public AtlasBean getAtlasBean() {
         return atlasBean;
@@ -21,6 +26,14 @@ public class TreeModel {
 
     public void setCanvasBean(CanvasBean canvasBean) {
         this.canvasBean = canvasBean;
+    }
+
+    public LinkedHashMap<Long, Node> getModels() {
+        return models;
+    }
+
+    public void setModels(LinkedHashMap<Long, Node> models) {
+        this.models = models;
     }
 
     @Override

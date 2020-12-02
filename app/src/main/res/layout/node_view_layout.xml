@@ -19,6 +19,7 @@
         android:includeFontPadding="false"
         android:gravity="center"
         android:ellipsize="end"
+        android:visibility="gone"
 
         />
 

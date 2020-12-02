@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.readboy.atlasview.R;
+import com.readboy.atlasview.bean.Link;
 import com.readboy.atlasview.bean.Node;
 import com.readboy.atlasview.interfaces.TreeViewItemClick;
 import com.readboy.atlasview.interfaces.TreeViewItemLongClick;
@@ -19,6 +20,7 @@ import com.readboy.atlasview.utils.log.LogUtils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class TreeView extends ViewGroup {
@@ -27,7 +29,8 @@ public class TreeView extends ViewGroup {
     private TreeModel mTreeModel;
     private TreeViewItemClick mTreeViewItemClick;
     private TreeViewItemLongClick mTreeViewItemLongClick;
-
+    private int leftMargin;
+    private int topMargin;
 
 
     public TreeView(Context context) {
@@ -54,7 +57,7 @@ public class TreeView extends ViewGroup {
         }
         layoutChildren();
         LogUtils.d("curent size == " + size);
-        setMeasuredDimension((int)mTreeModel.getCanvasBean().getWidth() + 150,(int)mTreeModel.getCanvasBean().getHeight() + 150);
+        setMeasuredDimension((int)mTreeModel.getCanvasBean().getWidth() + 200,(int)mTreeModel.getCanvasBean().getHeight() + 200);
 
     }
 
@@ -76,7 +79,48 @@ public class TreeView extends ViewGroup {
         super.dispatchDraw(canvas);
         mPaint.setColor(mContext.getResources().getColor(R.color.black));
         mPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
+        drawLine(canvas);
+        drawRect(canvas);
+        //canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
+
+    }
+
+    private void  drawLine(Canvas canvas){
+        List<Link> links =  mTreeModel.getAtlasBean().getData().getMapping().getLinks();
+        LinkedHashMap<Long, Node> models = mTreeModel.getModels();
+        double startX = mTreeModel.getCanvasBean().getStartX();
+        double startY  = mTreeModel.getCanvasBean().getStartY();
+
+        leftMargin = 80;
+        topMargin  = 80;
+        for (Link link : links) {
+            mPaint.setColor(mContext.getResources().getColor(R.color.black));
+
+            Node source = models.get(link.getSourceid());
+            Node target = models.get(link.getTargetid());
+            LogUtils.d("drawLine drawLine drawLine == " + source.getName() + " , target = " + target.getName());
+            canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
+        }
+    }
+
+    private void  drawRect(Canvas canvas){
+        List<Node> nodes =  mTreeModel.getAtlasBean().getData().getMapping().getNodes();
+        LinkedHashMap<Long, Node> models = mTreeModel.getModels();
+        double startX = mTreeModel.getCanvasBean().getStartX();
+        double startY  = mTreeModel.getCanvasBean().getStartY();
+
+        leftMargin = 80;
+        topMargin  = 80;
+
+        for (Node node : nodes) {
+            mPaint.setColor(mContext.getResources().getColor(R.color.black));
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeWidth(2);
+            int radius = node.getShape().getRadius();
+            canvas.drawRect((int)(node.getX() -startX - radius + leftMargin),(int)(node.getY() -startY - radius + leftMargin),(int)(node.getX() + radius -startX + leftMargin),(int)(node.getY() + radius - startY) + leftMargin,mPaint);
+
+        }
+
     }
 
     private void layoutChildren(){
@@ -87,7 +131,7 @@ public class TreeView extends ViewGroup {
             NodeView nodeView = (NodeView)getChildAt(i);
             Node node = nodeView.getNode();
             int radius = node.getShape().getRadius();
-            int leftMargin = 80;
+            leftMargin = 80;
             //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
             nodeView.layout((int)(node.getX() -startX - radius + leftMargin),(int)(node.getY() -startY - radius + leftMargin),(int)(node.getX() + radius -startX + leftMargin),(int)(node.getY() + radius - startY) + leftMargin);
         }
@@ -173,6 +217,29 @@ public class TreeView extends ViewGroup {
 
     public void setMTreeViewItemLongClick(TreeViewItemLongClick mTreeViewItemLongClick) {
         this.mTreeViewItemLongClick = mTreeViewItemLongClick;
+    }
+
+
+    /**
+     * 模型查找NodeView
+     *
+     * @param nodeModel
+     * @return
+     */
+    public View findNodeViewFromNode(Node nodeModel) {
+        View view = null;
+        int size = getChildCount();
+        for (int i = 0; i < size; i++) {
+            View childView = getChildAt(i);
+            if (childView instanceof NodeView) {
+                Node treeNode = ((NodeView) childView).getNode();
+                if (treeNode == nodeModel) {
+                    view = childView;
+                    continue;
+                }
+            }
+        }
+        return view;
     }
 
 
