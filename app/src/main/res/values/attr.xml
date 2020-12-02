@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NodeView">
+        <attr name="order" format="integer" />
+        <attr name="name" format="string" />
+        <attr name="nodeBackground" format="string" />
+        <attr name="nameColor" format="color" />
+        <attr name="orderColor" format="color" />
+        <attr name="nodeRadius" format="dimension" />
+        <attr name="tvOrderWidth" format="dimension" />
+        <attr name="nameSize" format="dimension" />
+        <attr name="orderSize" format="dimension" />
+        <attr name="marginSize" format="dimension" />
+        <attr name="nodeShape" format="string" />
+    </declare-styleable>
+</resources>
