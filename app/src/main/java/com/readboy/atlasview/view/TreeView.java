@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,7 +24,7 @@ import java.util.Deque;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class TreeView extends ViewGroup {
+public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleGestureListener {
     private  Paint mPaint;
     private Context mContext;
     private TreeModel mTreeModel;
@@ -31,6 +32,9 @@ public class TreeView extends ViewGroup {
     private TreeViewItemLongClick mTreeViewItemLongClick;
     private int leftMargin;
     private int topMargin;
+    private MoveAndScaleHandler mMoveAndScaleHandler;
+    private GestureDetector mGestureDetector;
+
 
 
     public TreeView(Context context) {
@@ -45,6 +49,14 @@ public class TreeView extends ViewGroup {
         mPaint = new Paint();
         //抗锯齿
         mPaint.setAntiAlias(true);
+        mMoveAndScaleHandler = new MoveAndScaleHandler(context, this);
+        mGestureDetector = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                Log.d("LZY","double click here " );
+                return true;
+            }
+        });
 
 
     }
@@ -114,6 +126,12 @@ public class TreeView extends ViewGroup {
             //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
             canvas.drawLine((int)( sxLine - startX + leftMargin), (int) (syLine - startY + topMargin),(int) (txLine - startX + leftMargin), (int) (tyLine - startY + topMargin), mPaint);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return mMoveAndScaleHandler.onTouchEvent(event);
     }
 
     private void  drawRect(Canvas canvas){
@@ -256,4 +274,18 @@ public class TreeView extends ViewGroup {
     }
 
 
+    @Override
+    public boolean onScale(ScaleGestureDetector detector) {
+        return false;
+    }
+
+    @Override
+    public boolean onScaleBegin(ScaleGestureDetector detector) {
+        return false;
+    }
+
+    @Override
+    public void onScaleEnd(ScaleGestureDetector detector) {
+
+    }
 }

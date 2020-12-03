@@ -3,16 +3,20 @@ package com.readboy.atlasview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.readboy.atlasview.bean.AtlasBean;
 import com.readboy.atlasview.bean.AtlasMapping;
 import com.readboy.atlasview.bean.CanvasBean;
 import com.readboy.atlasview.bean.Node;
+import com.readboy.atlasview.interfaces.TreeViewItemClick;
 import com.readboy.atlasview.model.TreeModel;
 import com.readboy.atlasview.utils.AssertsUtil;
 import com.readboy.atlasview.utils.AtlasUtil;
+import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
 import java.util.ArrayList;
@@ -48,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
         model.setCanvasBean(canvasBean);
         model.setModels(models);
         editMapTreeView.setTreeModel(model);
+        editMapTreeView.setMTreeViewItemClick(new TreeViewItemClick() {
+            @Override
+            public void onItemClick(View item) {
+                LogUtils.d("oooo == " + ((TextView)item).getText());
+            }
+        });
     }
 
     private LinkedHashMap<Long,Node> getNodeList(AtlasBean data){
