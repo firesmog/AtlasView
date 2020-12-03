@@ -80,7 +80,7 @@ public class TreeView extends ViewGroup {
         mPaint.setColor(mContext.getResources().getColor(R.color.black));
         mPaint.setStyle(Paint.Style.STROKE);
         drawLine(canvas);
-        drawRect(canvas);
+        //drawRect(canvas);
         //canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
 
     }
@@ -95,11 +95,24 @@ public class TreeView extends ViewGroup {
         topMargin  = 80;
         for (Link link : links) {
             mPaint.setColor(mContext.getResources().getColor(R.color.black));
-
             Node source = models.get(link.getSourceid());
             Node target = models.get(link.getTargetid());
+            int sRadius = source.getShape().getRadius();
+            int tRadius = target.getShape().getRadius();
+            double sx = source.getX();
+            double sy = source.getY();
+            double tx = target.getX();
+            double ty = target.getY();
+            double distance = Math.abs(Math.sqrt(Math.pow((tx-sx),2) + Math.pow(ty - sy,2)));
             LogUtils.d("drawLine drawLine drawLine == " + source.getName() + " , target = " + target.getName());
-            canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
+            int sxLine = (int)((sRadius/distance)*(tx-sx) + sx);
+            int txLine = (int)(tx - (tRadius/distance)*(tx- sx) );
+            int syLine = (int)(sy - (sRadius/distance)*(sy -ty));
+            int tyLine = (int)(ty + ( tRadius/distance)*(sy - ty) );
+
+
+            //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
+            canvas.drawLine((int)( sxLine - startX + leftMargin), (int) (syLine - startY + topMargin),(int) (txLine - startX + leftMargin), (int) (tyLine - startY + topMargin), mPaint);
         }
     }
 

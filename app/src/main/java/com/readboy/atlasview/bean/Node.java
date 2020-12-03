@@ -14,6 +14,7 @@ public class Node implements Comparator<Node> {
     private int order;
     public transient boolean focus = false;
     public int floor;
+    private boolean visibility;
 
     public int getOrder() {
         return order;
@@ -104,6 +105,14 @@ public class Node implements Comparator<Node> {
         this.floor = floor;
     }
 
+    public boolean isVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
+
     @Override
     public String toString() {
         return "Node{" +
@@ -118,6 +127,7 @@ public class Node implements Comparator<Node> {
                 ", order=" + order +
                 ", focus=" + focus +
                 ", floor=" + floor +
+                ", visibility=" + visibility +
                 '}';
     }
 
