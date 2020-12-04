@@ -7,17 +7,17 @@ import java.io.InputStreamReader;
 
 public class AssertsUtil {
     public static String getFromAssets(Context context,String fileName) {
-        String Result = "";
+        StringBuilder Result = new StringBuilder();
         try {
             InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(fileName));
             BufferedReader bufReader = new BufferedReader(inputReader);
             String line = "";
             while ((line = bufReader.readLine()) != null)
-                Result += line;
-            return Result;
+                Result.append(line);
+            return Result.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return Result;
+        return Result.toString();
     }
 }
