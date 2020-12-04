@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -20,8 +19,6 @@ import com.readboy.atlasview.model.TreeModel;
 import com.readboy.atlasview.utils.ViewUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -31,8 +28,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private TreeModel mTreeModel;
     private TreeViewItemClick mTreeViewItemClick;
     private TreeViewItemLongClick mTreeViewItemLongClick;
-    private int leftMargin;
-    private int topMargin;
+    private final int firstNodeMargin = 80;
     private MoveAndScaleHandler mMoveAndScaleHandler;
     private GestureDetector mGestureDetector;
 
@@ -57,8 +53,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 return true;
             }
         });
-
-
     }
 
     @Override
@@ -68,7 +62,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             measureChild(getChildAt(i), widthMeasureSpec, heightMeasureSpec);
         }
         layoutChildren();
-        LogUtils.d("curent size == " + size);
         setMeasuredDimension((int)mTreeModel.getCanvasBean().getWidth() + 200,(int)mTreeModel.getCanvasBean().getHeight() + 200);
 
     }
@@ -97,14 +90,49 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return mMoveAndScaleHandler.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onScale(ScaleGestureDetector detector) {
+        return false;
+    }
+
+    @Override
+    public boolean onScaleBegin(ScaleGestureDetector detector) {
+        return false;
+    }
+
+    @Override
+    public void onScaleEnd(ScaleGestureDetector detector) {
+
+    }
+
+    private void  drawRect(Canvas canvas){
+        List<Node> nodes =  mTreeModel.getAtlasBean().getData().getMapping().getNodes();
+        LinkedHashMap<Long, Node> models = mTreeModel.getModels();
+        double startX = mTreeModel.getCanvasBean().getStartX();
+        double startY  = mTreeModel.getCanvasBean().getStartY();
+        for (Node node : nodes) {
+            mPaint.setColor(mContext.getResources().getColor(R.color.black));
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeWidth(2);
+            int radius = node.getShape().getRadius();
+            canvas.drawRect((int)(node.getX() -startX - radius + firstNodeMargin),(int)(node.getY() -startY - radius + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY) + firstNodeMargin,mPaint);
+
+        }
+    }
+
     private void  drawLine(Canvas canvas){
         List<Link> links =  mTreeModel.getAtlasBean().getData().getMapping().getLinks();
         LinkedHashMap<Long, Node> models = mTreeModel.getModels();
         double startX = mTreeModel.getCanvasBean().getStartX();
         double startY  = mTreeModel.getCanvasBean().getStartY();
 
-        leftMargin = 80;
-        topMargin  = 80;
         for (Link link : links) {
             mPaint.setColor(mContext.getResources().getColor(R.color.color_9faaff));
             Node source = models.get(link.getSourceid());
@@ -126,10 +154,10 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             int syLine = (int)(sy - (sRadius/distance)*(sy -ty));
             int tyLine = (int)(ty + ( tRadius/distance)*(sy - ty) );
 
-            int fromX = (int)( sxLine - startX + leftMargin);
-            int fromY = (int) (syLine - startY + topMargin);
-            int toX = (int) (txLine - startX + leftMargin);
-            int toY = (int) (tyLine - startY + topMargin);
+            int fromX = (int)( sxLine - startX + firstNodeMargin);
+            int fromY = (int) (syLine - startY + firstNodeMargin);
+            int toX = (int) (txLine - startX + firstNodeMargin);
+            int toY = (int) (tyLine - startY + firstNodeMargin);
             //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
             canvas.drawLine(fromX, fromY,toX,toY , mPaint);
             mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -137,31 +165,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         }
         mPaint.setStyle(Paint.Style.STROKE);
 
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        mGestureDetector.onTouchEvent(event);
-        return mMoveAndScaleHandler.onTouchEvent(event);
-    }
-
-    private void  drawRect(Canvas canvas){
-        List<Node> nodes =  mTreeModel.getAtlasBean().getData().getMapping().getNodes();
-        LinkedHashMap<Long, Node> models = mTreeModel.getModels();
-        double startX = mTreeModel.getCanvasBean().getStartX();
-        double startY  = mTreeModel.getCanvasBean().getStartY();
-
-        leftMargin = 80;
-        topMargin  = 80;
-
-        for (Node node : nodes) {
-            mPaint.setColor(mContext.getResources().getColor(R.color.black));
-            mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setStrokeWidth(2);
-            int radius = node.getShape().getRadius();
-            canvas.drawRect((int)(node.getX() -startX - radius + leftMargin),(int)(node.getY() -startY - radius + leftMargin),(int)(node.getX() + radius -startX + leftMargin),(int)(node.getY() + radius - startY) + leftMargin,mPaint);
-
-        }
     }
 
     private void layoutChildren(){
@@ -172,19 +175,18 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             NodeView nodeView = (NodeView)getChildAt(i);
             Node node = nodeView.getNode();
             int radius = node.getShape().getRadius();
-            leftMargin = 80;
             //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
-            nodeView.layout((int)(node.getX() -startX - radius + leftMargin),(int)(node.getY() -startY - radius + leftMargin),(int)(node.getX() + radius -startX + leftMargin),(int)(node.getY() + radius - startY) + leftMargin);
+            nodeView.layout((int)(node.getX() -startX - radius + firstNodeMargin),(int)(node.getY() -startY - radius + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY) + firstNodeMargin);
         }
 
     }
-
 
     public void setTreeModel(TreeModel treeModel) {
         mTreeModel = treeModel;
         clearAllNoteViews();
         addNoteViews();
     }
+
     /**
      * 清除所有的NoteView
      */
@@ -288,19 +290,4 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         return view;
     }
 
-
-    @Override
-    public boolean onScale(ScaleGestureDetector detector) {
-        return false;
-    }
-
-    @Override
-    public boolean onScaleBegin(ScaleGestureDetector detector) {
-        return false;
-    }
-
-    @Override
-    public void onScaleEnd(ScaleGestureDetector detector) {
-
-    }
 }

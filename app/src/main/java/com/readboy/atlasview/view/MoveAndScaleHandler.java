@@ -33,8 +33,53 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
     private long beforeTime;
     private float oldDist;
     private float ratio;
-    private float beforeScale;
     private int curIndex = 5;
+
+    //todo Lzy目前双击放大缩小还未触发这个方法
+    @Override
+    public boolean onScale(ScaleGestureDetector detector) {
+        float scaleFactor = detector.getScaleFactor();
+        detector.getCurrentSpan();
+        if (scaleFactor >= max_scale) {
+            scaleFactor = max_scale;
+        }
+        if (scaleFactor <= min_scale) {
+            scaleFactor = min_scale;
+        }
+
+        if(System.currentTimeMillis() - beforeTime > 150){
+            float[] loopScale = {0.5f,0.6f,0.7f,0.8f,0.9f,1.0f,1.1f,1.2f,1.3f,1.4f,1.5f};
+            if((ratio > 1 ) ){
+                beforeTime = System.currentTimeMillis();
+                curIndex++;
+                if(curIndex >= loopScale.length -1){
+                    curIndex = loopScale.length -1;
+                }
+                ViewHelper.setScaleX(mView, loopScale[curIndex]);
+                ViewHelper.setScaleY(mView, loopScale[curIndex]);
+            }else  if( ratio < 1 ){
+                beforeTime = System.currentTimeMillis();
+                curIndex--;
+                if(curIndex <= 0){
+                    curIndex = 0;
+                }
+                ViewHelper.setScaleX(mView, loopScale[curIndex]);
+                ViewHelper.setScaleY(mView, loopScale[curIndex]);
+            }
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean onScaleBegin(ScaleGestureDetector detector) {
+        return true;
+    }
+
+    @Override
+    public void onScaleEnd(ScaleGestureDetector detector) {
+    }
+
 
     public MoveAndScaleHandler(Context context, View view) {
         this.mView = view;
@@ -107,63 +152,6 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
         return (float) Math.sqrt(x * x + y * y);
     }
 
-    //todo Lzy目前双击放大缩小还未触发这个方法
-    @Override
-    public boolean onScale(ScaleGestureDetector detector) {
-        float scaleFactor = detector.getScaleFactor();
-        detector.getCurrentSpan();
-        if (scaleFactor >= max_scale) {
-            scaleFactor = max_scale;
-        }
-        if (scaleFactor <= min_scale) {
-            scaleFactor = min_scale;
-        }
-
-        if(System.currentTimeMillis() - beforeTime > 150){
-
-            /*Log.d("LZY","current onScale == " +         ratio + ", scaleFactor =    " + scaleFactor + " , beforeScale = " + beforeScale);
-            if((ratio > 1 && scaleFactor > 1.0) || ratio < 1 && (scaleFactor < 1.0 || beforeScale == 0)){
-                Log.d("LZY","current onScale == " +         scaleFactor);
-                beforeTime = System.currentTimeMillis();
-                ViewHelper.setScaleX(mView, scaleFactor);
-                ViewHelper.setScaleY(mView, scaleFactor);
-                beforeScale = scaleFactor;
-            }*/
-            float[] loopScale = {0.5f,0.6f,0.7f,0.8f,0.9f,1.0f,1.1f,1.2f,1.3f,1.4f,1.5f};
-
-            if((ratio > 1 ) ){
-                Log.d("LZY","current onScale == " +         scaleFactor);
-                beforeTime = System.currentTimeMillis();
-                curIndex++;
-                if(curIndex >= loopScale.length -1){
-                    curIndex = loopScale.length -1;
-                }
-                ViewHelper.setScaleX(mView, loopScale[curIndex]);
-                ViewHelper.setScaleY(mView, loopScale[curIndex]);
-            }else  if( ratio < 1 ){
-                beforeTime = System.currentTimeMillis();
-                curIndex--;
-                if(curIndex <= 0){
-                    curIndex = 0;
-                }
-                ViewHelper.setScaleX(mView, loopScale[curIndex]);
-                ViewHelper.setScaleY(mView, loopScale[curIndex]);
-            }
-            Log.d("LZY","current onScale1111 == " +         loopScale[curIndex]);
-
-        }
-        return false;
-    }
-
-
-    @Override
-    public boolean onScaleBegin(ScaleGestureDetector detector) {
-        return true;
-    }
-
-    @Override
-    public void onScaleEnd(ScaleGestureDetector detector) {
-    }
 
 
 }

@@ -44,26 +44,6 @@ public class NodeView extends RelativeLayout {
     private Node node;
     private int[] colors;
 
-    public Node getNode() {
-        return node;
-    }
-
-    public void setNode(Node node) {
-        this.node = node;
-        name = node.getName();
-        order = node.getOrder();
-        nodeBackground = node.getShape().getColor();
-        nodeShape = node.getShape().getType();
-        nodeId = node.getId();
-        initTvName();
-        initTvOrder();
-    }
-
-    public NodeView(Context context) {
-        super(context);
-        this.context = context;
-    }
-
     public NodeView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -71,9 +51,8 @@ public class NodeView extends RelativeLayout {
     public NodeView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
-        TypedArray array = null;
+        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.NodeView, 0, 0);
         try {
-            array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.NodeView, 0, 0);
             order =  array.getInteger(R.styleable.NodeView_order, 1);
             name =  array.getString(R.styleable.NodeView_name);
             nodeShape =  array.getString(R.styleable.NodeView_nodeShape);
@@ -85,29 +64,14 @@ public class NodeView extends RelativeLayout {
             marginSize = array.getDimension(R.styleable.NodeView_marginSize, -1);
             orderSize = array.getDimension(R.styleable.NodeView_orderSize, 14);
             tvOrderWidth = array.getDimension(R.styleable.NodeView_tvOrderWidth, 80);
-        } finally {
-            array.recycle();
+        } catch (Exception e){
+            LogUtils.d("NodeView create error is " + e.getMessage());
+        }finally {
+            if (array != null) {
+                array.recycle();
+            }
         }
-
         initView(context);
-    }
-
-
-    private void initView(Context context){
-        View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
-        tvName = (TextView)inflate.findViewById(R.id.tv_name);
-        tvOrder = (TextView)inflate.findViewById(R.id.tv_order);
-
-        LogUtils.d("initView initView = "  + this.getWidth() );
-    }
-
-    private void initTvName(){
-        if(!TextUtils.isEmpty(name)){
-            tvName.setText(name);
-        }
-        tvName.setTextSize(node.getFont().getSize());
-       // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
-        tvName.setTextColor(nameColor);
     }
 
     @SuppressLint("WrongConstant")
@@ -141,6 +105,46 @@ public class NodeView extends RelativeLayout {
             tvOrder.setLayoutParams(lp);
         }
     }
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
+        name = node.getName();
+        order = node.getOrder();
+        nodeBackground = node.getShape().getColor();
+        nodeShape = node.getShape().getType();
+        nodeId = node.getId();
+        initTvName();
+        initTvOrder();
+    }
+
+    public NodeView(Context context) {
+        super(context);
+        this.context = context;
+    }
+
+
+
+
+    private void initView(Context context){
+        View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
+        tvName = (TextView)inflate.findViewById(R.id.tv_name);
+        tvOrder = (TextView)inflate.findViewById(R.id.tv_order);
+    }
+
+    private void initTvName(){
+        if(!TextUtils.isEmpty(name)){
+            tvName.setText(name);
+        }
+        tvName.setTextSize(node.getFont().getSize());
+       // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
+        tvName.setTextColor(nameColor);
+    }
+
+
 
 
     public TextView getTvNameTextView(){
