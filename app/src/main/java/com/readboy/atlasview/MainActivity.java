@@ -2,6 +2,7 @@ package com.readboy.atlasview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -35,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
         initData();
+       // startActivity();
+    }
+
+
+    private void  startActivity(){
+        try{
+            Intent intent;
+            intent = getPackageManager().getLaunchIntentForPackage("com.readboy.mytreeview");
+            Intent i = new Intent(Intent.ACTION_MAIN);
+            i.addCategory(Intent.CATEGORY_LAUNCHER);
+            i.setComponent(intent.getComponent());
+            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void initData(){
@@ -43,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         AtlasBean data = gson.fromJson(json,AtlasBean.class);
         AtlasUtil.setOrderInNodes(data);
         canvasBean = AtlasUtil.getCanvasAccordAtlas(data);
-
-
 
         LinkedHashMap<Long, Node> models = getNodeList(data);
         TreeModel model = new TreeModel();
@@ -76,7 +91,11 @@ public class MainActivity extends AppCompatActivity {
             model.setY(node.getY());
             model.setOrder(AtlasUtil.getOrderInNodes(mapping,node.getId()) + 1);
             model.setFloor(node.getFloor());
+            if(node.getType() == 1){
+                model.setVisibility(true);
+            }
             map.put(node.getId(),model);
+
         }
         return map;
     }

@@ -15,8 +15,8 @@ import com.nineoldandroids.view.ViewHelper;
 
 public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureListener {
 
-    static final float max_scale = 1.4f;
-    static final float min_scale = 0.65f;
+    static final float max_scale = 1.5f;
+    static final float min_scale = 0.5f;
 
     /**
      * 作用于的View
@@ -34,6 +34,7 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
     private float oldDist;
     private float ratio;
     private float beforeScale;
+    private int curIndex = 5;
 
     public MoveAndScaleHandler(Context context, View view) {
         this.mView = view;
@@ -70,8 +71,7 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
                 if (mode >= 2) {
                     float newDist = spacing(event);
                     ratio  = newDist/oldDist;
-                    Log.d("LZY","current new = " + newDist + ", old = " + oldDist + ",ratio = " + ratio);
-                    if ( Math.abs(newDist - oldDist) > 50) {
+                    if ( Math.abs(newDist - oldDist) > 80) {
                         mScaleGestureDetector.onTouchEvent(event);
                     }
 
@@ -111,7 +111,7 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
         float scaleFactor = detector.getScaleFactor();
-
+        detector.getCurrentSpan();
         if (scaleFactor >= max_scale) {
             scaleFactor = max_scale;
         }
@@ -121,14 +121,36 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
 
         if(System.currentTimeMillis() - beforeTime > 150){
 
-            Log.d("LZY","current onScale == " +         ratio + ", scaleFactor =    " + scaleFactor + " , beforeScale = " + beforeScale);
-            if((ratio > 1 && scaleFactor > beforeScale) || ratio < 1 && (scaleFactor < beforeScale || beforeScale == 0)){
+            /*Log.d("LZY","current onScale == " +         ratio + ", scaleFactor =    " + scaleFactor + " , beforeScale = " + beforeScale);
+            if((ratio > 1 && scaleFactor > 1.0) || ratio < 1 && (scaleFactor < 1.0 || beforeScale == 0)){
                 Log.d("LZY","current onScale == " +         scaleFactor);
                 beforeTime = System.currentTimeMillis();
                 ViewHelper.setScaleX(mView, scaleFactor);
                 ViewHelper.setScaleY(mView, scaleFactor);
                 beforeScale = scaleFactor;
+            }*/
+            float[] loopScale = {0.5f,0.6f,0.7f,0.8f,0.9f,1.0f,1.1f,1.2f,1.3f,1.4f,1.5f};
+
+            if((ratio > 1 ) ){
+                Log.d("LZY","current onScale == " +         scaleFactor);
+                beforeTime = System.currentTimeMillis();
+                curIndex++;
+                if(curIndex >= loopScale.length -1){
+                    curIndex = loopScale.length -1;
+                }
+                ViewHelper.setScaleX(mView, loopScale[curIndex]);
+                ViewHelper.setScaleY(mView, loopScale[curIndex]);
+            }else  if( ratio < 1 ){
+                beforeTime = System.currentTimeMillis();
+                curIndex--;
+                if(curIndex <= 0){
+                    curIndex = 0;
+                }
+                ViewHelper.setScaleX(mView, loopScale[curIndex]);
+                ViewHelper.setScaleY(mView, loopScale[curIndex]);
             }
+            Log.d("LZY","current onScale1111 == " +         loopScale[curIndex]);
+
         }
         return false;
     }

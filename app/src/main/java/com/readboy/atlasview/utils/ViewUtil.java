@@ -24,7 +24,7 @@ public class ViewUtil {
      * @param height
      * @param bottom
      */
-    private   static  void drawTrangle(Canvas canvas, Paint paintLine, float fromX, float fromY, float toX, float toY, int height, int bottom){
+    public   static  void drawTrangle(Canvas canvas, Paint paintLine, float fromX, float fromY, float toX, float toY, int height, int bottom){
         try{
             float juli = (float) Math.sqrt((toX - fromX) * (toX - fromX)
                     + (toY - fromY) * (toY - fromY));// 获取线段距离

@@ -17,6 +17,7 @@ import com.readboy.atlasview.bean.Node;
 import com.readboy.atlasview.interfaces.TreeViewItemClick;
 import com.readboy.atlasview.interfaces.TreeViewItemLongClick;
 import com.readboy.atlasview.model.TreeModel;
+import com.readboy.atlasview.utils.ViewUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 
 import java.util.ArrayDeque;
@@ -53,7 +54,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         mGestureDetector = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                Log.d("LZY","double click here " );
                 return true;
             }
         });
@@ -106,9 +106,13 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         leftMargin = 80;
         topMargin  = 80;
         for (Link link : links) {
-            mPaint.setColor(mContext.getResources().getColor(R.color.black));
+            mPaint.setColor(mContext.getResources().getColor(R.color.color_9faaff));
             Node source = models.get(link.getSourceid());
             Node target = models.get(link.getTargetid());
+            //todo Lzy 不可见则不画线
+            /*if(!target.isVisibility() ){
+                return;
+            }*/
             int sRadius = source.getShape().getRadius();
             int tRadius = target.getShape().getRadius();
             double sx = source.getX();
@@ -122,10 +126,17 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             int syLine = (int)(sy - (sRadius/distance)*(sy -ty));
             int tyLine = (int)(ty + ( tRadius/distance)*(sy - ty) );
 
-
+            int fromX = (int)( sxLine - startX + leftMargin);
+            int fromY = (int) (syLine - startY + topMargin);
+            int toX = (int) (txLine - startX + leftMargin);
+            int toY = (int) (tyLine - startY + topMargin);
             //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
-            canvas.drawLine((int)( sxLine - startX + leftMargin), (int) (syLine - startY + topMargin),(int) (txLine - startX + leftMargin), (int) (tyLine - startY + topMargin), mPaint);
+            canvas.drawLine(fromX, fromY,toX,toY , mPaint);
+            mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+            ViewUtil.drawTrangle(canvas, mPaint,fromX , fromY, toX, toY, 10, 3);
         }
+        mPaint.setStyle(Paint.Style.STROKE);
+
     }
 
     @Override
@@ -151,7 +162,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             canvas.drawRect((int)(node.getX() -startX - radius + leftMargin),(int)(node.getY() -startY - radius + leftMargin),(int)(node.getX() + radius -startX + leftMargin),(int)(node.getY() + radius - startY) + leftMargin,mPaint);
 
         }
-
     }
 
     private void layoutChildren(){
@@ -223,6 +233,11 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 return true;
             }
         });
+
+        //todo Lzy 设置是否可见
+       /* if(!poll.isVisibility()){
+            nodeView.setVisibility(GONE);
+        }*/
 
         this.addView(nodeView);
         return nodeView;

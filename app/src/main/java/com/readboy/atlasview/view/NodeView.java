@@ -57,13 +57,11 @@ public class NodeView extends RelativeLayout {
         nodeId = node.getId();
         initTvName();
         initTvOrder();
-
     }
 
     public NodeView(Context context) {
         super(context);
         this.context = context;
-
     }
 
     public NodeView(Context context, @Nullable AttributeSet attrs) {

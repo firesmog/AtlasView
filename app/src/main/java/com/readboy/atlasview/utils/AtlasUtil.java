@@ -123,6 +123,9 @@ public class AtlasUtil {
        List<Long>  orders = mapping.getNodeOrder().get(0).getOrder();
         for (Node node : nodes) {
             node.setOrder(orders.indexOf(node.getId()) + 1);
+            if(node.getType() == 1){
+                node.setVisibility(true);
+            }
         }
     }
 
