@@ -29,7 +29,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private TreeModel mTreeModel;
     private TreeViewItemClick mTreeViewItemClick;
     private TreeViewItemLongClick mTreeViewItemLongClick;
-    private final int firstNodeMargin = 80;
+    private final int firstNodeMargin = 120;
     private MoveAndScaleHandler mMoveAndScaleHandler;
     private GestureDetector mGestureDetector;
 
