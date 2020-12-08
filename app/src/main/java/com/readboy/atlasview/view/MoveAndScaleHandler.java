@@ -33,7 +33,7 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
     private long beforeTime;
     private float oldDist;
     private float ratio;
-    private int curIndex = 5;
+    private int curIndex = 10;
 
     //todo Lzy目前双击放大缩小还未触发这个方法
     @Override
@@ -47,8 +47,8 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
             scaleFactor = min_scale;
         }
 
-        if(System.currentTimeMillis() - beforeTime > 150){
-            float[] loopScale = {0.5f,0.6f,0.7f,0.8f,0.9f,1.0f,1.1f,1.2f,1.3f,1.4f,1.5f};
+        if(System.currentTimeMillis() - beforeTime > 10){
+            float[] loopScale = {0.5f,0.55f,0.6f,0.65f,0.7f,0.75f,0.8f,0.85f,0.9f,0.95f,1.0f,1.05f,1.1f,1.15f,1.2f,1.25f,1.3f,1.35f,1.4f,1.45f,1.5f};
             if((ratio > 1 ) ){
                 beforeTime = System.currentTimeMillis();
                 curIndex++;
