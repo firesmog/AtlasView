@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.readboy.atlasview.R;
 import com.readboy.atlasview.bean.Link;
@@ -174,9 +175,11 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         for (int i = 0; i < size; i++) {
             NodeView nodeView = (NodeView)getChildAt(i);
             Node node = nodeView.getNode();
+            TextView tvName = nodeView.getTvName();
             int radius = node.getShape().getRadius();
             //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
-            nodeView.layout((int)(node.getX() -startX - radius + firstNodeMargin),(int)(node.getY() -startY - radius + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY) + firstNodeMargin);
+            LogUtils.d("nodeView.getChildAt(0) == " + nodeView.getChildAt(0).toString() );
+            nodeView.layout((int)(node.getX() -startX - radius - (tvName.getWidth() - 2*radius)/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + (tvName.getWidth() - 2*radius)/2 + firstNodeMargin));
         }
 
     }
