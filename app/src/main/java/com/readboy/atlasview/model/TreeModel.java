@@ -1,6 +1,7 @@
 package com.readboy.atlasview.model;
 
 import com.readboy.atlasview.bean.AtlasBean;
+import com.readboy.atlasview.bean.AtlasMapping;
 import com.readboy.atlasview.bean.CanvasBean;
 import com.readboy.atlasview.bean.Node;
 
@@ -11,6 +12,15 @@ public class TreeModel {
     private AtlasBean atlasBean;
     private CanvasBean canvasBean;
     private LinkedHashMap<Long, Node> models;
+    private AtlasMapping mapping;
+
+    public AtlasMapping getMapping() {
+        return mapping;
+    }
+
+    public void setMapping(AtlasMapping mapping) {
+        this.mapping = mapping;
+    }
 
     public AtlasBean getAtlasBean() {
         return atlasBean;

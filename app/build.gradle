@@ -1,13 +1,14 @@
-plugins {
-    id 'com.android.application'
-}
+//plugins {
+//    id 'com.android.application'
+//}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.readboy.atlasview"
+//        applicationId "com.readboy.atlasview"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

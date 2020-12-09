@@ -7,5 +7,5 @@ import android.view.View;
  */
 
 public interface TreeViewItemLongClick {
-    void onLongClick(View view);
+    void onLongClick(Long id, int type, String name, int frequency, float scorePercent, float grasp);
 }

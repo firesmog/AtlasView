@@ -1,22 +1,22 @@
 package com.readboy.atlasview.bean;
 
 public class Explain {
-    private int qid;
-    private int video;
+    private long qid;
+    private long video;
 
-    public int getQid() {
+    public long getQid() {
         return qid;
     }
 
-    public void setQid(int qid) {
+    public void setQid(long qid) {
         this.qid = qid;
     }
 
-    public int getVideo() {
+    public long getVideo() {
         return video;
     }
 
-    public void setVideo(int video) {
+    public void setVideo(long video) {
         this.video = video;
     }
 

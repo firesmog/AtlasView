@@ -1,12 +1,12 @@
 package com.readboy.atlasview;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.readboy.atlasview.bean.AtlasBean;
@@ -20,7 +20,6 @@ import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -36,67 +35,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
         initData();
-       // startActivity();
+        // startActivity();
     }
 
 
-    private void  startActivity(){
-        try{
+    private void startActivity() {
+        try {
             Intent intent;
             intent = getPackageManager().getLaunchIntentForPackage("com.readboy.mytreeview");
             Intent i = new Intent(Intent.ACTION_MAIN);
             i.addCategory(Intent.CATEGORY_LAUNCHER);
             i.setComponent(intent.getComponent());
-            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void initData(){
+    private void initData() {
         Gson gson = new Gson();
-        String json = AssertsUtil.getFromAssets(MainActivity.this,"json.txt");
-        AtlasBean data = gson.fromJson(json,AtlasBean.class);
-        AtlasUtil.setOrderInNodes(data);
-        canvasBean = AtlasUtil.getCanvasAccordAtlas(data);
+        String json = AssertsUtil.getFromAssets(MainActivity.this, "json.txt");
+        AtlasBean data = gson.fromJson(json, AtlasBean.class);
+        AtlasMapping mapping = data.getData().getMapping();
+        AtlasUtil.setOrderInNodes(mapping);
+        canvasBean = AtlasUtil.getCanvasAccordAtlas(mapping);
 
-        LinkedHashMap<Long, Node> models = getNodeList(data);
+        LinkedHashMap<Long, Node> models = AtlasUtil.getNodeList(mapping);
         TreeModel model = new TreeModel();
-        model.setAtlasBean(data);
+        model.setMapping(mapping);
         model.setCanvasBean(canvasBean);
         model.setModels(models);
         editMapTreeView.setTreeModel(model);
         editMapTreeView.setMTreeViewItemClick(new TreeViewItemClick() {
             @Override
-            public void onItemClick(View item) {
-                LogUtils.d("oooo == " + ((TextView)item).getText());
+            public void onItemClick(Long id, int type, String name, int frequency, float scorePercent, float grasp) {
+
             }
         });
     }
 
-    private LinkedHashMap<Long,Node> getNodeList(AtlasBean data){
-        LinkedHashMap<Long,Node> map = new LinkedHashMap<>();
-        AtlasMapping mapping = data.getData().getMapping();
-        List<Node> nodes =  mapping.getNodes();
-        for (Node node : nodes) {
-            Node model = new Node();
-            model.setFont(node.getFont());
-            model.setId(node.getId());
-            model.setName(node.getName());
-            model.setKeypoint(node.getKeypoint());
-            model.setShape(node.getShape());
-            model.setType(node.getType());
-            model.setX(node.getX());
-            model.setY(node.getY());
-            model.setOrder(AtlasUtil.getOrderInNodes(mapping,node.getId()) + 1);
-            model.setFloor(node.getFloor());
-            if(node.getType() == 1){
-                model.setVisibility(true);
-            }
-            map.put(node.getId(),model);
-
-        }
-        return map;
-    }
 }

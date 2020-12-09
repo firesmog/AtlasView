@@ -21,21 +21,24 @@ import com.readboy.atlasview.constants.Constants;
 import com.readboy.atlasview.utils.DensityUtils;
 import com.readboy.atlasview.utils.log.LogUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.graphics.drawable.GradientDrawable.OVAL;
 import static android.graphics.drawable.GradientDrawable.RECTANGLE;
 
 public class NodeView extends RelativeLayout {
-    private  String nodeBackground;
-    private  int nameColor;
-    private  int numberColor;
-    private  String name;
-    private  String nodeShape;
-    private  int order;
-    private  float nodeRadius;
-    private  float nameSize;
-    private  float orderSize;
-    private  float marginSize;
-    private  float tvOrderWidth;
+    private String nodeBackground;
+    private int nameColor;
+    private int numberColor;
+    private String name;
+    private String nodeShape;
+    private int order;
+    private float nodeRadius;
+    private float nameSize;
+    private float orderSize;
+    private float marginSize;
+    private float tvOrderWidth;
     private TextView tvName;
     private TextView tvOrder;
     private long nodeId;
@@ -53,9 +56,9 @@ public class NodeView extends RelativeLayout {
         this.context = context;
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.NodeView, 0, 0);
         try {
-            order =  array.getInteger(R.styleable.NodeView_order, 1);
-            name =  array.getString(R.styleable.NodeView_name);
-            nodeShape =  array.getString(R.styleable.NodeView_nodeShape);
+            order = array.getInteger(R.styleable.NodeView_order, 1);
+            name = array.getString(R.styleable.NodeView_name);
+            nodeShape = array.getString(R.styleable.NodeView_nodeShape);
             nodeBackground = array.getString(R.styleable.NodeView_nodeBackground);
             nameColor = array.getColor(R.styleable.NodeView_nameColor, Color.BLUE);
             numberColor = array.getColor(R.styleable.NodeView_orderColor, Color.BLUE);
@@ -64,9 +67,9 @@ public class NodeView extends RelativeLayout {
             marginSize = array.getDimension(R.styleable.NodeView_marginSize, -1);
             orderSize = array.getDimension(R.styleable.NodeView_orderSize, 14);
             tvOrderWidth = array.getDimension(R.styleable.NodeView_tvOrderWidth, 80);
-        } catch (Exception e){
+        } catch (Exception e) {
             LogUtils.d("NodeView create error is " + e.getMessage());
-        }finally {
+        } finally {
             if (array != null) {
                 array.recycle();
             }
@@ -75,33 +78,44 @@ public class NodeView extends RelativeLayout {
     }
 
     @SuppressLint("WrongConstant")
-    private void initTvOrder(){
+    private void initTvOrder() {
         tvOrder.setText(String.valueOf(order));
         tvOrder.setTextColor(numberColor);
         tvOrder.setTextSize(orderSize);
-        colors = new int[]{context.getResources().getColor(R.color.color_31cfff), context.getResources().getColor(R.color.color_0097e6)};
+//        colors = new int[]{context.getResources().getColor(R.color.color_31cfff), context.getResources().getColor(R.color.color_0097e6)};
 
         //创建Drawable对象
-        /*if(null != node){
+        if (null != node) {
             String color = node.getShape().getColor();
             String[] curColors = color.split(",");
-            colors = new int[]{Color.parseColor(curColors[0]), Color.parseColor(curColors[1])};
-        }*/
-        GradientDrawable drawable=new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,colors);
-        if(Constants.SHAPE_RECTANGLE.equals(nodeShape)){
-            drawable.setShape(RECTANGLE);
-        }else {
-            drawable.setShape(OVAL);
+            if (curColors.length >= 2) {
+                colors = new int[]{Color.parseColor(curColors[0]), Color.parseColor(curColors[1])};
+            } else {
+                colors = new int[]{Color.parseColor(curColors[0]), Color.parseColor(curColors[0])};
+            }
 
-            tvOrder.setWidth(node.getShape().getRadius()*2);
-            tvOrder.setHeight( node.getShape().getRadius()*2);
+        }
+        GradientDrawable drawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
+
+        if (Constants.SHAPE_RECTANGLE.equals(nodeShape)) {
+            drawable.setShape(RECTANGLE);
+        } else {
+            drawable.setShape(OVAL);
+        }
+
+        if (node.getShape().getRadius() > 0) {
+            tvOrder.setWidth(node.getShape().getRadius() * 2);
+            tvOrder.setHeight(node.getShape().getRadius() * 2);
+        } else {
+            tvOrder.setWidth(45 * 2);
+            tvOrder.setHeight(45 * 2);
         }
 
         tvOrder.setBackground(drawable);
 
-        if(marginSize != -1){
-            LayoutParams lp = (LayoutParams)tvOrder.getLayoutParams();
-            lp.topMargin = (int)marginSize;
+        if (marginSize != -1) {
+            LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+            lp.topMargin = (int) marginSize;
             tvOrder.setLayoutParams(lp);
         }
     }
@@ -127,31 +141,42 @@ public class NodeView extends RelativeLayout {
     }
 
 
-
-
-    private void initView(Context context){
+    private void initView(Context context) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
-        tvName = (TextView)inflate.findViewById(R.id.tv_name);
-        tvOrder = (TextView)inflate.findViewById(R.id.tv_order);
+        tvName = (TextView) inflate.findViewById(R.id.tv_name);
+        tvOrder = (TextView) inflate.findViewById(R.id.tv_order);
     }
 
-    private void initTvName(){
-        if(!TextUtils.isEmpty(name)){
-            tvName.setText(name);
+    private void initTvName() {
+        if (!TextUtils.isEmpty(name)) {
+            tvName.setText(nameFormat(name));
         }
         tvName.setTextSize(node.getFont().getSize());
-       // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
+        // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
         tvName.setTextColor(nameColor);
     }
 
+    private String nameFormat(String str) {
+        int length = str.length();
+        List<Integer> index = new ArrayList<>();
+        for (int i = length; i > 0; i--) {
+            if (i % 5 == 0) {
+                index.add(i);
+            }
+        }
+        StringBuilder stringBuilder = new StringBuilder(str);
+        for (int i : index) {
+            stringBuilder.insert(i, "\n");
+        }
+        return stringBuilder.toString();
+    }
 
 
-
-    public TextView getTvNameTextView(){
+    public TextView getTvNameTextView() {
         return tvName;
     }
 
-    public TextView getTvOrderTextView(){
+    public TextView getTvOrderTextView() {
         return tvOrder;
     }
 

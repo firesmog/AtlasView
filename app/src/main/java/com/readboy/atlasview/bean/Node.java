@@ -1,5 +1,7 @@
 package com.readboy.atlasview.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Comparator;
 
 public class Node implements Comparator<Node> {
@@ -14,7 +16,42 @@ public class Node implements Comparator<Node> {
     private int order;
     public transient boolean focus = false;
     public int floor;
+    @SerializedName("fp")
+    private int frequency;
+
+    @SerializedName("scorePercent")
+    private float scorePercent;
+
+    @SerializedName("grasp")
+    private float grasp;
+
+    @SerializedName("visibility")
     private boolean visibility;
+
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+
+    public float getScorePercent() {
+        return scorePercent;
+    }
+
+    public void setScorePercent(float scorePercent) {
+        this.scorePercent = scorePercent;
+    }
+
+    public float getGrasp() {
+        return grasp;
+    }
+
+    public void setGrasp(float grasp) {
+        this.grasp = grasp;
+    }
 
     public int getOrder() {
         return order;
@@ -127,16 +164,15 @@ public class Node implements Comparator<Node> {
                 ", order=" + order +
                 ", focus=" + focus +
                 ", floor=" + floor +
-                ", visibility=" + visibility +
                 '}';
     }
 
     @Override
     public int compare(Node o1, Node o2) {
-        if(o2.getOrder() < o1.getOrder()){
+        if (o2.getOrder() < o1.getOrder()) {
             return 1;
         }
-        if(o2.getOrder() > o1.getOrder()){
+        if (o2.getOrder() > o1.getOrder()) {
             return -1;
         }
         return 0;

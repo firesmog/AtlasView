@@ -1,16 +1,25 @@
 package com.readboy.atlasview.bean;
 
-public class AtlasBean {
-    private String msg;
-    private AtlasNode data;
-    private int ok;
+import com.google.gson.annotations.SerializedName;
 
-    public String getMsg() {
-        return msg;
+
+public class AtlasBean {
+
+    @SerializedName("suggest")
+    private String suggest;
+
+    @SerializedName("detail")
+    private AtlasNode data;
+
+    @SerializedName("stat")
+    private AtlasStat stat;
+
+    public String getSuggest() {
+        return suggest;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setSuggest(String suggest) {
+        this.suggest = suggest;
     }
 
     public AtlasNode getData() {
@@ -21,20 +30,11 @@ public class AtlasBean {
         this.data = data;
     }
 
-    public int getOk() {
-        return ok;
+    public AtlasStat getStat() {
+        return stat;
     }
 
-    public void setOk(int ok) {
-        this.ok = ok;
-    }
-
-    @Override
-    public String toString() {
-        return "AtlasBean{" +
-                "msg='" + msg + '\'' +
-                ", data=" + data +
-                ", ok=" + ok +
-                '}';
+    public void setStat(AtlasStat stat) {
+        this.stat = stat;
     }
 }

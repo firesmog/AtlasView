@@ -1,16 +1,35 @@
 package com.readboy.atlasview.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class AtlasNode {
+    @SerializedName("testpoints")
     private List<TestPoint> testPoints;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("parent")
     private Parent parent;
+
+    @SerializedName("courseId")
     private int courseId;
+
+    @SerializedName("mapping")
     private AtlasMapping mapping;
+
+    @SerializedName("source")
     private int source;
+
+    @SerializedName("keypoint")
     private List<KeyPoint> keyPoint;
-    private List<QstKeyPoint> qstKeypoint;
+
+    @SerializedName("qstKeypoint")
+    private List<QstKeyPoint> qstKeyPoint;
+
+    @SerializedName("id")
     private int id;
 
     public List<TestPoint> getTestPoints() {
@@ -45,6 +64,7 @@ public class AtlasNode {
         this.courseId = courseId;
     }
 
+
     public AtlasMapping getMapping() {
         return mapping;
     }
@@ -69,12 +89,12 @@ public class AtlasNode {
         this.keyPoint = keyPoint;
     }
 
-    public List<QstKeyPoint> getQstKeypoint() {
-        return qstKeypoint;
+    public List<QstKeyPoint> getQstKeyPoint() {
+        return qstKeyPoint;
     }
 
-    public void setQstKeypoint(List<QstKeyPoint> qstKeypoint) {
-        this.qstKeypoint = qstKeypoint;
+    public void setQstKeyPoint(List<QstKeyPoint> qstKeyPoint) {
+        this.qstKeyPoint = qstKeyPoint;
     }
 
     public int getId() {
@@ -83,20 +103,5 @@ public class AtlasNode {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "AtlasNode{" +
-                "testpoints=" + testPoints +
-                ", name='" + name + '\'' +
-                ", parent='" + parent + '\'' +
-                ", courseId=" + courseId +
-                ", mapping=" + mapping +
-                ", source=" + source +
-                ", keyPoint=" + keyPoint +
-                ", qstKeypoint=" + qstKeypoint +
-                ", id=" + id +
-                '}';
     }
 }

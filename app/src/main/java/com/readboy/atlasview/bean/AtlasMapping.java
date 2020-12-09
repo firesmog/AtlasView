@@ -1,13 +1,26 @@
 package com.readboy.atlasview.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class AtlasMapping {
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("id")
     private long id;
+
+    @SerializedName("links")
     private List<Link> links;
+
+    @SerializedName("section")
     private Section section;
+
+    @SerializedName("nodeOrder")
     private List<NodeOrder> nodeOrder;
+
+    @SerializedName("nodes")
     private List<Node> nodes;
 
     public String getName() {
@@ -22,7 +35,7 @@ public class AtlasMapping {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,17 +69,5 @@ public class AtlasMapping {
 
     public void setNodes(List<Node> nodes) {
         this.nodes = nodes;
-    }
-
-    @Override
-    public String toString() {
-        return "AtlasMapping{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", links=" + links +
-                ", section=" + section +
-                ", nodeOrder=" + nodeOrder +
-                ", nodes=" + nodes +
-                '}';
     }
 }
