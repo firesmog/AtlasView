@@ -92,11 +92,9 @@ public class NodeView extends RelativeLayout {
             drawable.setShape(RECTANGLE);
         }else {
             drawable.setShape(OVAL);
-
-            tvOrder.setWidth(node.getShape().getRadius()*2);
-            tvOrder.setHeight( node.getShape().getRadius()*2);
         }
-
+        tvOrder.setWidth(node.getShape().getRadius()*2);
+        tvOrder.setHeight( node.getShape().getRadius()*2);
         tvOrder.setBackground(drawable);
 
         if(marginSize != -1){
@@ -139,8 +137,9 @@ public class NodeView extends RelativeLayout {
         if(!TextUtils.isEmpty(name)){
             tvName.setText(name);
         }
+
+
         tvName.setTextSize(node.getFont().getSize());
-       // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
         tvName.setTextColor(nameColor);
     }
 

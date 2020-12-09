@@ -12,21 +12,18 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:includeFontPadding="false"
         android:layout_centerHorizontal="true"
         android:maxLines = "2"
         android:minLines="2"
-        android:includeFontPadding="false"
         android:gravity="center"
         android:ellipsize="end"
-
         />
 
     <TextView
         android:id="@+id/tv_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:layout_centerHorizontal="true"
         android:includeFontPadding="false"
         android:layout_below="@id/tv_name"
