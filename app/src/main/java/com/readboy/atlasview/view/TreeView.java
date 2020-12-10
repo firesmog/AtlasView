@@ -168,7 +168,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             boolean b = Math.abs(ty - sy) >= Math.abs(tx - sx);
             //计算两点角度
             double degrees = DensityUtils.calculateAngle(sx,sy,tx,ty);
-            boolean filter = ((degrees > 65 && degrees < 115) || (degrees < 25 && degrees > -25) || (degrees < -65 && degrees > -115) || (degrees > 155) || degrees < -155);
+            boolean filter = ((degrees > 65 && degrees < 115) || (degrees < 25 && degrees > -25) || (degrees < -65 && degrees >= -90) || degrees > 245 || ((degrees > 155) && degrees < 205));
             LogUtils.d("drawLine drawLine drawLine == " + degrees  + " , target === " + target.getName() + ",filter = "  + filter );
             LogUtils.d("drawLine drawLine drawLine == test 90 = " + Math.tan(-53.680) + " ,150 = " + Math.tan(150) + ",fu 60 = " + Math.tan(-60)   );
 
@@ -177,7 +177,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                     sxLine = (int) (sx + sRadius*(tx-sx)/(sy-ty));
                     syLine = (int) (sy - tRadius);
 
-                }else if((degrees >= -135 && degrees <= -45)) {
+                }else if((degrees >= 225 || degrees <= -45)) {
                     sxLine = (int) (sx + sRadius*(tx-sx)/(ty-sy));
                     syLine = (int) (sy + sRadius);
                 }else if(degrees > -45 && degrees < 45){
@@ -199,7 +199,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                   txLine = (int) (tx - tRadius*(tx-sx)/(sy-ty));
                   tyLine = (int) (ty+tRadius);
 
-               }else if((degrees >= -135 && degrees <= -45)) {
+               }else if((degrees >= 225 || degrees <= -45)) {
                    txLine = (int) (tx + tRadius*(sx-tx)/(ty-sy));
                    tyLine = (int) (ty - tRadius);
                }else if(degrees > -45 && degrees < 45){
