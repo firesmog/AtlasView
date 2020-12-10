@@ -206,15 +206,16 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
      * 清除所有的NoteView
      */
     private void clearAllNoteViews() {
-        int count = getChildCount();
-        if (count > 0) {
-            for (int i = 0; i < count; i++) {
-                View childView = getChildAt(i);
-                if (childView instanceof NodeView) {
-                    removeView(childView);
-                }
-            }
-        }
+        removeAllViews();
+//        int count = getChildCount();
+//        if (count > 0) {
+//            for (int i = 0; i < count; i++) {
+//                View childView = getChildAt(i);
+//                if (childView instanceof NodeView) {
+//                    removeView(childView);
+//                }
+//            }
+//        }
     }
 
     /**
