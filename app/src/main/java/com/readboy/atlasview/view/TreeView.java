@@ -242,6 +242,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             NodeView nodeView = (NodeView)getChildAt(i);
             Node node = nodeView.getNode();
             TextView tvName = nodeView.getTvName();
+            TextView tvOrder = nodeView.getTvOrder();
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) tvOrder.getLayoutParams();
+            int topMargin = params.topMargin;
             int radius = node.getShape().getRadius();
             //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
             if (radius <= 0) {
@@ -252,9 +255,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
 
             if(gap > 0){
-                nodeView.layout((int)(node.getX() -startX - radius - gap/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + gap/2 + firstNodeMargin));
+                nodeView.layout((int)(node.getX() -startX - radius - gap/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight() - topMargin + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + gap/2  - topMargin + firstNodeMargin));
             }else {
-                nodeView.layout((int)(node.getX() -startX - radius  + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY  + firstNodeMargin));
+                nodeView.layout((int)(node.getX() -startX - radius  + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight() - topMargin + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY  - topMargin + firstNodeMargin));
 
             }
         }

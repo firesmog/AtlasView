@@ -130,9 +130,6 @@ public class NodeView extends RelativeLayout {
         this.context = context;
     }
 
-
-
-
     private void initView(Context context){
         View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
         tvName = (TextView)inflate.findViewById(R.id.tv_name);
