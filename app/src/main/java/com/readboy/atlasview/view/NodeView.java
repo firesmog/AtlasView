@@ -93,8 +93,14 @@ public class NodeView extends RelativeLayout {
         }else {
             drawable.setShape(OVAL);
         }
-        tvOrder.setWidth(node.getShape().getRadius()*2);
-        tvOrder.setHeight( node.getShape().getRadius()*2);
+        if (node.getShape().getRadius() > 0) {
+            tvOrder.setWidth(node.getShape().getRadius() * 2);
+            tvOrder.setHeight(node.getShape().getRadius() * 2);
+        } else {
+            tvOrder.setWidth(node.getShape().getWidth());
+            tvOrder.setHeight(node.getShape().getWidth());
+        }
+
         tvOrder.setBackground(drawable);
 
         if(marginSize != -1){

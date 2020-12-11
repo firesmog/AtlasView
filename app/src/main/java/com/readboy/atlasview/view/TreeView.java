@@ -150,6 +150,15 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             }*/
                 int sRadius = source.getShape().getRadius();
                 int tRadius = target.getShape().getRadius();
+
+                if(sRadius <= 0){
+                    sRadius = source.getShape().getWidth()/2;
+                }
+
+                if(tRadius <= 0){
+                    tRadius = target.getShape().getWidth()/2;
+                }
+
                 double sx = source.getX();
                 double sy = source.getY();
                 double tx = target.getX();
@@ -235,8 +244,19 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             TextView tvName = nodeView.getTvName();
             int radius = node.getShape().getRadius();
             //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
-            LogUtils.d("nodeView.getChildAt(0) == " + nodeView.getChildAt(0).toString() );
-            nodeView.layout((int)(node.getX() -startX - radius - (tvName.getWidth() - 2*radius)/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + (tvName.getWidth() - 2*radius)/2 + firstNodeMargin));
+            if (radius <= 0) {
+                radius = node.getShape().getWidth()/2;
+            }
+            double gap =  (tvName.getWidth() - 2*radius);
+            LogUtils.d("nodeView.getChildAt(0) == " + gap);
+
+
+            if(gap > 0){
+                nodeView.layout((int)(node.getX() -startX - radius - gap/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + gap/2 + firstNodeMargin));
+            }else {
+                nodeView.layout((int)(node.getX() -startX - radius  + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight()+ firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY  + firstNodeMargin));
+
+            }
         }
 
     }
