@@ -139,7 +139,7 @@ public class NodeView extends RelativeLayout {
         }
 
 
-        tvName.setTextSize(node.getFont().getSize());
+        tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
         tvName.setTextColor(nameColor);
     }
 
