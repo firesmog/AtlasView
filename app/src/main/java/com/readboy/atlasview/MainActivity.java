@@ -36,22 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
         initData();
-       // startActivity();
-    }
-
-
-    private void  startActivity(){
-        try{
-            Intent intent;
-            intent = getPackageManager().getLaunchIntentForPackage("com.readboy.mytreeview");
-            Intent i = new Intent(Intent.ACTION_MAIN);
-            i.addCategory(Intent.CATEGORY_LAUNCHER);
-            i.setComponent(intent.getComponent());
-            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     private void initData(){
@@ -95,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 model.setVisibility(true);
             }
             map.put(node.getId(),model);
-
         }
         return map;
     }

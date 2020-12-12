@@ -31,7 +31,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private TreeModel mTreeModel;
     private TreeViewItemClick mTreeViewItemClick;
     private TreeViewItemLongClick mTreeViewItemLongClick;
-    private final int firstNodeMargin = 120;
+    private final int firstNodeMargin = 150;
     private MoveAndScaleHandler mMoveAndScaleHandler;
     private GestureDetector mGestureDetector;
 
@@ -65,8 +65,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             measureChild(getChildAt(i), widthMeasureSpec, heightMeasureSpec);
         }
         layoutChildren();
-        setMeasuredDimension((int)mTreeModel.getCanvasBean().getWidth() + 200,(int)mTreeModel.getCanvasBean().getHeight() + 200);
-
+        setMeasuredDimension((int)mTreeModel.getCanvasBean().getWidth() + 250,(int)mTreeModel.getCanvasBean().getHeight() + 250);
     }
 
     @Override
@@ -90,7 +89,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         drawLine(canvas);
         //drawRect(canvas);
         //canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
-
     }
 
 

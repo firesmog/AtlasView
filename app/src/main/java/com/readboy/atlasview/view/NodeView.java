@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import com.readboy.atlasview.R;
 import com.readboy.atlasview.bean.Node;
 import com.readboy.atlasview.constants.Constants;
+import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.DensityUtils;
 import com.readboy.atlasview.utils.log.LogUtils;
 
@@ -138,7 +139,7 @@ public class NodeView extends RelativeLayout {
 
     private void initTvName(){
         if(!TextUtils.isEmpty(name)){
-            tvName.setText(name);
+            tvName.setText(AtlasUtil.replace(name));
         }
 
 

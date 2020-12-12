@@ -2,7 +2,7 @@ package com.readboy.atlasview.bean;
 
 public class Font {
     private String color;
-    private int size;
+    private float size;
 
     public String getColor() {
         return color;
@@ -12,11 +12,11 @@ public class Font {
         this.color = color;
     }
 
-    public int getSize() {
+    public float getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(float size) {
         this.size = size;
     }
 
