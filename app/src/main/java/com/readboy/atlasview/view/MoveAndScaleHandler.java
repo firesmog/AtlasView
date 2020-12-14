@@ -48,7 +48,7 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
         }
 
         if(System.currentTimeMillis() - beforeTime > 10){
-            float[] loopScale = {0.5f,0.55f,0.6f,0.65f,0.7f,0.75f,0.8f,0.85f,0.9f,0.95f,1.0f,1.05f,1.1f,1.15f,1.2f,1.25f,1.3f,1.35f,1.4f,1.45f,1.5f};
+            float[] loopScale = {0.4f,0.45f,0.5f,0.55f,0.6f,0.65f,0.7f,0.75f,0.8f,0.85f,0.9f,0.95f,1.0f,1.05f,1.1f,1.15f,1.2f,1.25f,1.3f,1.35f,1.4f,1.45f,1.5f,1.55f,1.6f};
             if((ratio > 1 ) ){
                 beforeTime = System.currentTimeMillis();
                 curIndex++;

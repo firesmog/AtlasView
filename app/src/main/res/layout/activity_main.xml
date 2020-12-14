@@ -9,6 +9,7 @@
 
     <com.readboy.atlasview.view.TreeView
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:id="@+id/edit_map_tree_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

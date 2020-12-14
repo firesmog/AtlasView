@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
 
                 index = b.intValue();
-                editMapTreeView.getmMoveAndScaleHandler().setCurIndex((10 + (int)index));
+                editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 + (int)index));
                 editMapTreeView.setScaleX(min);
                 editMapTreeView.setScaleY(min);
             }
