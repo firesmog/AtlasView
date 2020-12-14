@@ -27,6 +27,7 @@ public class Node implements Comparator<Node> {
 
     @SerializedName("visibility")
     private boolean visibility;
+    private boolean is_study;
 
 
     public int getFrequency() {
@@ -150,6 +151,14 @@ public class Node implements Comparator<Node> {
         this.visibility = visibility;
     }
 
+    public boolean isIs_study() {
+        return is_study;
+    }
+
+    public void setIs_study(boolean is_study) {
+        this.is_study = is_study;
+    }
+
     @Override
     public String toString() {
         return "Node{" +
@@ -164,6 +173,11 @@ public class Node implements Comparator<Node> {
                 ", order=" + order +
                 ", focus=" + focus +
                 ", floor=" + floor +
+                ", frequency=" + frequency +
+                ", scorePercent=" + scorePercent +
+                ", grasp=" + grasp +
+                ", visibility=" + visibility +
+                ", is_study=" + is_study +
                 '}';
     }
 

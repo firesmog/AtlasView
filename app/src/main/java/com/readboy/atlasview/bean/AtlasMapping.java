@@ -2,6 +2,7 @@ package com.readboy.atlasview.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class AtlasMapping {
@@ -22,6 +23,20 @@ public class AtlasMapping {
 
     @SerializedName("nodes")
     private List<Node> nodes;
+
+    private HashMap<Long,Long[]> ktmap;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public HashMap<Long, Long[]> getKtmap() {
+        return ktmap;
+    }
+
+    public void setKtmap(HashMap<Long, Long[]> ktmap) {
+        this.ktmap = ktmap;
+    }
 
     public String getName() {
         return name;

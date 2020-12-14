@@ -20,8 +20,10 @@ import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,9 +61,12 @@ public class MainActivity extends AppCompatActivity {
         AtlasBean data = gson.fromJson(json, AtlasBean.class);
         AtlasMapping mapping = data.getData().getMapping();
         AtlasUtil.setOrderInNodes(mapping);
+        List<Long> visibleNodeId = AtlasUtil.getVisibleCanvasAccordAtlas(mapping);
+        AtlasUtil.updateVisibleMapping(mapping,visibleNodeId);
+
         canvasBean = AtlasUtil.getCanvasAccordAtlas(mapping);
 
-        LinkedHashMap<Long, Node> models = AtlasUtil.getNodeList(mapping);
+        LinkedHashMap<Long, Node> models = AtlasUtil.updateNodeList(mapping);
         TreeModel model = new TreeModel();
         model.setMapping(mapping);
         model.setCanvasBean(canvasBean);

@@ -10,6 +10,7 @@ import com.readboy.atlasview.utils.log.LogUtils;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
@@ -310,62 +311,11 @@ public class AtlasUtil {
         return bean;
     }
 
-    public static CanvasBean getCanvasAccordAtlas(AtlasMapping mapping) {
+    public static CanvasBean getCanvasAccordAtlas(AtlasMapping mapping ) {
         CanvasBean bean = new CanvasBean();
         List<Node> org = mapping.getNodes();
         for (Node node : org) {
-            if (node.getX() > bean.getEndX()) {
-                bean.setEndX(node.getX());
-            }
-
-            if (node.getX() < bean.getStartX()) {
-                bean.setStartX(node.getX());
-            }
-
-            if (node.getY() > bean.getEndY()) {
-                bean.setEndY(node.getY());
-            }
-
-            if (node.getY() < bean.getStartY()) {
-                bean.setStartY(node.getY());
-            }
-        }
-
-        bean.setWidth((bean.getEndX() - bean.getStartX()));
-        bean.setHeight(bean.getEndY() - bean.getStartY());
-        return bean;
-    }
-
-
-    public static LinkedHashMap<Long, Node> getNodeList(AtlasMapping mapping) {
-        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
-        List<Node> nodes = mapping.getNodes();
-        for (Node node : nodes) {
-            Node model = new Node();
-            model.setFont(node.getFont());
-            model.setId(node.getId());
-            model.setName(node.getName());
-            model.setKeypoint(node.getKeypoint());
-            model.setShape(node.getShape());
-            model.setType(node.getType());
-            model.setX(node.getX());
-            model.setY(node.getY());
-            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
-            model.setFloor(node.getFloor());
-            if (node.getType() == 1) {
-                model.setVisibility(true);
-            }
-            map.put(node.getId(), model);
-
-        }
-        return map;
-    }
-
-    public static CanvasBean getVisibleCanvasAccordAtlas(AtlasBean atlasBean) {
-        CanvasBean bean = new CanvasBean();
-        List<Node> org = atlasBean.getData().getMapping().getNodes();
-        for (Node node : org) {
-            if (!node.isVisibility()) {
+            if(!node.isVisibility()){
                 continue;
             }
             if (node.getX() > bean.getEndX()) {
@@ -389,6 +339,83 @@ public class AtlasUtil {
         bean.setHeight(bean.getEndY() - bean.getStartY());
         return bean;
     }
+
+
+    private  static LinkedHashMap<Long, Node> getNodeList(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
+        List<Node> nodes = mapping.getNodes();
+        for (Node node : nodes) {
+            Node model = new Node();
+            model.setFont(node.getFont());
+            model.setId(node.getId());
+            model.setName(node.getName());
+            model.setKeypoint(node.getKeypoint());
+            model.setShape(node.getShape());
+            model.setType(node.getType());
+            model.setX(node.getX());
+            model.setY(node.getY());
+            model.setIs_study(node.isIs_study());
+            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
+            if (node.getType() == 1) {
+                model.setVisibility(true);
+            }
+            map.put(node.getId(), model);
+        }
+        return map;
+    }
+
+    public static LinkedHashMap<Long, Node> updateNodeList(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
+        List<Node> nodes = mapping.getNodes();
+        for (Node node : nodes) {
+            Node model = new Node();
+            model.setFont(node.getFont());
+            model.setId(node.getId());
+            model.setName(node.getName());
+            model.setKeypoint(node.getKeypoint());
+            model.setShape(node.getShape());
+            model.setType(node.getType());
+            model.setX(node.getX());
+            model.setY(node.getY());
+            model.setIs_study(node.isIs_study());
+            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
+            model.setVisibility(node.isVisibility());
+            map.put(node.getId(), model);
+        }
+        return map;
+    }
+
+
+    public static List<Long>  getVisibleCanvasAccordAtlas(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> modes = getNodeList(mapping);
+        HashMap<Long,Long[]> ktmap = mapping.getKtmap();
+        List<Long> visibleNodeId = new ArrayList<>();
+        inner:
+        for (Map.Entry<Long, Long[]> integerEntry : ktmap.entrySet()) {
+            visibleNodeId.add(integerEntry.getKey());
+            if((modes.get(integerEntry.getKey())).isIs_study()){
+                visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
+                continue;
+            }
+
+            for (Long aLong : integerEntry.getValue()) {
+                if((modes.get(aLong)).isIs_study()){
+                    visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
+                    continue inner;
+                }
+            }
+        }
+        return visibleNodeId;
+    }
+
+    public static void updateVisibleMapping(AtlasMapping mapping,List<Long> visibleNodeId) {
+        for (Node node : mapping.getNodes()) {
+            if(visibleNodeId.contains(node.getId())){
+                node.setVisibility(true);
+            }
+        }
+    }
+
 
     public static String replace(String str) {
         String destination = "";
