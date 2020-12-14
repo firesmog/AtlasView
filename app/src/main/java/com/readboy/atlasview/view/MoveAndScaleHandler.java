@@ -152,6 +152,11 @@ public class MoveAndScaleHandler implements ScaleGestureDetector.OnScaleGestureL
         return (float) Math.sqrt(x * x + y * y);
     }
 
+    public int getCurIndex() {
+        return curIndex;
+    }
 
-
+    public void setCurIndex(int curIndex) {
+        this.curIndex = curIndex;
+    }
 }

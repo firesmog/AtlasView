@@ -385,4 +385,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         return view;
     }
 
+    public MoveAndScaleHandler getmMoveAndScaleHandler() {
+        return mMoveAndScaleHandler;
+    }
 }

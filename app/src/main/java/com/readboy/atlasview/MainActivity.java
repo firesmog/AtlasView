@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CanvasBean canvasBean;
     private TreeView editMapTreeView;
+    private RelativeLayout rlMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,38 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
+        rlMain =(RelativeLayout)findViewById(R.id.rl_main);
         initData();
+        adapterViewSize();
 
+    }
+
+    private void adapterViewSize(){
+        editMapTreeView.post(new Runnable() {
+            @Override
+            public void run() {
+                int childHeight = editMapTreeView.getHeight();
+                int childWidth = editMapTreeView.getWidth();
+                int parentWidth = rlMain.getWidth();
+                int parentHeight = rlMain.getHeight();
+                float min = Math.min((float)parentHeight/childHeight,(float)parentWidth/childWidth);
+                if(min >= 1.3f){
+                    min = 1.3f;
+                }
+
+                if(min <= 1f){
+                    return;
+                }
+                float index = (min - 1.0f)/0.05f;
+                BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
+                LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
+
+                index = b.intValue();
+                editMapTreeView.getmMoveAndScaleHandler().setCurIndex((10 + (int)index));
+                editMapTreeView.setScaleX(min);
+                editMapTreeView.setScaleY(min);
+            }
+        });
     }
 
 
