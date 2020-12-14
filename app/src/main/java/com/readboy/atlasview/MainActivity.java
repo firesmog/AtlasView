@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
         initData();
-        // startActivity();
+
     }
 
 

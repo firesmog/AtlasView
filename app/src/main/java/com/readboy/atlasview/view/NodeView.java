@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import com.readboy.atlasview.R;
 import com.readboy.atlasview.bean.Node;
 import com.readboy.atlasview.constants.Constants;
+import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.DensityUtils;
 import com.readboy.atlasview.utils.log.LogUtils;
 
@@ -107,8 +108,9 @@ public class NodeView extends RelativeLayout {
             tvOrder.setWidth(node.getShape().getRadius() * 2);
             tvOrder.setHeight(node.getShape().getRadius() * 2);
         } else {
-            tvOrder.setWidth(45 * 2);
-            tvOrder.setHeight(45 * 2);
+
+            tvOrder.setWidth(node.getShape().getWidth());
+            tvOrder.setHeight(node.getShape().getWidth());
         }
 
         tvOrder.setBackground(drawable);
@@ -141,18 +143,19 @@ public class NodeView extends RelativeLayout {
     }
 
 
-    private void initView(Context context) {
+    private void initView(Context context){
         View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
         tvName = (TextView) inflate.findViewById(R.id.tv_name);
         tvOrder = (TextView) inflate.findViewById(R.id.tv_order);
     }
 
-    private void initTvName() {
-        if (!TextUtils.isEmpty(name)) {
-            tvName.setText(nameFormat(name));
+
+    private void initTvName(){
+        if(!TextUtils.isEmpty(name)){
+            tvName.setText(AtlasUtil.replace(name));
         }
-        tvName.setTextSize(node.getFont().getSize());
-        // tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
+
+        tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
         tvName.setTextColor(nameColor);
     }
 

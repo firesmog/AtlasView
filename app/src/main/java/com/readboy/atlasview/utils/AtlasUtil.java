@@ -18,6 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AtlasUtil {
     private static List<Long> knowledgePointId = new ArrayList<>();
@@ -206,12 +208,11 @@ public class AtlasUtil {
             LogUtils.d("findAllPointAccordQue end");
             return;
         }
-        LogUtils.d("findQuestionNode id333 = " + curNode.toString());
         results.add(curNode);
         for (Link link : links) {
+
             if (link.getTargetid() == id) {
                 findAllPointAccordQue(link.getSourceid(), org, links);
-                LogUtils.d("findQuestionNode id555 = " + id + ",source id = " + link.getSourceid() + ",target id = " + link.getTargetid());
             }
         }
     }
@@ -256,13 +257,13 @@ public class AtlasUtil {
     public static AtlasBean setNodeFloor(AtlasBean bean, List<Node> root) {
         AtlasMapping map = bean.getData().getMapping();
         Deque<Node> deque = new ArrayDeque<>();
+
         HashMap<Long, Node> hashMap = new HashMap();
 
 
         for (Node node : map.getNodes()) {
             hashMap.put(node.getId(), node);
         }
-
 
         for (Node node : root) {
             deque.add(node);
@@ -335,6 +336,7 @@ public class AtlasUtil {
         return bean;
     }
 
+
     public static LinkedHashMap<Long, Node> getNodeList(AtlasMapping mapping) {
         LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
         List<Node> nodes = mapping.getNodes();
@@ -357,5 +359,44 @@ public class AtlasUtil {
 
         }
         return map;
+    }
+
+    public static CanvasBean getVisibleCanvasAccordAtlas(AtlasBean atlasBean) {
+        CanvasBean bean = new CanvasBean();
+        List<Node> org = atlasBean.getData().getMapping().getNodes();
+        for (Node node : org) {
+            if (!node.isVisibility()) {
+                continue;
+            }
+            if (node.getX() > bean.getEndX()) {
+                bean.setEndX(node.getX());
+            }
+
+            if (node.getX() < bean.getStartX()) {
+                bean.setStartX(node.getX());
+            }
+
+            if (node.getY() > bean.getEndY()) {
+                bean.setEndY(node.getY());
+            }
+
+            if (node.getY() < bean.getStartY()) {
+                bean.setStartY(node.getY());
+            }
+        }
+
+        bean.setWidth((bean.getEndX() - bean.getStartX()));
+        bean.setHeight(bean.getEndY() - bean.getStartY());
+        return bean;
+    }
+
+    public static String replace(String str) {
+        String destination = "";
+        if (str != null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            destination = m.replaceAll("");
+        }
+        return destination;
     }
 }

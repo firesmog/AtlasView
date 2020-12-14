@@ -51,5 +51,4 @@ public class DensityUtils {
         return angle - 90;
     }
 
-
 }

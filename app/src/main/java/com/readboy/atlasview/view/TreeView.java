@@ -32,7 +32,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private TreeModel mTreeModel;
     private TreeViewItemClick mTreeViewItemClick;
     private TreeViewItemLongClick mTreeViewItemLongClick;
-    private final int firstNodeMargin = 120;
+    private final int firstNodeMargin = 150;
     private MoveAndScaleHandler mMoveAndScaleHandler;
     private GestureDetector mGestureDetector;
 
@@ -94,7 +94,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         drawLine(canvas);
         //drawRect(canvas);
         //canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
-
     }
 
 
@@ -139,6 +138,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private void drawLine(Canvas canvas) {
         if (mTreeModel != null) {
             List<Link> links = mTreeModel.getMapping().getLinks();
+
             LinkedHashMap<Long, Node> models = mTreeModel.getModels();
             double startX = mTreeModel.getCanvasBean().getStartX();
             double startY = mTreeModel.getCanvasBean().getStartY();
@@ -154,67 +154,77 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             /*if(!target.isVisibility() ){
                 return;
             }*/
-            int sRadius = source.getShape().getRadius();
-            int tRadius = target.getShape().getRadius();
-            double sx = source.getX();
-            double sy = source.getY();
-            double tx = target.getX();
-            double ty = target.getY();
-            double distance = Math.abs(Math.sqrt(Math.pow((tx-sx),2) + Math.pow(ty - sy,2)));
-            int sxLine = 0;
-            int syLine = 0;
-            int txLine = 0;
-            int tyLine = 0;
-            boolean b = Math.abs(ty - sy) >= Math.abs(tx - sx);
-            //计算两点角度
-            double degrees = DensityUtils.calculateAngle(sx,sy,tx,ty);
-            boolean filter = ((degrees > 65 && degrees < 115) || (degrees < 25 && degrees > -25) || (degrees < -65 && degrees >= -90) || degrees > 245 || ((degrees > 155) && degrees < 205));
-            LogUtils.d("drawLine drawLine drawLine == " + degrees  + " , target === " + target.getName() + ",filter = "  + filter );
-            LogUtils.d("drawLine drawLine drawLine == test 90 = " + Math.tan(-53.680) + " ,150 = " + Math.tan(150) + ",fu 60 = " + Math.tan(-60)   );
 
-            if(source.getShape().getType().equals(Constants.SHAPE_RECTANGLE)  && !filter){
-                if((degrees <= 135 && degrees >= 45)){
-                    sxLine = (int) (sx + sRadius*(tx-sx)/(sy-ty));
-                    syLine = (int) (sy - tRadius);
+                int sRadius = source.getShape().getRadius();
+                int tRadius = target.getShape().getRadius();
 
-                }else if((degrees >= 225 || degrees <= -45)) {
-                    sxLine = (int) (sx + sRadius*(tx-sx)/(ty-sy));
-                    syLine = (int) (sy + sRadius);
-                }else if(degrees > -45 && degrees < 45){
-                    sxLine = (int) (sx + sRadius);
-                    syLine = (int) (sy - sRadius*(sy-ty)/(tx-sx));
-                }else {
-                    sxLine = (int) (sx - sRadius);
-                    syLine = (int) (sy  + sRadius*(ty-sy)/(sx-tx));
+                if(sRadius <= 0){
+                    sRadius = source.getShape().getWidth()/2;
                 }
 
-            }else {
-                sxLine = (int)((sRadius/distance)*(tx-sx) + sx);
-                syLine = (int)(sy - (sRadius/distance)*(sy -ty));
+                if(tRadius <= 0){
+                    tRadius = target.getShape().getWidth()/2;
+                }
 
-            }
+                double sx = source.getX();
+                double sy = source.getY();
+                double tx = target.getX();
+                double ty = target.getY();
+                double distance = Math.abs(Math.sqrt(Math.pow((tx-sx),2) + Math.pow(ty - sy,2)));
+                int sxLine = 0;
+                int syLine = 0;
+                int txLine = 0;
+                int tyLine = 0;
+                boolean b = Math.abs(ty - sy) >= Math.abs(tx - sx);
+                //计算两点角度
+                double degrees = DensityUtils.calculateAngle(sx,sy,tx,ty);
+                boolean filter = ((degrees > 65 && degrees < 115) || (degrees < 25 && degrees > -25) || (degrees < -65 && degrees >= -90) || degrees > 245 || ((degrees > 155) && degrees < 205));
+                LogUtils.d("drawLine drawLine drawLine == " + degrees  + " , target === " + target.getName() + ",filter = "  + filter );
+                LogUtils.d("drawLine drawLine drawLine == test 90 = " + Math.tan(-53.680) + " ,150 = " + Math.tan(150) + ",fu 60 = " + Math.tan(-60)   );
 
-            if(target.getShape().getType().equals(Constants.SHAPE_RECTANGLE) && !filter ){
-               if((degrees <= 135 && degrees >= 45)){
-                  txLine = (int) (tx - tRadius*(tx-sx)/(sy-ty));
-                  tyLine = (int) (ty+tRadius);
+                if(source.getShape().getType().equals(Constants.SHAPE_RECTANGLE)  && !filter){
+                    if((degrees <= 135 && degrees >= 45)){
+                        sxLine = (int) (sx + sRadius*(tx-sx)/(sy-ty));
+                        syLine = (int) (sy - tRadius);
 
-               }else if((degrees >= 225 || degrees <= -45)) {
-                   txLine = (int) (tx + tRadius*(sx-tx)/(ty-sy));
-                   tyLine = (int) (ty - tRadius);
-               }else if(degrees > -45 && degrees < 45){
-                   txLine = (int) (tx - tRadius);
-                   tyLine = (int) (ty + tRadius*(sy-ty)/(tx-sx));
-               }else {
-                   txLine = (int) (tx + tRadius);
-                   tyLine = (int) (ty  - tRadius*(ty-sy)/(sx-tx));
-               }
+                    }else if((degrees >= 225 || degrees <= -45)) {
+                        sxLine = (int) (sx + sRadius*(tx-sx)/(ty-sy));
+                        syLine = (int) (sy + sRadius);
+                    }else if(degrees > -45 && degrees < 45){
+                        sxLine = (int) (sx + sRadius);
+                        syLine = (int) (sy - sRadius*(sy-ty)/(tx-sx));
+                    }else {
+                        sxLine = (int) (sx - sRadius);
+                        syLine = (int) (sy  + sRadius*(ty-sy)/(sx-tx));
+                    }
 
-            }else {
-                txLine = (int)(tx - (tRadius/distance)*(tx- sx) );
-                tyLine = (int)(ty + ( tRadius/distance)*(sy - ty) );
+                }else {
+                    sxLine = (int)((sRadius/distance)*(tx-sx) + sx);
+                    syLine = (int)(sy - (sRadius/distance)*(sy -ty));
 
-            }
+                }
+
+                if(target.getShape().getType().equals(Constants.SHAPE_RECTANGLE) && !filter ){
+                    if((degrees <= 135 && degrees >= 45)){
+                        txLine = (int) (tx - tRadius*(tx-sx)/(sy-ty));
+                        tyLine = (int) (ty+tRadius);
+
+                    }else if((degrees >= 225 || degrees <= -45)) {
+                        txLine = (int) (tx + tRadius*(sx-tx)/(ty-sy));
+                        tyLine = (int) (ty - tRadius);
+                    }else if(degrees > -45 && degrees < 45){
+                        txLine = (int) (tx - tRadius);
+                        tyLine = (int) (ty + tRadius*(sy-ty)/(tx-sx));
+                    }else {
+                        txLine = (int) (tx + tRadius);
+                        tyLine = (int) (ty  - tRadius*(ty-sy)/(sx-tx));
+                    }
+
+                }else {
+                    txLine = (int)(tx - (tRadius/distance)*(tx- sx) );
+                    tyLine = (int)(ty + ( tRadius/distance)*(sy - ty) );
+
+                }
 
 
                 int fromX = (int) (sxLine - startX + firstNodeMargin);
@@ -228,22 +238,35 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             }
             mPaint.setStyle(Paint.Style.STROKE);
 
+
         }
     }
 
-    private void layoutChildren() {
-        if (mTreeModel != null) {
-            final int size = getChildCount();
-            double startX = mTreeModel.getCanvasBean().getStartX();
-            double startY = mTreeModel.getCanvasBean().getStartY();
-            for (int i = 0; i < size; i++) {
-                NodeView nodeView = (NodeView) getChildAt(i);
-                Node node = nodeView.getNode();
-                TextView tvName = nodeView.getTvName();
-                int radius = node.getShape().getRadius();
-                //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
-                LogUtils.d("nodeView.getChildAt(0) == " + nodeView.getChildAt(0).toString());
-                nodeView.layout((int) (node.getX() - startX - radius - (tvName.getWidth() - 2 * radius) / 2 + firstNodeMargin), (int) (node.getY() - startY - radius - tvName.getHeight() + firstNodeMargin), (int) (node.getX() + radius - startX + firstNodeMargin), (int) (node.getY() + radius - startY + (tvName.getWidth() - 2 * radius) / 2 + firstNodeMargin));
+    private void layoutChildren(){
+        final int size = getChildCount();
+        double startX = mTreeModel.getCanvasBean().getStartX();
+        double startY  = mTreeModel.getCanvasBean().getStartY();
+        for (int i = 0; i < size; i++) {
+            NodeView nodeView = (NodeView)getChildAt(i);
+            Node node = nodeView.getNode();
+            TextView tvName = nodeView.getTvName();
+            TextView tvOrder = nodeView.getTvOrder();
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) tvOrder.getLayoutParams();
+            int topMargin = params.topMargin;
+            int radius = node.getShape().getRadius();
+            //用圆心坐标减去或加上半径再加上偏移量来定位坐标的位置
+            if (radius <= 0) {
+                radius = node.getShape().getWidth()/2;
+            }
+            double gap =  (tvName.getWidth() - 2*radius);
+            LogUtils.d("nodeView.getChildAt(0) == " + gap);
+
+
+            if(gap > 0){
+                nodeView.layout((int)(node.getX() -startX - radius - gap/2 + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight() - topMargin + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY + gap/2  - topMargin + firstNodeMargin));
+            }else {
+                nodeView.layout((int)(node.getX() -startX - radius  + firstNodeMargin),(int)(node.getY() -startY - radius - tvName.getHeight() - topMargin + firstNodeMargin),(int)(node.getX() + radius -startX + firstNodeMargin),(int)(node.getY() + radius - startY  - topMargin + firstNodeMargin));
+
             }
         }
     }
