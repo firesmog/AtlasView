@@ -1,3 +1,757 @@
-
-{"msg": "success", "data": {"testpoints": [{"status": 0, "updateTime": 1603182307, "name": "水体现状", "errorProne": [], "courseId": 57, "explain": [], "createTime": 1603094003, "source": 388057, "version": 2661, "id": 462800010000, "description": ""}, {"status": 0, "updateTime": 1603182319, "name": "节约用水", "id": 483700010000, "source": 388057, "version": 2661, "createTime": 1603182319}, {"status": 0, "updateTime": 1603182335, "name": "水体污染与防治", "id": 483800010000, "source": 388057, "version": 2661, "createTime": 1603182335}], "name": "课题1 爱护水资源", "parent": {"name": "第四单元 自然界的水"}, "courseId": 57, "mapping": {"name": "", "links": [{"endPoint": {"y": 0, "x": -355}, "sourceid": 388057, "targetid": 462800010000, "color": "#777777", "startPoint": {"y": 68.18019484660536, "x": -231.81980515339464}, "id": 1}, {"endPoint": {"y": -55, "x": -200}, "sourceid": 388057, "targetid": 483700010000, "color": "#777777", "startPoint": {"y": 55, "x": -200}, "id": 2}, {"endPoint": {"y": 0, "x": -45}, "sourceid": 388057, "targetid": 483800010000, "color": "#777777", "startPoint": {"y": 68.18019484660536, "x": -168.18019484660536}, "id": 3}], "section": {"source": 379157, "id": 394157, "name": "课题1 爱护水资源"}, "nodeOrder": [{"updateTime": 1603182912, "createTime": 1603182912, "difficulty": 1, "order": [388057, 462800010000, 483700010000, 483800010000], "type": 2, "id": 1}], "nodes": [{"name": "\n爱护水资源", "shape": {"color": "#ff8500", "radius": 45, "type": "circle"}, "y": 100, "x": -200, "font": {"color": "#000000", "offset": 109, "y": -109, "x": 0, "fontPosition": "top", "size": 37.5}, "type": 1, "id": 388057}, {"name": "\n水体现状", "shape": {"color": "#409eff", "width": 90, "type": "rect", "height": 90}, "y": 0, "x": -400, "font": {"color": "#000000", "offset": 109, "y": -109, "x": 0, "fontPosition": "top", "size": 37.5}, "type": 2, "id": 462800010000}, {"name": "\n节约用水", "shape": {"color": "#409eff", "width": 90, "type": "rect", "height": 90}, "y": -100, "x": -200, "font": {"color": "#000000", "offset": 109, "y": -109, "x": 0, "fontPosition": "top", "size": 37.5}, "type": 2, "id": 483700010000}, {"name": "\n水体污染与\n防治", "shape": {"color": "#409eff", "width": 90, "type": "rect", "height": 90}, "y": 0, "x": 0, "font": {"color": "#000000", "offset": 109, "y": -109, "x": 0, "fontPosition": "top", "size": 37.5}, "type": 2, "id": 483800010000}], "id": 8300030000}, "source": 379157, "keypoint": [{"status": 0, "id": 388057, "name": "爱护水资源"}], "qstKeypoint": [{"count": 16, "name": "水资源", "id": 93057}, {"count": 8, "name": "低碳环保", "id": 209057}, {"count": 1, "name": "自来水净化", "id": 389057}, {"count": 3, "name": "低碳的生活", "id": 618057}, {"count": 27, "name": "水污染及防治", "id": 207057}, {"count": 29, "name": "节约用水", "id": 94057}, {"count": 2, "name": "水的净化", "id": 95057}, {"count": 1, "name": "绿色化学", "id": 46057}, {"count": 8, "name": "空气污染及防治", "id": 203057}, {"count": 1, "name": "水的组成", "id": 92057}, {"count": 2, "name": "易燃物和易爆物的安全知识", "id": 179057}, {"count": 29, "name": "爱护水资源", "id": 388057}, {"count": 2, "name": "合理使用化肥", "id": 498057}, {"count": 1, "name": "温室效应", "id": 206057}, {"count": 1, "name": "蒸馏", "id": 391057}, {"count": 1, "name": "酸雨", "id": 204057}, {"count": 1, "name": "海水中的资源及其开发利用", "id": 99057}, {"count": 1, "name": "使用燃料对环境的影响", "id": 183057}, {"count": 1, "name": "水的性质和用途", "id": 91057}, {"count": 1, "name": "合理实施农药和化肥", "id": 174057}], "id": 394157}, "ok": 1}
-
+{
+    "detail": {
+        "id": 3078166,
+        "mapping": {
+            "name": "",
+            "nodes": [
+                {
+                    "id": 1078066,
+                    "difficulty": 0,
+                    "type": 1,
+                    "name": "求一个数是另一个数的几倍",
+                    "x": -200,
+                    "y": 300,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 45,
+                        "type": "circle"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 66.97778,
+                    "is_study": false
+                },
+                {
+                    "id": 26500010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "求一个数是另一个数的几倍直接列式计算",
+                    "x": -200,
+                    "y": 100,
+                    "shape": {
+                        "color": "#ffc31f,#ff8152",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1078066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 64,
+                    "is_study": true
+                },
+                {
+                    "id": 26600010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "求一个数是另一个数的几倍的应用",
+                    "x": -400,
+                    "y": 500,
+                    "shape": {
+                        "color": "#ffc31f,#ff8152",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1078066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 69.9,
+                    "is_study": true
+                },
+                {
+                    "id": 1079066,
+                    "difficulty": 0,
+                    "type": 1,
+                    "name": "求一个数的几倍是几",
+                    "x": 0,
+                    "y": 100,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 45,
+                        "type": "circle"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 68,
+                    "is_study": false
+                },
+                {
+                    "id": 26700010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "求一个数的几倍是几直接列式计算",
+                    "x": 0,
+                    "y": -100,
+                    "shape": {
+                        "color": "#ffc31f,#ff8152",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1079066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 68,
+                    "is_study": true
+                },
+                {
+                    "id": 26800010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "求一个数的几倍是几的应用",
+                    "x": 0,
+                    "y": 300,
+                    "shape": {
+                        "color": "#ffc31f,#ff8152",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1079066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 68,
+                    "is_study": true
+                },
+                {
+                    "id": 1080066,
+                    "difficulty": 0,
+                    "type": 1,
+                    "name": "已知一个数的几倍是几求这个数",
+                    "x": 300,
+                    "y": 200,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 45,
+                        "type": "circle"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                },
+                {
+                    "id": 26900010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "已知一个数的几倍是几求这个数直接列式计算",
+                    "x": 300,
+                    "y": 0,
+                    "shape": {
+                        "color": "#cae7f0,#859bad",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1080066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                },
+                {
+                    "id": 27000010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "已知一个数的几倍是几求这个数的应用",
+                    "x": 300,
+                    "y": 400,
+                    "shape": {
+                        "color": "#cae7f0,#859bad",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1080066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                },
+                {
+                    "id": 1081066,
+                    "difficulty": 0,
+                    "type": 1,
+                    "name": "几倍多几几倍少几",
+                    "x": 600,
+                    "y": 200,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 45,
+                        "type": "circle"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                },
+                {
+                    "id": 27100010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "几倍多几/少几直接列式计算",
+                    "x": 600,
+                    "y": -100,
+                    "shape": {
+                        "color": "#cae7f0,#859bad",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1081066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                },
+                {
+                    "id": 27200010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "几倍多几/少几的应用",
+                    "x": 900,
+                    "y": 200,
+                    "shape": {
+                        "color": "#cae7f0,#859bad",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1081066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 0,
+                    "is_study": false
+                }
+            ],
+            "links": [
+                {
+                    "sourceid": 1078066,
+                    "color": "#777777",
+                    "targetid": 1079066,
+                    "id": 1
+                },
+                {
+                    "sourceid": 1079066,
+                    "color": "#777777",
+                    "targetid": 1080066,
+                    "id": 2
+                },
+                {
+                    "sourceid": 1080066,
+                    "color": "#777777",
+                    "targetid": 1081066,
+                    "id": 3
+                },
+                {
+                    "sourceid": 1078066,
+                    "color": "#777777",
+                    "targetid": 26500010000,
+                    "id": 4
+                },
+                {
+                    "sourceid": 1078066,
+                    "color": "#777777",
+                    "targetid": 26600010000,
+                    "id": 5
+                },
+                {
+                    "sourceid": 1079066,
+                    "color": "#777777",
+                    "targetid": 26700010000,
+                    "id": 6
+                },
+                {
+                    "sourceid": 1079066,
+                    "color": "#777777",
+                    "targetid": 26800010000,
+                    "id": 7
+                },
+                {
+                    "sourceid": 1080066,
+                    "color": "#777777",
+                    "targetid": 26900010000,
+                    "id": 8
+                },
+                {
+                    "sourceid": 1080066,
+                    "color": "#777777",
+                    "targetid": 27000010000,
+                    "id": 9
+                },
+                {
+                    "sourceid": 1081066,
+                    "color": "#777777",
+                    "targetid": 27100010000,
+                    "id": 10
+                },
+                {
+                    "sourceid": 1081066,
+                    "color": "#777777",
+                    "targetid": 27200010000,
+                    "id": 11
+                }
+            ],
+            "ktmap": {
+                "1078066": [
+                    26500010000,
+                    26600010000
+                ],
+                "1079066": [
+                    26700010000,
+                    26800010000
+                ],
+                "1080066": [
+                    26900010000,
+                    27000010000
+                ],
+                "1081066": [
+                    27100010000,
+                    27200010000
+                ]
+            },
+            "section": {
+                "source": 3059166,
+                "id": 3078166,
+                "name": "第一节 倍的认识"
+            },
+            "nodeOrder": [
+                {
+                    "createTime": 1604494239,
+                    "difficulty": 1,
+                    "id": 1,
+                    "order": [
+                        1078066,
+                        26500010000,
+                        26600010000,
+                        1079066,
+                        26700010000,
+                        26800010000,
+                        1080066,
+                        26900010000,
+                        27000010000,
+                        1081066,
+                        27100010000,
+                        27200010000
+                    ],
+                    "type": 2,
+                    "updateTime": 1604494239
+                }
+            ],
+            "id": 1300030000
+        },
+        "testpoints": [
+            {
+                "status": 0,
+                "updateTime": 1606447905,
+                "name": "求一个数是另一个数的几倍直接列式计算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】8×2＝16，我们就说8是2的16倍。</p><p>【正确解答】8×2＝16，我们就说16是8的2倍，也可以说16是2的8倍。</p><p>【易错分析】一个数里面有几个另一个数，我们就说一个数是另一个数的几倍。所以这道题错在没有掌握好倍的含义。8×2＝16，说明16里面有2个8，也可以说16里面有8个2，因此既可以说16是8的2倍，也可以说16是2的8倍。在解决类似问题的时候，要先回忆倍的含义，弄清楚之后再描述关系。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253276668,
+                        "video": 16700020000
+                    }
+                ],
+                "districtStat": [],
+                "createTime": 1599812144,
+                "source": 1078066,
+                "version": 2772,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 26500010000,
+                "description": "<p>本考点主要内容是求一个数是另一个数的几倍的计算。根据倍的定义，求一个数是另一个数的几倍，就是求一个数里面有几个另一个数，所以要用除法计算。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1606447905,
+                "name": "求一个数是另一个数的几倍的应用",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】农场里的鸭有9只，鸡有72只，鹅有45只。鹅的只数是鸭的（&nbsp;&nbsp;8&nbsp;&nbsp;）倍。</p><p>【正确解答】农场里的鸭有9只，鸡有72只，鹅有45只。鹅的只数是鸭的（&nbsp;&nbsp;5&nbsp;&nbsp;）倍。</p><p>【易错分析】其实这道题的等量关系并不复杂，求鹅的只数是鸭的几倍，就是用鹅的只数除以鸭的只数，但这道题有多余条件，容易找错信息，因此原题错误就在这里，把鹅的只数看成了72。因此在解决类似题目的时候，要注意找对需要的信息，排除无关的信息。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253277668,
+                        "video": 16600020000
+                    }
+                ],
+                "districtStat": [],
+                "createTime": 1599812144,
+                "source": 1078066,
+                "version": 2772,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 26600010000,
+                "description": "<p>本考点主要内容是求一个数是另一个数的几倍的应用。根据倍的定义，求一个数是另一个数的几倍，就是求一个数里面有几个另一个数，所以要用除法计算。比如，求三角形的个数是圆形个数的几倍，列式为：三角形的个数÷圆形的个数。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605094422,
+                "name": "求一个数的几倍是几直接列式计算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】判断。2是6的3倍。（ √ ）</p><p>【正确解答】判断。2是6的3倍。（ × ）</p><p>【易错分析】这道题错在没有分析清三个数之间的关系。要求6的3倍是多少，也就是求3个6是多少，应该用乘法计算，6×3＝18，也就是说，18是6的3倍。因此这句话是错的。在做此类题目时，要注意看清是求谁的几倍，求一个数的几倍是几，就是求几个几是多少，要用乘法计算。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253278668,
+                        "video": 16900020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812145,
+                "source": 1079066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 26700010000,
+                "description": "<p>本考点的主要内容是求一个数的几倍是几的计算。根据倍的定义，求一个数的几倍是多少，就是把几个这个数合起来，用乘法计算。比如，求6的5倍是多少，就是求5个6是多少，列式为6×5。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605094590,
+                "name": "求一个数的几倍是几的应用",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】妈妈买了一些草莓，小亚吃掉4个，剩下的是吃掉的6倍。原来一共有（&nbsp; 24&nbsp; ）个草莓。</p><p>【正确解答】妈妈买了一些草莓，小亚吃掉4个，剩下的是吃掉的6倍。原来一共有（&nbsp; 28&nbsp; ）个草莓。</p><p>【易错分析】这道题错在没有看清问题要求的是什么。吃掉4个，剩下的是吃掉的6倍，这样可以先求出剩下的草莓是多少个。但问题问的是原来一共有多少个，因此用剩下的加上吃掉的，才是正确答案。这道题只算出了剩下的数量，没有加上吃掉的。在做此类问题的时候，一定要看清条件的描述和要求的是什么。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253279668,
+                        "video": 16800020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812145,
+                "source": 1079066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 26800010000,
+                "description": "<p>本考点的主要内容是求一个数的几倍是几的应用。根据倍的定义，求一个数的几倍是多少，就是把几个这个数合起来，用乘法计算。比如，求6的5倍是多少，就是求5个6是多少，列式为6×5。在解决问题时，就要找好数量之间倍的关系。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605095020,
+                "name": "已知一个数的几倍是几求这个数直接列式计算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】算一算，6是（&nbsp; 12&nbsp; ）的2倍。</p><p>【正确解答】算一算，6是（&nbsp; 3&nbsp; ）的2倍。</p><p>【易错分析】这道题错在没有弄清谁是一倍数。已知6是一个数的2倍，要求的这个数是一倍数，因此要用除法计算。也就是6÷2＝3，所以6是3的2倍。在做此类问题时，要注意分清哪个数是一倍数，求一倍数就要用除法计算。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253280668,
+                        "video": 16500020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812145,
+                "source": 1080066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 26900010000,
+                "description": "<p>本考点的主要内容是已知一个数的几倍是几求这个数。根据倍的定义，已知一个数的几倍是几，求这个数，就是把总数平均分成几份，求一份是多少，用除法计算。比如30是谁的5倍，列式为30÷5。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605095387,
+                "name": "已知一个数的几倍是几求这个数的应用",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】农场里有小鸡54只，母鸡36只，小鸡只数是公鸡的6倍，公鸡有（&nbsp; 6&nbsp; ）只。</p><p>【正确解答】农场里有小鸡54只，母鸡36只，小鸡只数是公鸡的6倍，公鸡有（&nbsp; 9&nbsp; ）只。</p><p>【易错分析】这道题的错误在于用错了信息，这里的“母鸡36只”是一个多余信息，要求公鸡的只数，需要的是小鸡只数的信息，因为小鸡只数是公鸡的6倍。因此列式为：54÷6＝9（只）。在解决此类问题时，首先要注意的是找一倍数，这样才能确定用除法还是用乘法，然后还要排除多余信息，再列式计算。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253281668,
+                        "video": 16400020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812145,
+                "source": 1080066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 27000010000,
+                "description": "<p>本考点的主要内容是已知一个数的几倍是几求这个数的应用。根据倍的定义，已知一个数的几倍是几，求这个数，就是把总数平均分成几份，求一份是多少，用除法计算。比如30是谁的5倍，列式为30÷5。在解决问题时，要找好数量之间倍的关系，再列式计算。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605095594,
+                "name": "几倍多几/少几直接列式计算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】39比一个数的6倍多3，这个数是多少？</p><p>39＋3＝42，42÷6＝7。</p><p>答：这个数是7。</p><p>【正确解答】39－3＝36，36÷6＝6。</p><p>答：这个数是6。</p><p>【易错分析】这道题错在没有弄清数量关系，39比一个数的6倍多3，也就是说39减3就是这个数的6倍。所以先算出这个数的6倍，然后再算出这个数。在解决这类问题时，要看清题目描述，理清数量关系，然后再列式计算。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253282668,
+                        "video": 16300020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812146,
+                "source": 1081066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 27100010000,
+                "description": "<p>本考点的主要内容是与几倍多几几倍少几有关的计算。我们已经学过了与倍相关的基础知识，因此在做几倍多几几倍少几的题目时，要分清哪个数量是一倍数，哪个数量是多倍数，然后再列式计算。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1605095731,
+                "name": "几倍多几/少几的应用",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】向阳小学课外兴趣小组中，篮球组有9人，足球组的人数比篮球组的2倍多7人。两组一共有（&nbsp; 25&nbsp; ）人。</p><p>【正确解答】向阳小学课外兴趣小组中，篮球组有9人，足球组的人数比篮球组的2倍多7人。两组一共有（&nbsp; 34&nbsp; ）人。</p><p>【易错分析】这道题错在没有看清问题。问题问的是两组一共有多少人，而错误在于只计算了足球组的人数就填写了最终答案，没有加篮球组的人。因此在解决此类问题时，要注意是求一个数量还是求几个数量的总数，以免遗漏计算步骤。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 253283668,
+                        "video": 16200020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812146,
+                "source": 1081066,
+                "version": 2726,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
+                },
+                "id": 27200010000,
+                "description": "<p>本考点的主要内容是与几倍多几几倍少几有关的应用。我们已经学过了与倍相关的基础知识，因此在做几倍多几几倍少几的题目时，要分清哪个数量是一倍数，哪个数量是多倍数，然后再列式计算。</p>"
+            }
+        ],
+        "name": "第一节 倍的认识",
+        "parent": {
+            "name": "第五单元 倍的认识"
+        },
+        "courseId": 66,
+        "source": 3059166,
+        "keypoint": [
+            {
+                "status": 0,
+                "id": 991066,
+                "name": "倍的认识"
+            }
+        ],
+        "qstKeypoint": [
+            {
+                "count": 1,
+                "name": "除法的意义",
+                "id": 69066
+            },
+            {
+                "count": 9,
+                "name": "乘法的意义",
+                "id": 68066
+            },
+            {
+                "count": 1,
+                "name": "乘加、乘减混合运算",
+                "id": 533066
+            },
+            {
+                "count": 1,
+                "name": "两位数加两位数（进位）",
+                "id": 980066
+            },
+            {
+                "count": 1,
+                "name": "千以内数的认识",
+                "id": 17066
+            },
+            {
+                "count": 1,
+                "name": "三位数乘两位数",
+                "id": 78066
+            },
+            {
+                "count": 12,
+                "name": "因数与倍数",
+                "id": 33066
+            },
+            {
+                "count": 6,
+                "name": "两位数除以一位数",
+                "id": 76066
+            },
+            {
+                "count": 2,
+                "name": "连加运算",
+                "id": 444066
+            },
+            {
+                "count": 1,
+                "name": "加、减法各部分间的关系",
+                "id": 987066
+            },
+            {
+                "count": 2,
+                "name": "数的估计",
+                "id": 550066
+            },
+            {
+                "count": 1,
+                "name": "20以内的进位加法",
+                "id": 48066
+            },
+            {
+                "count": 168,
+                "name": "倍的认识",
+                "id": 991066
+            },
+            {
+                "count": 1,
+                "name": "6～10的认识",
+                "id": 7066
+            },
+            {
+                "count": 10,
+                "name": "1～9的乘法口诀",
+                "id": 988066
+            }
+        ]
+    },
+    "stat": {
+        "sec_grasp": 67.4,
+        "diff_rank": 1,
+        "study_time": 6,
+        "frequency": 0,
+        "scorePercent": 0
+    },
+    "suggest": "点击知识点或考点，可进入专项强化学习。学习完成后，可通过精准测评查验自己的学习掌握程度。点击精准评测详情，可查看最近一次的评测结果。点击章节同步学，学习更多精品内容。精准测弱项不限次数，更多的测试将提供更精确的推荐。"
+}
