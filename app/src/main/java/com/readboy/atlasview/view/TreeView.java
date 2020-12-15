@@ -151,9 +151,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                     continue;
                 }
                 //todo Lzy 不可见则不画线
-            /*if(!target.isVisibility() ){
-                return;
-            }*/
+            if(!target.isVisibility() ){
+                continue;
+            }
 
                 int sRadius = source.getShape().getRadius();
                 int tRadius = target.getShape().getRadius();
@@ -179,8 +179,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 //计算两点角度
                 double degrees = DensityUtils.calculateAngle(sx,sy,tx,ty);
                 boolean filter = ((degrees > 65 && degrees < 115) || (degrees < 25 && degrees > -25) || (degrees < -65 && degrees >= -90) || degrees > 245 || ((degrees > 155) && degrees < 205));
-                LogUtils.d("drawLine drawLine drawLine == " + degrees  + " , target === " + target.getName() + ",filter = "  + filter );
-                LogUtils.d("drawLine drawLine drawLine == test 90 = " + Math.tan(-53.680) + " ,150 = " + Math.tan(150) + ",fu 60 = " + Math.tan(-60)   );
 
                 if(source.getShape().getType().equals(Constants.SHAPE_RECTANGLE)  && !filter){
                     if((degrees <= 135 && degrees >= 45)){
@@ -300,6 +298,10 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         if (mTreeModel != null) {
             List<Node> nodes = mTreeModel.getMapping().getNodes();
             for (Node model : nodes) {
+                if(!model.isVisibility()){
+                    continue;
+                }
+                LogUtils.d(" addNoteViews == " + model.toString());
                 addNodeViewToGroup(model);
             }
         }
@@ -331,9 +333,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         });
 
         //todo Lzy 设置是否可见
-       /* if(!poll.isVisibility()){
+        if(!poll.isVisibility()){
             nodeView.setVisibility(GONE);
-        }*/
+        }
 
         this.addView(nodeView);
         return nodeView;
@@ -383,4 +385,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         return view;
     }
 
+    public MoveAndScaleHandler getmMoveAndScaleHandler() {
+        return mMoveAndScaleHandler;
+    }
 }

@@ -1,15 +1,20 @@
 package com.readboy.atlasview.utils;
 
 
+import android.view.ViewGroup;
+
 import com.readboy.atlasview.bean.AtlasBean;
 import com.readboy.atlasview.bean.AtlasMapping;
 import com.readboy.atlasview.bean.CanvasBean;
 import com.readboy.atlasview.bean.Link;
 import com.readboy.atlasview.bean.Node;
 import com.readboy.atlasview.utils.log.LogUtils;
+import com.readboy.atlasview.view.TreeView;
 
+import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
@@ -314,57 +319,6 @@ public class AtlasUtil {
         CanvasBean bean = new CanvasBean();
         List<Node> org = mapping.getNodes();
         for (Node node : org) {
-            if (node.getX() > bean.getEndX()) {
-                bean.setEndX(node.getX());
-            }
-
-            if (node.getX() < bean.getStartX()) {
-                bean.setStartX(node.getX());
-            }
-
-            if (node.getY() > bean.getEndY()) {
-                bean.setEndY(node.getY());
-            }
-
-            if (node.getY() < bean.getStartY()) {
-                bean.setStartY(node.getY());
-            }
-        }
-
-        bean.setWidth((bean.getEndX() - bean.getStartX()));
-        bean.setHeight(bean.getEndY() - bean.getStartY());
-        return bean;
-    }
-
-
-    public static LinkedHashMap<Long, Node> getNodeList(AtlasMapping mapping) {
-        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
-        List<Node> nodes = mapping.getNodes();
-        for (Node node : nodes) {
-            Node model = new Node();
-            model.setFont(node.getFont());
-            model.setId(node.getId());
-            model.setName(node.getName());
-            model.setKeypoint(node.getKeypoint());
-            model.setShape(node.getShape());
-            model.setType(node.getType());
-            model.setX(node.getX());
-            model.setY(node.getY());
-            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
-            model.setFloor(node.getFloor());
-            if (node.getType() == 1) {
-                model.setVisibility(true);
-            }
-            map.put(node.getId(), model);
-
-        }
-        return map;
-    }
-
-    public static CanvasBean getVisibleCanvasAccordAtlas(AtlasBean atlasBean) {
-        CanvasBean bean = new CanvasBean();
-        List<Node> org = atlasBean.getData().getMapping().getNodes();
-        for (Node node : org) {
             if (!node.isVisibility()) {
                 continue;
             }
@@ -390,6 +344,83 @@ public class AtlasUtil {
         return bean;
     }
 
+
+    private static LinkedHashMap<Long, Node> getNodeList(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
+        List<Node> nodes = mapping.getNodes();
+        for (Node node : nodes) {
+            Node model = new Node();
+            model.setFont(node.getFont());
+            model.setId(node.getId());
+            model.setName(node.getName());
+            model.setKeypoint(node.getKeypoint());
+            model.setShape(node.getShape());
+            model.setType(node.getType());
+            model.setX(node.getX());
+            model.setY(node.getY());
+            model.setIs_study(node.isIs_study());
+            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
+            if (node.getType() == 1) {
+                model.setVisibility(true);
+            }
+            map.put(node.getId(), model);
+        }
+        return map;
+    }
+
+    public static LinkedHashMap<Long, Node> updateNodeList(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> map = new LinkedHashMap<>();
+        List<Node> nodes = mapping.getNodes();
+        for (Node node : nodes) {
+            Node model = new Node();
+            model.setFont(node.getFont());
+            model.setId(node.getId());
+            model.setName(node.getName());
+            model.setKeypoint(node.getKeypoint());
+            model.setShape(node.getShape());
+            model.setType(node.getType());
+            model.setX(node.getX());
+            model.setY(node.getY());
+            model.setIs_study(node.isIs_study());
+            model.setOrder(AtlasUtil.getOrderInNodes(mapping, node.getId()) + 1);
+            model.setVisibility(node.isVisibility());
+            map.put(node.getId(), model);
+        }
+        return map;
+    }
+
+
+    public static List<Long> getVisibleCanvasAccordAtlas(AtlasMapping mapping) {
+        LinkedHashMap<Long, Node> modes = getNodeList(mapping);
+        HashMap<Long, Long[]> ktmap = mapping.getKtmap();
+        List<Long> visibleNodeId = new ArrayList<>();
+        inner:
+        for (Map.Entry<Long, Long[]> integerEntry : ktmap.entrySet()) {
+            visibleNodeId.add(integerEntry.getKey());
+            if ((modes.get(integerEntry.getKey())).isIs_study()) {
+                visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
+                continue;
+            }
+
+            for (Long aLong : integerEntry.getValue()) {
+                if ((modes.get(aLong)).isIs_study()) {
+                    visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
+                    continue inner;
+                }
+            }
+        }
+        return visibleNodeId;
+    }
+
+    public static void updateVisibleMapping(AtlasMapping mapping, List<Long> visibleNodeId) {
+        for (Node node : mapping.getNodes()) {
+            if (visibleNodeId.contains(node.getId())) {
+                node.setVisibility(true);
+            }
+        }
+    }
+
+
     public static String replace(String str) {
         String destination = "";
         if (str != null) {
@@ -399,4 +430,34 @@ public class AtlasUtil {
         }
         return destination;
     }
+
+
+    public static void adapterViewSize(ViewGroup rlMain, TreeView editMapTreeView) {
+        editMapTreeView.post(new Runnable() {
+            @Override
+            public void run() {
+                int childHeight = editMapTreeView.getHeight();
+                int childWidth = editMapTreeView.getWidth();
+                int parentWidth = rlMain.getWidth();
+                int parentHeight = rlMain.getHeight();
+                float min = Math.min((float) parentHeight / childHeight, (float) parentWidth / childWidth);
+                if (min >= 1.3f) {
+                    min = 1.3f;
+                }
+
+                if (min <= 1f) {
+                    return;
+                }
+                float index = (min - 1.0f) / 0.05f;
+                BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
+                LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
+
+                index = b.intValue();
+                editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 + (int) index));
+                editMapTreeView.setScaleX(min);
+                editMapTreeView.setScaleY(min);
+            }
+        });
+    }
+
 }

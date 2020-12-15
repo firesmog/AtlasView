@@ -3,7 +3,9 @@ package com.readboy.atlasview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +22,17 @@ import com.readboy.atlasview.utils.AtlasUtil;
 import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private CanvasBean canvasBean;
     private TreeView editMapTreeView;
+    private RelativeLayout rlMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
+        rlMain = (RelativeLayout) findViewById(R.id.rl_main);
         initData();
+        AtlasUtil.adapterViewSize(rlMain, editMapTreeView);
 
     }
-
 
     private void startActivity() {
         try {
@@ -59,9 +66,12 @@ public class MainActivity extends AppCompatActivity {
         AtlasBean data = gson.fromJson(json, AtlasBean.class);
         AtlasMapping mapping = data.getData().getMapping();
         AtlasUtil.setOrderInNodes(mapping);
+        List<Long> visibleNodeId = AtlasUtil.getVisibleCanvasAccordAtlas(mapping);
+        AtlasUtil.updateVisibleMapping(mapping, visibleNodeId);
+
         canvasBean = AtlasUtil.getCanvasAccordAtlas(mapping);
 
-        LinkedHashMap<Long, Node> models = AtlasUtil.getNodeList(mapping);
+        LinkedHashMap<Long, Node> models = AtlasUtil.updateNodeList(mapping);
         TreeModel model = new TreeModel();
         model.setMapping(mapping);
         model.setCanvasBean(canvasBean);
