@@ -397,13 +397,13 @@ public class AtlasUtil {
         inner:
         for (Map.Entry<Long, Long[]> integerEntry : ktmap.entrySet()) {
             visibleNodeId.add(integerEntry.getKey());
-            if ((modes.get(integerEntry.getKey())).isIs_study()) {
+            if (modes.get(integerEntry.getKey()) != null && (modes.get(integerEntry.getKey())).isIs_study()) {
                 visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
                 continue;
             }
 
             for (Long aLong : integerEntry.getValue()) {
-                if ((modes.get(aLong)).isIs_study()) {
+                if (modes.get(aLong) != null && (modes.get(aLong)).isIs_study()) {
                     visibleNodeId.addAll(Arrays.asList(integerEntry.getValue()));
                     continue inner;
                 }
