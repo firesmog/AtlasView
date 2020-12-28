@@ -279,16 +279,14 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
      * 清除所有的NoteView
      */
     private void clearAllNoteViews() {
+        int count = getChildCount();
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+               NodeView childView = (NodeView) getChildAt(i);
+                childView.getTvOrder().clearAnimation();
+            }
+        }
         removeAllViews();
-//        int count = getChildCount();
-//        if (count > 0) {
-//            for (int i = 0; i < count; i++) {
-//                View childView = getChildAt(i);
-//                if (childView instanceof NodeView) {
-//                    removeView(childView);
-//                }
-//            }
-//        }
     }
 
     /**
@@ -332,6 +330,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             }
         });
 
+        if(nodeView.getTvName().getText().toString().length() < 5){
+            nodeView.showCircle();
+        }
         //todo Lzy 设置是否可见
         if(!poll.isVisibility()){
             nodeView.setVisibility(GONE);

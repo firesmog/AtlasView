@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         initData();
         adapterViewSize();
 
+
     }
 
     private void adapterViewSize(){
@@ -59,8 +60,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(min <= 1f){
+                    if(min <= 0.6f){
+                        min = 6f;
+                    }
+                    float index = (1.0f - min)/0.05f;
+                    BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
+                    LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
+
+                    index = b.intValue();
+                    editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 - (int)index));
+                    editMapTreeView.setScaleX(min);
+                    editMapTreeView.setScaleY(min);
+
                     return;
                 }
+
+
                 float index = (min - 1.0f)/0.05f;
                 BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
                 LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);

@@ -9,6 +9,13 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,6 +54,8 @@ public class NodeView extends RelativeLayout {
     private Context context;
     private Node node;
     private int[] colors;
+    private AlphaAnimation animation;
+    private TextView tvOrderCircle;
 
     public NodeView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
@@ -147,6 +156,7 @@ public class NodeView extends RelativeLayout {
         View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
         tvName = (TextView) inflate.findViewById(R.id.tv_name);
         tvOrder = (TextView) inflate.findViewById(R.id.tv_order);
+        tvOrderCircle = (TextView) inflate.findViewById(R.id.tv_circle);
     }
 
 
@@ -172,6 +182,42 @@ public class NodeView extends RelativeLayout {
             stringBuilder.insert(i, "\n");
         }
         return stringBuilder.toString();
+    }
+
+    public void startAnimationOut() {
+        animation = new AlphaAnimation(0.4f, 1.0f);
+        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+        animation.setRepeatCount(Animation.INFINITE);
+        animation.setDuration(1500);
+        tvOrderCircle.startAnimation(animation);
+    }
+
+    public void clearAnimation(){
+        if(null != animation){
+            this.getTvOrder().clearAnimation();
+        }
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    public void showCircle(){
+        tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_circle));
+        int addRadius = 4;
+        if (node.getShape().getRadius() > 0) {
+            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+        } else {
+
+            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+        }
+        LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+        LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
+        int top = DensityUtils.px2dp(getContext(),lp.topMargin) - addRadius;
+        top = DensityUtils.dp2px(getContext(),top);
+        lp2.topMargin = top;
+        tvOrderCircle.setLayoutParams(lp2);
+        tvOrderCircle.setVisibility(VISIBLE);
+        startAnimationOut();
     }
 
 
