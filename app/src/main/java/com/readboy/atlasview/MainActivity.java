@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         AtlasBean data = gson.fromJson(json, AtlasBean.class);
         AtlasMapping mapping = data.getData().getMapping();
         AtlasUtil.setOrderInNodes(mapping);
+        AtlasUtil.setOrderFloorInNodes(mapping);
+
         List<Long> visibleNodeId = AtlasUtil.getVisibleCanvasAccordAtlas(mapping);
         AtlasUtil.updateVisibleMapping(mapping,visibleNodeId);
 

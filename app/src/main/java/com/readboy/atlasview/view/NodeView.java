@@ -89,9 +89,12 @@ public class NodeView extends RelativeLayout {
 
     @SuppressLint("WrongConstant")
     private void initTvOrder() {
-        tvOrder.setText(String.valueOf(order));
-        tvOrder.setTextColor(numberColor);
-        tvOrder.setTextSize(orderSize);
+        if(order != 0){
+            tvOrder.setText(String.valueOf(order));
+            tvOrder.setTextColor(numberColor);
+            tvOrder.setTextSize(orderSize);
+        }
+
 //        colors = new int[]{context.getResources().getColor(R.color.color_31cfff), context.getResources().getColor(R.color.color_0097e6)};
 
         //创建Drawable对象

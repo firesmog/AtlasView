@@ -142,6 +142,22 @@ public class AtlasUtil {
         }
     }
 
+    public static void setOrderFloorInNodes(AtlasMapping mapping) {
+        int count  = 1;
+        List<Node> nodes = mapping.getNodes();
+        List<Node> result = new ArrayList<>();
+        for (Node node : nodes) {
+            if (node.getType() == 1) {
+                result.add(node);
+            }
+        }
+        Collections.sort(result, new Node());
+        for (Node node : result) {
+            node.setFloor(count++);
+            LogUtils.d("setOrderFloorInNodes node = " + node.getName() + ", order = " + node.getFloor());
+        }
+    }
+
 
     //按照后台提供的已学考点（或知识点）的id，找出所有需要展示的链路上的节点（可重复）保存起来
     public static List<Node> findQuestionNode(AtlasBean bean, List<Long> ids) {
