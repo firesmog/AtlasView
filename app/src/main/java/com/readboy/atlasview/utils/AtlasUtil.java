@@ -464,7 +464,7 @@ public class AtlasUtil {
 
                 if (min <= 1f) {
                     if (min <= 0.6f) {
-                        min = 6f;
+                        min = 0.6f;
                     }
                     float index = (1.0f - min) / 0.05f;
                     BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
