@@ -29,6 +29,16 @@ public class Node implements Comparator<Node> {
     private boolean visibility;
     private boolean is_study;
 
+    @SerializedName("recommand_point")
+    private boolean isRecommend;
+
+    public boolean isRecommend() {
+        return isRecommend;
+    }
+
+    public void setRecommend(boolean recommend) {
+        isRecommend = recommend;
+    }
 
     public int getFrequency() {
         return frequency;

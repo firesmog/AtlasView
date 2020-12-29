@@ -146,6 +146,21 @@ public class AtlasUtil {
         }
     }
 
+    public static void setOrderFloorInNodes(AtlasMapping mapping) {
+        int count = 1;
+        List<Node> nodes = mapping.getNodes();
+        List<Node> result = new ArrayList<>();
+        for (Node node : nodes) {
+            if (node.getType() == 1) {
+                result.add(node);
+            }
+        }
+        Collections.sort(result, new Node());
+        for (Node node : result) {
+            node.setFloor(count++);
+        }
+    }
+
 
     //按照后台提供的已学考点（或知识点）的id，找出所有需要展示的链路上的节点（可重复）保存起来
     public static List<Node> findQuestionNode(AtlasBean bean, List<Long> ids) {
@@ -432,22 +447,38 @@ public class AtlasUtil {
     }
 
 
-    public static void adapterViewSize(ViewGroup rlMain, TreeView editMapTreeView) {
+    public static void adapterViewSize(TreeView editMapTreeView) {
         editMapTreeView.post(new Runnable() {
             @Override
             public void run() {
                 int childHeight = editMapTreeView.getHeight();
                 int childWidth = editMapTreeView.getWidth();
-                int parentWidth = rlMain.getWidth();
-                int parentHeight = rlMain.getHeight();
+                ViewGroup viewGroup = (ViewGroup) editMapTreeView.getParent();
+                int parentWidth = viewGroup.getWidth();
+                int parentHeight = viewGroup.getHeight();
+
                 float min = Math.min((float) parentHeight / childHeight, (float) parentWidth / childWidth);
                 if (min >= 1.3f) {
                     min = 1.3f;
                 }
 
                 if (min <= 1f) {
+                    if (min <= 0.6f) {
+                        min = 6f;
+                    }
+                    float index = (1.0f - min) / 0.05f;
+                    BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
+                    LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
+
+                    index = b.intValue();
+                    editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 - (int) index));
+                    editMapTreeView.setScaleX(min);
+                    editMapTreeView.setScaleY(min);
+
                     return;
                 }
+
+
                 float index = (min - 1.0f) / 0.05f;
                 BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
                 LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);

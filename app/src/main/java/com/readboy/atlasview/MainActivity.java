@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
         editMapTreeView = (TreeView) findViewById(R.id.edit_map_tree_view);
         rlMain = (RelativeLayout) findViewById(R.id.rl_main);
         initData();
-        AtlasUtil.adapterViewSize(rlMain, editMapTreeView);
-
     }
+
 
     private void startActivity() {
         try {
@@ -66,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         AtlasBean data = gson.fromJson(json, AtlasBean.class);
         AtlasMapping mapping = data.getData().getMapping();
         AtlasUtil.setOrderInNodes(mapping);
+        AtlasUtil.setOrderFloorInNodes(mapping);
+
         List<Long> visibleNodeId = AtlasUtil.getVisibleCanvasAccordAtlas(mapping);
         AtlasUtil.updateVisibleMapping(mapping, visibleNodeId);
 
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         model.setMapping(mapping);
         model.setCanvasBean(canvasBean);
         model.setModels(models);
+        editMapTreeView.setTouchAble(false);
         editMapTreeView.setTreeModel(model);
         editMapTreeView.setMTreeViewItemClick(new TreeViewItemClick() {
             @Override
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        AtlasUtil.adapterViewSize(editMapTreeView);
     }
 
 }

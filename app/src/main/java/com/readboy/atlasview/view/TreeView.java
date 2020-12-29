@@ -35,7 +35,15 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private final int firstNodeMargin = 150;
     private MoveAndScaleHandler mMoveAndScaleHandler;
     private GestureDetector mGestureDetector;
+    private boolean isTouchAble = true;
 
+    public boolean isTouchAble() {
+        return isTouchAble;
+    }
+
+    public void setTouchAble(boolean touchAble) {
+        isTouchAble = touchAble;
+    }
 
     public TreeView(Context context) {
         super(context);
@@ -101,7 +109,11 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mGestureDetector.onTouchEvent(event);
-        return mMoveAndScaleHandler.onTouchEvent(event);
+        if (isTouchAble) {
+            return mMoveAndScaleHandler.onTouchEvent(event);
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -280,16 +292,14 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
      * 清除所有的NoteView
      */
     private void clearAllNoteViews() {
+        int count = getChildCount();
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                NodeView childView = (NodeView) getChildAt(i);
+                childView.getTvOrder().clearAnimation();
+            }
+        }
         removeAllViews();
-//        int count = getChildCount();
-//        if (count > 0) {
-//            for (int i = 0; i < count; i++) {
-//                View childView = getChildAt(i);
-//                if (childView instanceof NodeView) {
-//                    removeView(childView);
-//                }
-//            }
-//        }
     }
 
     /**
@@ -323,7 +333,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 performTreeItemClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
             }
 
-
         });
         nodeView.setOnLongClickListener(new OnLongClickListener() {
             @Override
@@ -332,7 +341,10 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 return true;
             }
         });
-
+        // 增加推荐节点跳动效果
+        if (nodeView.getNode().isRecommend()) {
+            nodeView.showRecommendNode();
+        }
         //todo Lzy 设置是否可见
         if (!poll.isVisibility()) {
             nodeView.setVisibility(GONE);
