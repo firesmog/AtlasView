@@ -154,7 +154,6 @@ public class AtlasUtil {
         Collections.sort(result, new Node());
         for (Node node : result) {
             node.setFloor(count++);
-            LogUtils.d("setOrderFloorInNodes node = " + node.getName() + ", order = " + node.getFloor());
         }
     }
 

@@ -330,7 +330,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             }
         });
 
-        if(nodeView.getTvName().getText().toString().contains("认识秒和秒")){
+        if(nodeView.getTvName().getText().toString().contains("认识秒")){
             nodeView.showRecommendNode();
         }
         //todo Lzy 设置是否可见
