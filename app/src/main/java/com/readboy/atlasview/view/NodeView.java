@@ -201,9 +201,40 @@ public class NodeView extends RelativeLayout {
         }
     }
 
+    public void showRecommendNode(){
+        if (Constants.SHAPE_RECTANGLE.equals(nodeShape)) {
+            showRect();
+        } else {
+            showCircle();
+        }
+    }
+
+
     @SuppressLint("UseCompatLoadingForDrawables")
-    public void showCircle(){
+    private void showCircle(){
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_circle));
+        int addRadius = 4;
+        if (node.getShape().getRadius() > 0) {
+            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+        } else {
+
+            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+        }
+        LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+        LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
+        int top = DensityUtils.px2dp(getContext(),lp.topMargin) - addRadius;
+        top = DensityUtils.dp2px(getContext(),top);
+        lp2.topMargin = top;
+        tvOrderCircle.setLayoutParams(lp2);
+        tvOrderCircle.setVisibility(VISIBLE);
+        startAnimationOut();
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void showRect(){
+        tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_rect));
         int addRadius = 4;
         if (node.getShape().getRadius() > 0) {
             tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
