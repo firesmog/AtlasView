@@ -70,8 +70,8 @@ public class NodeView extends RelativeLayout {
             name = array.getString(R.styleable.NodeView_name);
             nodeShape = array.getString(R.styleable.NodeView_nodeShape);
             nodeBackground = array.getString(R.styleable.NodeView_nodeBackground);
-            nameColor = array.getColor(R.styleable.NodeView_nameColor, Color.BLUE);
-            numberColor = array.getColor(R.styleable.NodeView_orderColor, Color.BLUE);
+            nameColor = array.getColor(R.styleable.NodeView_nameColor, Color.BLACK);
+            numberColor = array.getColor(R.styleable.NodeView_orderColor, Color.WHITE);
             nodeRadius = array.getDimension(R.styleable.NodeView_nodeRadius, 14);
             nameSize = array.getDimension(R.styleable.NodeView_nameSize, 14);
             marginSize = array.getDimension(R.styleable.NodeView_marginSize, -1);
@@ -89,8 +89,9 @@ public class NodeView extends RelativeLayout {
 
     @SuppressLint("WrongConstant")
     private void initTvOrder() {
-        if(order != 0){
-            tvOrder.setText(String.valueOf(order));
+
+        if (node.getFloor() != 0) {
+            tvOrder.setText(String.valueOf(node.getFloor()));
             tvOrder.setTextColor(numberColor);
             tvOrder.setTextSize(orderSize);
         }
@@ -112,6 +113,7 @@ public class NodeView extends RelativeLayout {
 
         if (Constants.SHAPE_RECTANGLE.equals(nodeShape)) {
             drawable.setShape(RECTANGLE);
+            drawable.setCornerRadius(10f);
         } else {
             drawable.setShape(OVAL);
         }
@@ -155,7 +157,7 @@ public class NodeView extends RelativeLayout {
     }
 
 
-    private void initView(Context context){
+    private void initView(Context context) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.node_view_layout, this);
         tvName = (TextView) inflate.findViewById(R.id.tv_name);
         tvOrder = (TextView) inflate.findViewById(R.id.tv_order);
@@ -163,12 +165,12 @@ public class NodeView extends RelativeLayout {
     }
 
 
-    private void initTvName(){
-        if(!TextUtils.isEmpty(name)){
+    private void initTvName() {
+        if (!TextUtils.isEmpty(name)) {
             tvName.setText(AtlasUtil.replace(name));
         }
 
-        tvName.setTextSize(DensityUtils.px2sp(context,node.getFont().getSize()));
+        tvName.setTextSize(DensityUtils.px2sp(context, node.getFont().getSize()));
         tvName.setTextColor(nameColor);
     }
 
@@ -188,20 +190,21 @@ public class NodeView extends RelativeLayout {
     }
 
     public void startAnimationOut() {
-        animation = new AlphaAnimation(0.4f, 1.0f);
+        animation = new AlphaAnimation(1.0f, 0.4f);
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
         animation.setRepeatCount(Animation.INFINITE);
-        animation.setDuration(1500);
+        animation.setRepeatMode(Animation.REVERSE);
+        animation.setDuration(2000);
         tvOrderCircle.startAnimation(animation);
     }
 
-    public void clearAnimation(){
-        if(null != animation){
+    public void clearAnimation() {
+        if (null != animation) {
             this.getTvOrder().clearAnimation();
         }
     }
 
-    public void showRecommendNode(){
+    public void showRecommendNode() {
         if (Constants.SHAPE_RECTANGLE.equals(nodeShape)) {
             showRect();
         } else {
@@ -211,21 +214,21 @@ public class NodeView extends RelativeLayout {
 
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void showCircle(){
+    private void showCircle() {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_circle));
-        int addRadius = 4;
+        int addRadius = 10;
         if (node.getShape().getRadius() > 0) {
-            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
-            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
+            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
         } else {
 
-            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
-            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
+            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
         }
         LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
-        int top = DensityUtils.px2dp(getContext(),lp.topMargin) - addRadius;
-        top = DensityUtils.dp2px(getContext(),top);
+        int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
+        top = DensityUtils.dp2px(getContext(), top);
         lp2.topMargin = top;
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);
@@ -233,21 +236,21 @@ public class NodeView extends RelativeLayout {
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void showRect(){
+    private void showRect() {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_rect));
-        int addRadius = 4;
+        int addRadius = 10;
         if (node.getShape().getRadius() > 0) {
-            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
-            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
+            tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
         } else {
 
-            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
-            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(),addRadius*2));
+            tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
+            tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
         }
         LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
-        int top = DensityUtils.px2dp(getContext(),lp.topMargin) - addRadius;
-        top = DensityUtils.dp2px(getContext(),top);
+        int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
+        top = DensityUtils.dp2px(getContext(), top);
         lp2.topMargin = top;
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);

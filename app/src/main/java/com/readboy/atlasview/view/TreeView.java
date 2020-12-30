@@ -37,6 +37,16 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private GestureDetector mGestureDetector;
     private boolean isTouchAble = true;
 
+    private int LineMarginToNode = 0;
+
+    public int getLineMarginToNode() {
+        return LineMarginToNode;
+    }
+
+    public void setLineMarginToNode(int lineMarginToNode) {
+        LineMarginToNode = lineMarginToNode;
+    }
+
     public boolean isTouchAble() {
         return isTouchAble;
     }
@@ -91,16 +101,22 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         }
     }
 
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
+
     /**
      * 绘制VIew本身的内容，通过调用View.onDraw(canvas)函数实现
      * 绘制自己的孩子通过dispatchDraw（canvas）实现
      */
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        super.dispatchDraw(canvas);
         mPaint.setColor(mContext.getResources().getColor(R.color.black));
         mPaint.setStyle(Paint.Style.STROKE);
         drawLine(canvas);
+        super.dispatchDraw(canvas);
         //drawRect(canvas);
         //canvas.drawRect(0,0,(int)(mTreeModel.getCanvasBean().getWidth()+100),(int)(mTreeModel.getCanvasBean().getHeight() + 100),mPaint);
     }
@@ -157,7 +173,8 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             double startY = mTreeModel.getCanvasBean().getStartY();
 
             for (Link link : links) {
-                mPaint.setColor(mContext.getResources().getColor(R.color.color_9faaff));
+                mPaint.setColor(mContext.getResources().getColor(R.color.color_5A63D3));
+                mPaint.setStrokeWidth(4f);
                 Node source = models.get(link.getSourceid());
                 Node target = models.get(link.getTargetid());
                 if (target == null || source == null) {
@@ -237,15 +254,28 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
                 }
 
+                int fromX, fromY, toX, toY;
 
-                int fromX = (int) (sxLine - startX + firstNodeMargin);
-                int fromY = (int) (syLine - startY + firstNodeMargin);
-                int toX = (int) (txLine - startX + firstNodeMargin);
-                int toY = (int) (tyLine - startY + firstNodeMargin);
+                if (sxLine > txLine) {
+                    fromX = (int) (sxLine - startX + firstNodeMargin - LineMarginToNode);
+                    toX = (int) (txLine - startX + firstNodeMargin + LineMarginToNode);
+                } else {
+                    fromX = (int) (sxLine - startX + firstNodeMargin + LineMarginToNode);
+                    toX = (int) (txLine - startX + firstNodeMargin - LineMarginToNode);
+                }
+
+                if (syLine > tyLine) {
+                    fromY = (int) (syLine - startY + firstNodeMargin - LineMarginToNode);
+                    toY = (int) (tyLine - startY + firstNodeMargin + LineMarginToNode);
+                } else {
+                    fromY = (int) (syLine - startY + firstNodeMargin + LineMarginToNode);
+                    toY = (int) (tyLine - startY + firstNodeMargin - LineMarginToNode);
+                }
+
                 //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
                 canvas.drawLine(fromX, fromY, toX, toY, mPaint);
                 mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-                ViewUtil.drawTrangle(canvas, mPaint, fromX, fromY, toX, toY, 10, 3);
+                ViewUtil.drawTrangle(canvas, mPaint, fromX, fromY, toX, toY, 10, 5);
             }
             mPaint.setStyle(Paint.Style.STROKE);
 

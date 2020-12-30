@@ -14,8 +14,8 @@ public class Node implements Comparator<Node> {
     private long id;
     private long keypoint;
     private int order;
-    public transient boolean focus = false;
-    public int floor;
+    private transient boolean focus = false;
+    private int floor;
     @SerializedName("fp")
     private int frequency;
 

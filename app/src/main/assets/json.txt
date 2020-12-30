@@ -1,1105 +1,1123 @@
- {
-        "detail": {
-            "id": 3071166,
-            "mapping": {
-                "name": "",
-                "nodes": [
-                    {
-                        "id": 1217066,
-                        "difficulty": 1,
-                        "type": 1,
-                        "name": "认识秒",
-                        "x": -100,
-                        "y": 200,
-                        "shape": {
-                            "color": "#31cfff,#0097e6",
-                            "radius": 50,
-                            "type": "circle"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "fp": 333,
-                        "scorePercent": 22,
-                        "grasp": 75.483734,
-                        "is_study": false
+{
+    "is_test": true,
+    "detail": {
+        "id": 3071166,
+        "mapping": {
+            "name": "",
+            "nodes": [
+                {
+                    "id": 1217066,
+                    "difficulty": 1,
+                    "type": 1,
+                    "name": "认识秒",
+                    "x": -500,
+                    "y": 200,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 50,
+                        "type": "circle"
                     },
-                    {
-                        "id": 65400010000,
-                        "difficulty": 1,
-                        "type": 2,
-                        "name": "认识秒和秒针",
-                        "x": -400,
-                        "y": 200,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1217066,
-                        "fp": 333,
-                        "scorePercent": 22,
-                        "grasp": 75.4,
-                        "is_study": true
-                    },
-                    {
-                        "id": 1218066,
-                        "difficulty": 2,
-                        "type": 1,
-                        "name": "时间单位换算",
-                        "x": 200,
-                        "y": 100,
-                        "shape": {
-                            "color": "#31cfff,#0097e6",
-                            "radius": 50,
-                            "type": "circle"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "fp": 344,
-                        "scorePercent": 17,
-                        "grasp": 58.601209499999996,
-                        "is_study": false
-                    },
-                    {
-                        "id": 65500010000,
-                        "difficulty": 1,
-                        "type": 2,
-                        "name": "分与秒的单位换算",
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
                         "x": 0,
-                        "y": -100,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1218066,
-                        "fp": 11,
-                        "scorePercent": 22,
-                        "grasp": 60.4,
-                        "is_study": true
+                        "y": -109
                     },
-                    {
-                        "id": 65600010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "分与时的单位换算",
-                        "x": 400,
-                        "y": -100,
-                        "shape": {
-                            "color": "#ffad9f,#ff2727",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1218066,
-                        "fp": 333,
-                        "scorePercent": 12,
-                        "grasp": 56.8,
-                        "is_study": true
+                    "fp": 333,
+                    "scorePercent": 22,
+                    "grasp": 24.646915,
+                    "is_study": false,
+                    "recommand_point": true
+                },
+                {
+                    "id": 65400010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "认识秒和秒针",
+                    "x": -800,
+                    "y": 200,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
                     },
-                    {
-                        "id": 1219066,
-                        "difficulty": 2,
-                        "type": 1,
-                        "name": "比较时间大小",
-                        "x": 400,
-                        "y": 100,
-                        "shape": {
-                            "color": "#31cfff,#0097e6",
-                            "radius": 50,
-                            "type": "circle"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 73.909,
-                        "is_study": false
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 65700010000,
-                        "difficulty": 1,
-                        "type": 2,
-                        "name": "两个单位相同的时间比大小",
-                        "x": 197.25385279938,
-                        "y": 292.30833542346,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1219066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 77.5,
-                        "is_study": true
+                    "keypoint": 1217066,
+                    "fp": 333,
+                    "scorePercent": 22,
+                    "grasp": 24.6,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 1218066,
+                    "difficulty": 2,
+                    "type": 1,
+                    "name": "时间单位换算",
+                    "x": -300,
+                    "y": -100,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 50,
+                        "type": "circle"
                     },
-                    {
-                        "id": 65800010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "两个单位不同的时间比大小",
-                        "x": 400,
-                        "y": 300,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1219066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 76.5,
-                        "is_study": true
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 65900010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "几个不同的时间按要求排列顺序",
-                        "x": 600,
-                        "y": 300,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1219066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 67.6,
-                        "is_study": true
+                    "fp": 344,
+                    "scorePercent": 17,
+                    "grasp": 39.043421,
+                    "is_study": false,
+                    "recommand_point": false
+                },
+                {
+                    "id": 65500010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "分与秒的单位换算",
+                    "x": -800,
+                    "y": -100,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
                     },
-                    {
-                        "id": 1220066,
-                        "difficulty": 3,
-                        "type": 1,
-                        "name": "起始时刻、结束时刻和经过时间的关系",
-                        "x": 600,
-                        "y": 100,
-                        "shape": {
-                            "color": "#31cfff,#0097e6",
-                            "radius": 50,
-                            "type": "circle"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 67.72296714285714,
-                        "is_study": false
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 66000010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "已知开始时间和结束时间求经过时长（不退位）",
-                        "x": 700,
-                        "y": 0,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 69.2,
-                        "is_study": true
+                    "keypoint": 1218066,
+                    "fp": 11,
+                    "scorePercent": 22,
+                    "grasp": 24,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 65600010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "分与时的单位换算",
+                    "x": -500,
+                    "y": -400,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
                     },
-                    {
-                        "id": 66100010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "已知开始时间和结束时间求经过时长（退位）",
-                        "x": 800,
-                        "y": -100,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 77.9,
-                        "is_study": true
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 66200010000,
-                        "difficulty": 3,
-                        "type": 2,
-                        "name": "已知开始时间和结束时间求经过时长(经过中午12点)",
-                        "x": 900,
-                        "y": -200,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 73.8,
-                        "is_study": true
+                    "keypoint": 1218066,
+                    "fp": 333,
+                    "scorePercent": 12,
+                    "grasp": 54,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 1219066,
+                    "difficulty": 2,
+                    "type": 1,
+                    "name": "比较时间大小",
+                    "x": 200,
+                    "y": -100,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 50,
+                        "type": "circle"
                     },
-                    {
-                        "id": 66300010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "已知经过时长和开始时间求结束时间（不进位）",
-                        "x": 800,
-                        "y": 100,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 68,
-                        "is_study": true
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 66400010000,
-                        "difficulty": 2,
-                        "type": 2,
-                        "name": "已知经过时长和开始时间求结束时间（进位）",
-                        "x": 700,
-                        "y": 200,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 64,
-                        "is_study": true
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 41.765579,
+                    "is_study": false,
+                    "recommand_point": false
+                },
+                {
+                    "id": 65700010000,
+                    "difficulty": 1,
+                    "type": 2,
+                    "name": "两个单位相同的时间比大小",
+                    "x": 0,
+                    "y": 300,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
                     },
-                    {
-                        "id": 66500010000,
-                        "difficulty": 3,
-                        "type": 2,
-                        "name": "已知经过时长和结束时间求开始时间（不退位）",
-                        "x": 800,
-                        "y": 300,
-                        "shape": {
-                            "color": "#ffc31f,#ff8152",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 71.2,
-                        "is_study": true
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
                     },
-                    {
-                        "id": 66600010000,
-                        "difficulty": 3,
-                        "type": 2,
-                        "name": "已知经过时长和结束时间求开始时间（退位）",
-                        "x": 1000,
-                        "y": 100,
-                        "shape": {
-                            "color": "#ffad9f,#ff2727",
-                            "radius": 45,
-                            "type": "rect"
-                        },
-                        "font": {
-                            "color": "#222222",
-                            "fontPosition": "top",
-                            "offset": 109,
-                            "size": 37.5,
-                            "x": 0,
-                            "y": -109
-                        },
-                        "keypoint": 1220066,
-                        "fp": 0,
-                        "scorePercent": 0,
-                        "grasp": 49.7,
-                        "is_study": true
-                    }
+                    "keypoint": 1219066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 48.6,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 65800010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "两个单位不同的时间比大小",
+                    "x": 200,
+                    "y": 500,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1219066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 46.2,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 65900010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "几个不同的时间按要求排列顺序",
+                    "x": 500,
+                    "y": 400,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1219066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 30.3,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 1220066,
+                    "difficulty": 3,
+                    "type": 1,
+                    "name": "起始时刻、结束时刻和经过时间的关系",
+                    "x": 500,
+                    "y": -300,
+                    "shape": {
+                        "color": "#31cfff,#0097e6",
+                        "radius": 50,
+                        "type": "circle"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 49.361716,
+                    "is_study": false,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66000010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "已知开始时间和结束时间求经过时长（不退位）",
+                    "x": 800,
+                    "y": -300,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 48.6,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66100010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "已知开始时间和结束时间求经过时长（退位）",
+                    "x": 1100,
+                    "y": -300,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 49.5,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66200010000,
+                    "difficulty": 3,
+                    "type": 2,
+                    "name": "已知开始时间和结束时间求经过时长(经过中午12点)",
+                    "x": 1400,
+                    "y": -300,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 37.3,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66300010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "已知经过时长和开始时间求结束时间（不进位）",
+                    "x": 500,
+                    "y": -700,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 57,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66400010000,
+                    "difficulty": 2,
+                    "type": 2,
+                    "name": "已知经过时长和开始时间求结束时间（进位）",
+                    "x": 700,
+                    "y": 100,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 47.5,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66500010000,
+                    "difficulty": 3,
+                    "type": 2,
+                    "name": "已知经过时长和结束时间求开始时间（不退位）",
+                    "x": 1100,
+                    "y": 100,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 51.3,
+                    "is_study": true,
+                    "recommand_point": false
+                },
+                {
+                    "id": 66600010000,
+                    "difficulty": 3,
+                    "type": 2,
+                    "name": "已知经过时长和结束时间求开始时间（退位）",
+                    "x": 900,
+                    "y": -700,
+                    "shape": {
+                        "color": "#ffad9f,#ff2727",
+                        "radius": 45,
+                        "type": "rect"
+                    },
+                    "font": {
+                        "color": "#222222",
+                        "fontPosition": "top",
+                        "offset": 109,
+                        "size": 37.5,
+                        "x": 0,
+                        "y": -109
+                    },
+                    "keypoint": 1220066,
+                    "fp": 0,
+                    "scorePercent": 0,
+                    "grasp": 54.1,
+                    "is_study": true,
+                    "recommand_point": false
+                }
+            ],
+            "links": [
+                {
+                    "sourceid": 1217066,
+                    "color": "#777777",
+                    "targetid": 65400010000,
+                    "id": 1
+                },
+                {
+                    "sourceid": 1217066,
+                    "color": "#777777",
+                    "targetid": 1218066,
+                    "id": 2
+                },
+                {
+                    "sourceid": 1218066,
+                    "color": "#777777",
+                    "targetid": 65500010000,
+                    "id": 3
+                },
+                {
+                    "sourceid": 1218066,
+                    "color": "#777777",
+                    "targetid": 65600010000,
+                    "id": 4
+                },
+                {
+                    "sourceid": 1218066,
+                    "color": "#777777",
+                    "targetid": 1219066,
+                    "id": 5
+                },
+                {
+                    "sourceid": 1219066,
+                    "color": "#777777",
+                    "targetid": 1220066,
+                    "id": 6
+                },
+                {
+                    "sourceid": 1219066,
+                    "color": "#777777",
+                    "targetid": 65700010000,
+                    "id": 7
+                },
+                {
+                    "sourceid": 1219066,
+                    "color": "#777777",
+                    "targetid": 65800010000,
+                    "id": 8
+                },
+                {
+                    "sourceid": 1219066,
+                    "color": "#777777",
+                    "targetid": 65900010000,
+                    "id": 9
+                },
+                {
+                    "sourceid": 1220066,
+                    "color": "#777777",
+                    "targetid": 66000010000,
+                    "id": 10
+                },
+                {
+                    "sourceid": 66000010000,
+                    "color": "#777777",
+                    "targetid": 66100010000,
+                    "id": 11
+                },
+                {
+                    "sourceid": 66100010000,
+                    "color": "#777777",
+                    "targetid": 66200010000,
+                    "id": 12
+                },
+                {
+                    "sourceid": 1220066,
+                    "color": "#777777",
+                    "targetid": 66300010000,
+                    "id": 13
+                },
+                {
+                    "sourceid": 66300010000,
+                    "color": "#777777",
+                    "targetid": 66600010000,
+                    "id": 14
+                },
+                {
+                    "sourceid": 1220066,
+                    "color": "#777777",
+                    "targetid": 66400010000,
+                    "id": 15
+                },
+                {
+                    "sourceid": 66400010000,
+                    "color": "#777777",
+                    "targetid": 66500010000,
+                    "id": 16
+                }
+            ],
+            "ktmap": {
+                "1217066": [
+                    65400010000
                 ],
-                "links": [
-                    {
-                        "sourceid": 1217066,
-                        "color": "#777777",
-                        "targetid": 65400010000,
-                        "id": 1
-                    },
-                    {
-                        "sourceid": 1217066,
-                        "color": "#777777",
-                        "targetid": 1218066,
-                        "id": 2
-                    },
-                    {
-                        "sourceid": 1218066,
-                        "color": "#777777",
-                        "targetid": 65500010000,
-                        "id": 3
-                    },
-                    {
-                        "sourceid": 1218066,
-                        "color": "#777777",
-                        "targetid": 65600010000,
-                        "id": 4
-                    },
-                    {
-                        "sourceid": 1218066,
-                        "color": "#777777",
-                        "targetid": 1219066,
-                        "id": 5
-                    },
-                    {
-                        "sourceid": 1219066,
-                        "color": "#777777",
-                        "targetid": 1220066,
-                        "id": 6
-                    },
-                    {
-                        "sourceid": 1219066,
-                        "color": "#777777",
-                        "targetid": 65700010000,
-                        "id": 7
-                    },
-                    {
-                        "sourceid": 1219066,
-                        "color": "#777777",
-                        "targetid": 65800010000,
-                        "id": 8
-                    },
-                    {
-                        "sourceid": 1219066,
-                        "color": "#777777",
-                        "targetid": 65900010000,
-                        "id": 9
-                    },
-                    {
-                        "sourceid": 1220066,
-                        "color": "#777777",
-                        "targetid": 66000010000,
-                        "id": 10
-                    },
-                    {
-                        "sourceid": 66000010000,
-                        "color": "#777777",
-                        "targetid": 66100010000,
-                        "id": 11
-                    },
-                    {
-                        "sourceid": 66100010000,
-                        "color": "#777777",
-                        "targetid": 66200010000,
-                        "id": 12
-                    },
-                    {
-                        "sourceid": 1220066,
-                        "color": "#777777",
-                        "targetid": 66300010000,
-                        "id": 13
-                    },
-                    {
-                        "sourceid": 66300010000,
-                        "color": "#777777",
-                        "targetid": 66600010000,
-                        "id": 14
-                    },
-                    {
-                        "sourceid": 1220066,
-                        "color": "#777777",
-                        "targetid": 66400010000,
-                        "id": 15
-                    },
-                    {
-                        "sourceid": 66400010000,
-                        "color": "#777777",
-                        "targetid": 66500010000,
-                        "id": 16
-                    }
+                "1218066": [
+                    65500010000,
+                    65600010000
                 ],
-                "ktmap": {
-                    "1217066": [
-                        65400010000
-                    ],
-                    "1218066": [
+                "1219066": [
+                    65700010000,
+                    65800010000,
+                    65900010000
+                ],
+                "1220066": [
+                    66000010000,
+                    66100010000,
+                    66200010000,
+                    66300010000,
+                    66400010000,
+                    66500010000,
+                    66600010000
+                ]
+            },
+            "section": {
+                "source": 3059166,
+                "id": 3071166,
+                "name": "第一节 时、分、秒"
+            },
+            "nodeOrder": [
+                {
+                    "createTime": 1600064459,
+                    "difficulty": 1,
+                    "id": 1,
+                    "order": [
+                        1217066,
+                        65400010000,
+                        1218066,
                         65500010000,
-                        65600010000
-                    ],
-                    "1219066": [
+                        65600010000,
+                        1219066,
                         65700010000,
                         65800010000,
-                        65900010000
-                    ],
-                    "1220066": [
+                        65900010000,
+                        1220066,
                         66000010000,
                         66100010000,
                         66200010000,
                         66300010000,
+                        66600010000,
                         66400010000,
-                        66500010000,
-                        66600010000
-                    ]
-                },
-                "section": {
-                    "source": 3059166,
-                    "id": 3071166,
-                    "name": "第一节 时、分、秒"
-                },
-                "nodeOrder": [
+                        66500010000
+                    ],
+                    "type": 2,
+                    "updateTime": 1600064459
+                }
+            ],
+            "id": 700030000
+        },
+        "testpoints": [
+            {
+                "status": 0,
+                "updateTime": 1603942791,
+                "name": "认识秒和秒针",
+                "errorProne": [
                     {
-                        "createTime": 1600064459,
-                        "difficulty": 1,
-                        "id": 1,
-                        "order": [
-                            1217066,
-                            65400010000,
-                            1218066,
-                            65500010000,
-                            65600010000,
-                            1219066,
-                            65700010000,
-                            65800010000,
-                            65900010000,
-                            1220066,
-                            66000010000,
-                            66100010000,
-                            66200010000,
-                            66300010000,
-                            66600010000,
-                            66400010000,
-                            66500010000
-                        ],
-                        "type": 2,
-                        "updateTime": 1600064459
+                        "description": "<p>【典型例题】判断：分针从1走到2，秒针走了一圈。（√）</p><p>【正确解答】这句话是错的，分针从1走到2，秒针应该是走了5圈。</p><p>【易错分析】这句话的问题反应在对钟面不熟悉，对分钟、秒的关系掌握不扎实。钟面上分针从1走到2，其实是走了5个小格，也就是5分钟。而秒针走一圈是1分钟，那么5分钟就要走5圈。在做此类题目时，一定要认真读题，看清题目中分针走了多少小格，也就是走了多少分钟，相应的秒针就走多少圈。</p>",
+                        "qid": ""
                     }
                 ],
-                "id": 700030000
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252364668,
+                        "video": 800020000
+                    }
+                ],
+                "districtStat": [
+                    {
+                        "frequency": 222,
+                        "scorePercent": 11,
+                        "district": 442101
+                    }
+                ],
+                "createTime": 1599812195,
+                "source": 1217066,
+                "version": 2685,
+                "defaultDistrictStat": {
+                    "frequency": 333,
+                    "scorePercent": 22
+                },
+                "id": 65400010000,
+                "description": "<p>本考点主要是认识时间单位秒，包括感知1秒的长短、认识钟面上的秒针、秒和分的关系等。对应考查的类型有填写合适的时间单位、根据秒和分的关系解决钟面指针的相关问题，要牢记自己1秒能做哪些事，比如眨一下眼睛、拍一下手大约需要1秒，还有钟面上秒针走1小格就是1秒，走一圈就是1分钟等基础知识。</p>"
             },
-            "testpoints": [
-                {
-                    "status": 0,
-                    "updateTime": 1603942791,
-                    "name": "认识秒和秒针",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】判断：分针从1走到2，秒针走了一圈。（√）</p><p>【正确解答】这句话是错的，分针从1走到2，秒针应该是走了5圈。</p><p>【易错分析】这句话的问题反应在对钟面不熟悉，对分钟、秒的关系掌握不扎实。钟面上分针从1走到2，其实是走了5个小格，也就是5分钟。而秒针走一圈是1分钟，那么5分钟就要走5圈。在做此类题目时，一定要认真读题，看清题目中分针走了多少小格，也就是走了多少分钟，相应的秒针就走多少圈。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252364668,
-                            "video": 800020000
-                        }
-                    ],
-                    "districtStat": [
-                        {
-                            "frequency": 222,
-                            "scorePercent": 11,
-                            "district": 442101
-                        }
-                    ],
-                    "createTime": 1599812195,
-                    "source": 1217066,
-                    "version": 2685,
-                    "defaultDistrictStat": {
+            {
+                "status": 0,
+                "updateTime": 1603942887,
+                "name": "分与秒的单位换算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】2分＝（&nbsp;&nbsp;200&nbsp;&nbsp;）秒。</p><p>【正确解答】2分＝（&nbsp;&nbsp;120&nbsp;&nbsp;）秒。</p><p>【易错分析】这道题出错是因为把分和秒的关系记错了。因为1分＝60秒，所以2分应该是60秒＋60秒＝120秒。在解决分和秒的单位换算时，千万不要把它们之间的进率搞错，时、分、秒这三个单位之间的进率都是60。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252365668,
+                        "video": 300020000
+                    }
+                ],
+                "districtStat": [
+                    {
+                        "frequency": 59,
+                        "scorePercent": 11.5,
+                        "district": 431200
+                    },
+                    {
+                        "frequency": 233,
+                        "scorePercent": 11,
+                        "district": 441800
+                    },
+                    {
                         "frequency": 333,
-                        "scorePercent": 22
-                    },
-                    "id": 65400010000,
-                    "description": "<p>本考点主要是认识时间单位秒，包括感知1秒的长短、认识钟面上的秒针、秒和分的关系等。对应考查的类型有填写合适的时间单位、根据秒和分的关系解决钟面指针的相关问题，要牢记自己1秒能做哪些事，比如眨一下眼睛、拍一下手大约需要1秒，还有钟面上秒针走1小格就是1秒，走一圈就是1分钟等基础知识。</p>"
+                        "scorePercent": 55.9,
+                        "district": 350000
+                    }
+                ],
+                "createTime": 1599812195,
+                "source": 1218066,
+                "version": 2685,
+                "defaultDistrictStat": {
+                    "frequency": 11,
+                    "scorePercent": 22
                 },
-                {
-                    "status": 0,
-                    "updateTime": 1603942887,
-                    "name": "分与秒的单位换算",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】2分＝（&nbsp;&nbsp;200&nbsp;&nbsp;）秒。</p><p>【正确解答】2分＝（&nbsp;&nbsp;120&nbsp;&nbsp;）秒。</p><p>【易错分析】这道题出错是因为把分和秒的关系记错了。因为1分＝60秒，所以2分应该是60秒＋60秒＝120秒。在解决分和秒的单位换算时，千万不要把它们之间的进率搞错，时、分、秒这三个单位之间的进率都是60。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252365668,
-                            "video": 300020000
-                        }
-                    ],
-                    "districtStat": [
-                        {
-                            "frequency": 59,
-                            "scorePercent": 11.5,
-                            "district": 431200
-                        },
-                        {
-                            "frequency": 233,
-                            "scorePercent": 11,
-                            "district": 441800
-                        },
-                        {
-                            "frequency": 333,
-                            "scorePercent": 55.9,
-                            "district": 350000
-                        }
-                    ],
-                    "createTime": 1599812195,
-                    "source": 1218066,
-                    "version": 2685,
-                    "defaultDistrictStat": {
-                        "frequency": 11,
-                        "scorePercent": 22
-                    },
-                    "id": 65500010000,
-                    "description": "<p>本考点的重点是分和秒的关系，要牢记1分＝60秒。当计算时间的加减法时，两个时间的单位相同即可直接相加减，如果单位不同就要先统一单位。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1603943741,
-                    "name": "分与时的单位换算",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】1时10分－40分＝70分。</p><p>【正确解答】1时10分－40分＝30分。</p><p>【易错分析】这道题出错是因为把1时10分换算成分钟数时出错了。因为1时＝60分，所以1时10分＝60分＋10分＝70分，再计算70分－40分＝30分。在解决时和分的单位换算时，千万不要把它们之间的进率搞错，时、分、秒这三个单位之间的进率都是60。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252366668,
-                            "video": 1100020000
-                        }
-                    ],
-                    "districtStat": [
-                        {
-                            "frequency": 555,
-                            "scorePercent": 25.99,
-                            "district": 110000
-                        }
-                    ],
-                    "createTime": 1599812195,
-                    "source": 1218066,
-                    "version": 2685,
-                    "defaultDistrictStat": {
-                        "frequency": 333,
-                        "scorePercent": 12
-                    },
-                    "id": 65600010000,
-                    "description": "<p>本考点的重点是分和时的关系，要牢记1时＝60分。当计算时间的加减法时，两个时间的单位相同即可直接相加减，如果单位不同就要先统一单位。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600149999,
-                    "name": "两个单位相同的时间比大小",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】</p><p>100米短跑比赛，小布用了14秒，小可用了16秒。他俩谁是第一名？</p><p>&nbsp;答：16秒＞14秒，小可是第一名。</p><p>【正确解答】16秒＞14秒，小布是第一名。</p><p>【易错分析】这道题出错的原因是把比赛输赢的判定弄错了，跑步比赛谁用时少，谁就跑得快，谁的名次就靠前，而不是比谁用的时间多。因此在类似的时间比大小的问题中，不光要考虑哪个时间长哪个时间短，还要考虑实际情况，根据生活常识来判断。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252367668,
-                            "video": 200020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1219066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 65700010000,
-                    "description": "<p>本考点的主要内容是相同单位的时间比大小。如果是单名数（数据中只有一个单位）比大小，直接比较单位前的数即可。如果是复名数（数据中不止一个单位）比大小，先从高级单位前的数开始比较，如果高级单位前的数相同，再比较低级单位前的数，直到比出大小。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159656,
-                    "name": "两个单位不同的时间比大小",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】比较时间的大小：100分＜1时。</p><p>【正确解答】100分&gt;1时。</p><p>【易错分析】这道题出错主要是在比较大小时只注意看了时间单位，以为单位是时的一定大于单位是分的。实际上，在我们比较单位不同的时间时，一定要先统一单位。比如这道题，可以先把100分换成1时40分，或把1时换成60分，都可以轻松比较出来。所以在做此类题目时，不要受单位名称的影响，一定要先换算，统一单位再比较。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252368668,
-                            "video": 900020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1219066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 65800010000,
-                    "description": "<p>本考点的主要内容是两个不同单位的时间比大小。解决问题的关键在于将单位进行统一，也就是把其中一个数据进行单位换算，然后再按照单位相同的比大小方法进行比较。当然有时候也能通过仔细观察推理出大小。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159205,
-                    "name": "几个不同的时间按要求排列顺序",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】</p><p>120秒，12分，120分，1时，四个时间按从小到大排列顺序。</p><p>答：120秒＝2分，120分＝2时，因此2分＜12分＜1时＜2时。</p><p>【正确解答】120秒＜12分＜1时＜120分。</p><p>【易错分析】这道题出错的原因是没有用题目中的原数排列，而是用了换算之后的数。做这类排序题出错的点有两个：一是统一单位时由于进率记错导致换算错误，然后排序错误；二是换算完之后排序正确，但最终答案没有用题目中给的原数来排列。因此一定要牢记，换算之后排列可以在草稿纸上进行，但最终答案要用原题中的数。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252369668,
-                            "video": 1000020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1219066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 65900010000,
-                    "description": "<p>本考点的主要内容是多个不同单位的时间比大小。解决问题的关键在于将单位进行统一，也就是把其中一个数据进行单位换算，然后再按照单位相同的比大小方法进行比较。当然有时候通过仔细观察也可以推理出大小。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600158940,
-                    "name": "已知开始时间和结束时间求经过时长（不退位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】1时40分－20分＝20分。</p><p>【正确解答】1时40分－20分＝1时20分。</p><p>【易错分析】这道题出错是因为计算时只减了单位为分的部分，单位为时的部分忘记计算了。其实20分可以看作0时20分，所以计算时1时减0时还得1时。在计算这种不退位的时间减法时，要记住单位名称相同的部分才能相减。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252370668,
-                            "video": 1300020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66000010000,
-                    "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，也就是结束时刻－开始时刻＝经过时间，在计算时要注意时减时，分减分，本考点下的题目都是够减的。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159558,
-                    "name": "已知开始时间和结束时间求经过时长（退位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】12时－8时30分＝4时30分。</p><p>【正确解答】12时－8时30分＝3时30分。</p><p>【易错分析】这道题出错是因为计算时没有退位的步骤。12时可以看作12时0分，12时0分－8时30分，先算0分减30分，是不够减的，应该从12时拿来1时换成60分，也就是把12时变成11时60分再减，这样11时60分－8时30分，就都够减了。在计算这种需要退位的时间减法时，假如分钟数不够减，一定要从小时数拿过1时当做60分，也叫“退一当60”，然后再减。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252371668,
-                            "video": 400020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66100010000,
-                    "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，也就是结束时刻－开始时刻＝经过时间。在计算时间的减法时，注意时减时，分减分，被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159518,
-                    "name": "已知开始时间和结束时间求经过时长(经过中午12点)",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】上午9时30分到下午3时是经过了（&nbsp; 6&nbsp; ）时（&nbsp; 30&nbsp; ）分。</p><p>【正确解答】上午9时30分到下午3时是经过了（&nbsp; 5&nbsp; ）时（&nbsp; 30&nbsp; ）分。</p><p>【易错分析】这道题是错在计算上午9时30分到中午12时的这段时间。事实上此类题都很容易在这个阶段出错。12时可以看作12时0分，12时0分－9时30分，先算0分减30分，是不够减的，应该从12时拿来1时换成60分，也就是把12时变成11时60分再减，这样11时60分－9时30分，就都够减了。所以上午经过的时间应该是2时30分，再加上下午的3时，一共是5时30分。在解决这类跨中午12时或跨晚上12时的问题时，要先计算起始时刻到12时经过的时间，有可能涉及需要退位的情况，所以要认真计算。12时到结束时刻的经过时间比较好算，结束时间是几时，经过时间就是几时。最后相加即可。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252372668,
-                            "video": 1200020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66200010000,
-                    "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，中间跨了中午12时的情况。要先计算开始时刻到12时经过的时间，而从中午12时到下午几时几分经过的时间正好是几时几分，把两段时间相加即可。注意时减时，分减分，如果被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。当相加满60分时，要向小时数进一，比如计算结果2时80分最后要写成3时20分。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159423,
-                    "name": "已知经过时长和开始时间求结束时间（不进位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】现在是4时15分，再过2时5分是（&nbsp; 6&nbsp; ）时（&nbsp; 15&nbsp; ）分。</p><p>【正确解答】现在是4时15分，再过2时5分是（&nbsp; 6&nbsp; ）时（&nbsp; 20&nbsp; ）分。</p><p>【易错分析】这道题出错是因为计算时只加了小时部分，没有计算分钟部分。应该是时加时，分加分。4时15分＋2时5分，先算4时＋2时＝6时，再算15分＋5分＝20分。因此结束时刻应该是6时20分。在做此类题目时，一定要注意小时部分和分钟部分都要计算，不要遗漏。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252373668,
-                            "video": 500020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66300010000,
-                    "description": "<p>本考点的要用到的关系式为：开始时刻＋经过时间＝结束时刻，在计算时间的加法时，注意时加时，分加分，本考点没有需要进位的情况。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159453,
-                    "name": "已知经过时长和开始时间求结束时间（进位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】下午2时25分出发，经过35分钟到达。到达的时间是（&nbsp;2时60分&nbsp;）。</p><p>【正确解答】下午2时25分出发，经过35分钟到达。到达的时间是（&nbsp;3时&nbsp;）。</p><p>【易错分析】这道题出错是因为最后没有把满60分的向前进位。因为60分＝1时，而我们在描述时刻的时候，没有分钟数超过60的情况，因此这个答案是不正确的。2时60分应该换成3时。在做此类问题时要注意，分钟数满60就要向小时数进一。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252374668,
-                            "video": 600020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66400010000,
-                    "description": "<p>本考点需要用到的关系式：开始时刻＋经过时间＝结束时刻，在计算时间的加法时，注意时加时，分加分，当相加满60分时，要向小时数进一，比如计算结果2时80分最后要写成3时20分。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600158632,
-                    "name": "已知经过时长和结束时间求开始时间（不退位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】火车9：35到站，晚点了5分钟，它应该（&nbsp; 9时40分&nbsp; ）到站。</p><p>【正确解答】火车9：35到站，晚点了5分钟，它应该（&nbsp; 9时30分&nbsp; ）到站。</p><p>【易错分析】这道题出错是因为把起始时刻和结束时刻搞混了。9:35是晚了5分钟之后到达的时刻，也就是结束时刻，求的是开始时刻。所以应该是用9时35分－5分＝9时30分才是正确答案。解决这类问题时要注意仔细读题，分析求的是起始时刻还是结束时刻，求起始时刻一般用减法，求结束时刻一般用加法。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252375668,
-                            "video": 700020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66500010000,
-                    "description": "<p>本考点需要用到的关系式：结束时刻－经过时间＝开始时刻，在计算时间的减法时，注意时减时，分减分，本考点不会出现不够减的情况。</p>"
-                },
-                {
-                    "status": 0,
-                    "updateTime": 1600159368,
-                    "name": "已知经过时长和结束时间求开始时间（退位）",
-                    "errorProne": [
-                        {
-                            "description": "<p>【典型例题】</p><p>5时往前推100分是几时几分？</p><p>答：4时20分。</p><p>【正确解答】3时20分。</p><p>【易错分析】这道题的错误在于计算时间的时候，退位没有做好。这道题有多种算法，比如先把100分换成1时40分，再用5时减1时40分，因为5时这个时间没有分钟部分，所以先换成4时60分再减1时40分，得到3时20分。也可以把5时换成4时60分去减100分，发现分钟部分还是不够减，所以再退一次，变成3时120分，再减100分，就得到3时20分。在做此类计算时，一定要注意，分钟部分不够减，就要从小时部分退一当60再减。如果退一次不够减，就再退一次。</p>",
-                            "qid": ""
-                        }
-                    ],
-                    "courseId": 66,
-                    "explain": [
-                        {
-                            "qid": 252376668,
-                            "video": 1400020000
-                        }
-                    ],
-                    "districtStat": null,
-                    "createTime": 1599812196,
-                    "source": 1220066,
-                    "version": 2584,
-                    "defaultDistrictStat": {
-                        "frequency": 0,
-                        "scorePercent": 0
-                    },
-                    "id": 66600010000,
-                    "description": "<p>本考点需要用到的关系式：结束时刻－经过时间＝开始时刻，在计算时间的减法时，注意时减时，分减分，如果被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。一次退位还不够减，就再退一次。</p>"
-                }
-            ],
-            "name": "第一节 时、分、秒",
-            "parent": {
-                "name": "第一单元 时、分、秒"
+                "id": 65500010000,
+                "description": "<p>本考点的重点是分和秒的关系，要牢记1分＝60秒。当计算时间的加减法时，两个时间的单位相同即可直接相加减，如果单位不同就要先统一单位。</p>"
             },
-            "courseId": 66,
-            "source": 3059166,
-            "keypoint": [
-                {
-                    "status": 0,
-                    "id": 914066,
-                    "name": "时、分、秒"
-                }
-            ],
-            "qstKeypoint": [
-                {
-                    "count": 1,
-                    "name": "事件发生的确定性和不确定性",
-                    "id": 325066
+            {
+                "status": 0,
+                "updateTime": 1603943741,
+                "name": "分与时的单位换算",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】1时10分－40分＝70分。</p><p>【正确解答】1时10分－40分＝30分。</p><p>【易错分析】这道题出错是因为把1时10分换算成分钟数时出错了。因为1时＝60分，所以1时10分＝60分＋10分＝70分，再计算70分－40分＝30分。在解决时和分的单位换算时，千万不要把它们之间的进率搞错，时、分、秒这三个单位之间的进率都是60。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252366668,
+                        "video": 1100020000
+                    }
+                ],
+                "districtStat": [
+                    {
+                        "frequency": 555,
+                        "scorePercent": 25.99,
+                        "district": 110000
+                    }
+                ],
+                "createTime": 1599812195,
+                "source": 1218066,
+                "version": 2685,
+                "defaultDistrictStat": {
+                    "frequency": 333,
+                    "scorePercent": 12
                 },
-                {
-                    "count": 2,
-                    "name": "克与千克的认识",
-                    "id": 174066
+                "id": 65600010000,
+                "description": "<p>本考点的重点是分和时的关系，要牢记1时＝60分。当计算时间的加减法时，两个时间的单位相同即可直接相加减，如果单位不同就要先统一单位。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600149999,
+                "name": "两个单位相同的时间比大小",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】</p><p>100米短跑比赛，小布用了14秒，小可用了16秒。他俩谁是第一名？</p><p>&nbsp;答：16秒＞14秒，小可是第一名。</p><p>【正确解答】16秒＞14秒，小布是第一名。</p><p>【易错分析】这道题出错的原因是把比赛输赢的判定弄错了，跑步比赛谁用时少，谁就跑得快，谁的名次就靠前，而不是比谁用的时间多。因此在类似的时间比大小的问题中，不光要考虑哪个时间长哪个时间短，还要考虑实际情况，根据生活常识来判断。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252367668,
+                        "video": 200020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1219066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 3,
-                    "name": "整时与半时",
-                    "id": 912066
+                "id": 65700010000,
+                "description": "<p>本考点的主要内容是相同单位的时间比大小。如果是单名数（数据中只有一个单位）比大小，直接比较单位前的数即可。如果是复名数（数据中不止一个单位）比大小，先从高级单位前的数开始比较，如果高级单位前的数相同，再比较低级单位前的数，直到比出大小。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159656,
+                "name": "两个单位不同的时间比大小",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】比较时间的大小：100分＜1时。</p><p>【正确解答】100分&gt;1时。</p><p>【易错分析】这道题出错主要是在比较大小时只注意看了时间单位，以为单位是时的一定大于单位是分的。实际上，在我们比较单位不同的时间时，一定要先统一单位。比如这道题，可以先把100分换成1时40分，或把1时换成60分，都可以轻松比较出来。所以在做此类题目时，不要受单位名称的影响，一定要先换算，统一单位再比较。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252368668,
+                        "video": 900020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1219066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 3,
-                    "name": "速度、时间、路程",
-                    "id": 934066
+                "id": 65800010000,
+                "description": "<p>本考点的主要内容是两个不同单位的时间比大小。解决问题的关键在于将单位进行统一，也就是把其中一个数据进行单位换算，然后再按照单位相同的比大小方法进行比较。当然有时候也能通过仔细观察推理出大小。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159205,
+                "name": "几个不同的时间按要求排列顺序",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】</p><p>120秒，12分，120分，1时，四个时间按从小到大排列顺序。</p><p>答：120秒＝2分，120分＝2时，因此2分＜12分＜1时＜2时。</p><p>【正确解答】120秒＜12分＜1时＜120分。</p><p>【易错分析】这道题出错的原因是没有用题目中的原数排列，而是用了换算之后的数。做这类排序题出错的点有两个：一是统一单位时由于进率记错导致换算错误，然后排序错误；二是换算完之后排序正确，但最终答案没有用题目中给的原数来排列。因此一定要牢记，换算之后排列可以在草稿纸上进行，但最终答案要用原题中的数。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252369668,
+                        "video": 1000020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1219066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 1,
-                    "name": "100以内数的大小比较",
-                    "id": 15066
+                "id": 65900010000,
+                "description": "<p>本考点的主要内容是多个不同单位的时间比大小。解决问题的关键在于将单位进行统一，也就是把其中一个数据进行单位换算，然后再按照单位相同的比大小方法进行比较。当然有时候通过仔细观察也可以推理出大小。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600158940,
+                "name": "已知开始时间和结束时间求经过时长（不退位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】1时40分－20分＝20分。</p><p>【正确解答】1时40分－20分＝1时20分。</p><p>【易错分析】这道题出错是因为计算时只减了单位为分的部分，单位为时的部分忘记计算了。其实20分可以看作0时20分，所以计算时1时减0时还得1时。在计算这种不退位的时间减法时，要记住单位名称相同的部分才能相减。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252370668,
+                        "video": 1300020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 132,
-                    "name": "认识钟面",
-                    "id": 161066
+                "id": 66000010000,
+                "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，也就是结束时刻－开始时刻＝经过时间，在计算时要注意时减时，分减分，本考点下的题目都是够减的。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159558,
+                "name": "已知开始时间和结束时间求经过时长（退位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】12时－8时30分＝4时30分。</p><p>【正确解答】12时－8时30分＝3时30分。</p><p>【易错分析】这道题出错是因为计算时没有退位的步骤。12时可以看作12时0分，12时0分－8时30分，先算0分减30分，是不够减的，应该从12时拿来1时换成60分，也就是把12时变成11时60分再减，这样11时60分－8时30分，就都够减了。在计算这种需要退位的时间减法时，假如分钟数不够减，一定要从小时数拿过1时当做60分，也叫“退一当60”，然后再减。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252371668,
+                        "video": 400020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 243,
-                    "name": "经过时间的计算",
-                    "id": 172066
+                "id": 66100010000,
+                "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，也就是结束时刻－开始时刻＝经过时间。在计算时间的减法时，注意时减时，分减分，被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159518,
+                "name": "已知开始时间和结束时间求经过时长(经过中午12点)",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】上午9时30分到下午3时是经过了（&nbsp; 6&nbsp; ）时（&nbsp; 30&nbsp; ）分。</p><p>【正确解答】上午9时30分到下午3时是经过了（&nbsp; 5&nbsp; ）时（&nbsp; 30&nbsp; ）分。</p><p>【易错分析】这道题是错在计算上午9时30分到中午12时的这段时间。事实上此类题都很容易在这个阶段出错。12时可以看作12时0分，12时0分－9时30分，先算0分减30分，是不够减的，应该从12时拿来1时换成60分，也就是把12时变成11时60分再减，这样11时60分－9时30分，就都够减了。所以上午经过的时间应该是2时30分，再加上下午的3时，一共是5时30分。在解决这类跨中午12时或跨晚上12时的问题时，要先计算起始时刻到12时经过的时间，有可能涉及需要退位的情况，所以要认真计算。12时到结束时刻的经过时间比较好算，结束时间是几时，经过时间就是几时。最后相加即可。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252372668,
+                        "video": 1200020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 1,
-                    "name": "厘米和米的认识",
-                    "id": 261066
+                "id": 66200010000,
+                "description": "<p>本考点的基础是已知开始时刻和结束时刻求经过时间，中间跨了中午12时的情况。要先计算开始时刻到12时经过的时间，而从中午12时到下午几时几分经过的时间正好是几时几分，把两段时间相加即可。注意时减时，分减分，如果被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。当相加满60分时，要向小时数进一，比如计算结果2时80分最后要写成3时20分。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159423,
+                "name": "已知经过时长和开始时间求结束时间（不进位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】现在是4时15分，再过2时5分是（&nbsp; 6&nbsp; ）时（&nbsp; 15&nbsp; ）分。</p><p>【正确解答】现在是4时15分，再过2时5分是（&nbsp; 6&nbsp; ）时（&nbsp; 20&nbsp; ）分。</p><p>【易错分析】这道题出错是因为计算时只加了小时部分，没有计算分钟部分。应该是时加时，分加分。4时15分＋2时5分，先算4时＋2时＝6时，再算15分＋5分＝20分。因此结束时刻应该是6时20分。在做此类题目时，一定要注意小时部分和分钟部分都要计算，不要遗漏。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252373668,
+                        "video": 500020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 1,
-                    "name": "吨的认识",
-                    "id": 175066
+                "id": 66300010000,
+                "description": "<p>本考点的要用到的关系式为：开始时刻＋经过时间＝结束时刻，在计算时间的加法时，注意时加时，分加分，本考点没有需要进位的情况。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159453,
+                "name": "已知经过时长和开始时间求结束时间（进位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】下午2时25分出发，经过35分钟到达。到达的时间是（&nbsp;2时60分&nbsp;）。</p><p>【正确解答】下午2时25分出发，经过35分钟到达。到达的时间是（&nbsp;3时&nbsp;）。</p><p>【易错分析】这道题出错是因为最后没有把满60分的向前进位。因为60分＝1时，而我们在描述时刻的时候，没有分钟数超过60的情况，因此这个答案是不正确的。2时60分应该换成3时。在做此类问题时要注意，分钟数满60就要向小时数进一。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252374668,
+                        "video": 600020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 265,
-                    "name": "时、分、秒",
-                    "id": 914066
+                "id": 66400010000,
+                "description": "<p>本考点需要用到的关系式：开始时刻＋经过时间＝结束时刻，在计算时间的加法时，注意时加时，分加分，当相加满60分时，要向小时数进一，比如计算结果2时80分最后要写成3时20分。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600158632,
+                "name": "已知经过时长和结束时间求开始时间（不退位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】火车9：35到站，晚点了5分钟，它应该（&nbsp; 9时40分&nbsp; ）到站。</p><p>【正确解答】火车9：35到站，晚点了5分钟，它应该（&nbsp; 9时30分&nbsp; ）到站。</p><p>【易错分析】这道题出错是因为把起始时刻和结束时刻搞混了。9:35是晚了5分钟之后到达的时刻，也就是结束时刻，求的是开始时刻。所以应该是用9时35分－5分＝9时30分才是正确答案。解决这类问题时要注意仔细读题，分析求的是起始时刻还是结束时刻，求起始时刻一般用减法，求结束时刻一般用加法。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252375668,
+                        "video": 700020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 3,
-                    "name": "24时计时法",
-                    "id": 169066
+                "id": 66500010000,
+                "description": "<p>本考点需要用到的关系式：结束时刻－经过时间＝开始时刻，在计算时间的减法时，注意时减时，分减分，本考点不会出现不够减的情况。</p>"
+            },
+            {
+                "status": 0,
+                "updateTime": 1600159368,
+                "name": "已知经过时长和结束时间求开始时间（退位）",
+                "errorProne": [
+                    {
+                        "description": "<p>【典型例题】</p><p>5时往前推100分是几时几分？</p><p>答：4时20分。</p><p>【正确解答】3时20分。</p><p>【易错分析】这道题的错误在于计算时间的时候，退位没有做好。这道题有多种算法，比如先把100分换成1时40分，再用5时减1时40分，因为5时这个时间没有分钟部分，所以先换成4时60分再减1时40分，得到3时20分。也可以把5时换成4时60分去减100分，发现分钟部分还是不够减，所以再退一次，变成3时120分，再减100分，就得到3时20分。在做此类计算时，一定要注意，分钟部分不够减，就要从小时部分退一当60再减。如果退一次不够减，就再退一次。</p>",
+                        "qid": ""
+                    }
+                ],
+                "courseId": 66,
+                "explain": [
+                    {
+                        "qid": 252376668,
+                        "video": 1400020000
+                    }
+                ],
+                "districtStat": null,
+                "createTime": 1599812196,
+                "source": 1220066,
+                "version": 2584,
+                "defaultDistrictStat": {
+                    "frequency": 0,
+                    "scorePercent": 0
                 },
-                {
-                    "count": 1,
-                    "name": "植树问题",
-                    "id": 935066
-                },
-                {
-                    "count": 3,
-                    "name": "推理问题",
-                    "id": 337066
-                },
-                {
-                    "count": 8,
-                    "name": "时间单位的换算",
-                    "id": 171066
-                },
-                {
-                    "count": 1,
-                    "name": "千米的认识",
-                    "id": 524066
-                },
-                {
-                    "count": 1,
-                    "name": "日历的认识与规律",
-                    "id": 165066
-                },
-                {
-                    "count": 3,
-                    "name": "1～9的乘法口诀",
-                    "id": 988066
-                }
-            ]
+                "id": 66600010000,
+                "description": "<p>本考点需要用到的关系式：结束时刻－经过时间＝开始时刻，在计算时间的减法时，注意时减时，分减分，如果被减数的分钟数不够减，要从小时数“退一当60”，比如3时10分可以看作2时70分来进行计算。一次退位还不够减，就再退一次。</p>"
+            }
+        ],
+        "name": "第一节 时、分、秒",
+        "parent": {
+            "name": "第一单元 时、分、秒"
         },
-        "stat": {
-            "sec_grasp": 68.3,
-            "diff_rank": 2,
-            "study_time": 444640,
-            "frequency": 677,
-            "scorePercent": 4.3
-        },
-        "suggest": "点击知识点或考点，可进入专项强化学习。学习完成后，可通过精准测评查验自己的学习掌握程度。点击精准评测详情，可查看最近一次的评测结果。点击章节同步学，学习更多精品内容。精准测弱项不限次数，更多的测试将提供更精确的推荐。"
-    }
+        "courseId": 66,
+        "source": 3059166,
+        "keypoint": [
+            {
+                "status": 0,
+                "id": 914066,
+                "name": "时、分、秒"
+            }
+        ],
+        "qstKeypoint": [
+            {
+                "count": 1,
+                "name": "事件发生的确定性和不确定性",
+                "id": 325066
+            },
+            {
+                "count": 2,
+                "name": "克与千克的认识",
+                "id": 174066
+            },
+            {
+                "count": 3,
+                "name": "整时与半时",
+                "id": 912066
+            },
+            {
+                "count": 3,
+                "name": "速度、时间、路程",
+                "id": 934066
+            },
+            {
+                "count": 1,
+                "name": "100以内数的大小比较",
+                "id": 15066
+            },
+            {
+                "count": 132,
+                "name": "认识钟面",
+                "id": 161066
+            },
+            {
+                "count": 243,
+                "name": "经过时间的计算",
+                "id": 172066
+            },
+            {
+                "count": 1,
+                "name": "厘米和米的认识",
+                "id": 261066
+            },
+            {
+                "count": 1,
+                "name": "吨的认识",
+                "id": 175066
+            },
+            {
+                "count": 265,
+                "name": "时、分、秒",
+                "id": 914066
+            },
+            {
+                "count": 3,
+                "name": "24时计时法",
+                "id": 169066
+            },
+            {
+                "count": 1,
+                "name": "植树问题",
+                "id": 935066
+            },
+            {
+                "count": 3,
+                "name": "推理问题",
+                "id": 337066
+            },
+            {
+                "count": 8,
+                "name": "时间单位的换算",
+                "id": 171066
+            },
+            {
+                "count": 1,
+                "name": "千米的认识",
+                "id": 524066
+            },
+            {
+                "count": 1,
+                "name": "日历的认识与规律",
+                "id": 165066
+            },
+            {
+                "count": 3,
+                "name": "1～9的乘法口诀",
+                "id": 988066
+            }
+        ]
+    },
+    "stat": {
+        "sec_grasp": 42.4,
+        "diff_rank": 1,
+        "study_time": 1687,
+        "frequency": 677,
+        "scorePercent": 4.3
+    },
+    "suggest": "点击知识点或考点，可进入专项强化学习。学习完成后，可通过精准测评查验自己的学习掌握程度。点击精准评测详情，可查看最近一次的评测结果。点击章节同步学，学习更多精品内容。精准测弱项不限次数，更多的测试将提供更精确的推荐。"
+}
