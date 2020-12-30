@@ -8,6 +8,7 @@ import com.readboy.atlasview.bean.AtlasMapping;
 import com.readboy.atlasview.bean.CanvasBean;
 import com.readboy.atlasview.bean.Link;
 import com.readboy.atlasview.bean.Node;
+import com.readboy.atlasview.bean.NodeOrder;
 import com.readboy.atlasview.utils.log.LogUtils;
 import com.readboy.atlasview.view.TreeView;
 
@@ -118,15 +119,30 @@ public class AtlasUtil {
 
 
     public static int getOrderInNodes(AtlasMapping mapping, long id) {
-        List<Long> orders = mapping.getNodeOrder().get(0).getOrder();
+        List<Long> orders = new ArrayList<>();
+        for (NodeOrder nodeOrder : mapping.getNodeOrder()) {
+            if (nodeOrder.getType() == 2) {
+                orders = nodeOrder.getOrder();
+            }
+        }
+        if (orders.size() == 0) {
+            orders = mapping.getNodeOrder().get(0).getOrder();
+        }
         return orders.indexOf(id) + 1;
-
     }
 
     public static void setOrderInNodes(AtlasBean data) {
         AtlasMapping mapping = data.getData().getMapping();
         List<Node> nodes = mapping.getNodes();
-        List<Long> orders = mapping.getNodeOrder().get(0).getOrder();
+        List<Long> orders = new ArrayList<>();
+        for (NodeOrder nodeOrder : mapping.getNodeOrder()) {
+            if (nodeOrder.getType() == 2) {
+                orders = nodeOrder.getOrder();
+            }
+        }
+        if (orders.size() == 0) {
+            orders = mapping.getNodeOrder().get(0).getOrder();
+        }
         for (Node node : nodes) {
             node.setOrder(orders.indexOf(node.getId()) + 1);
             if (node.getType() == 1) {
@@ -137,7 +153,15 @@ public class AtlasUtil {
 
     public static void setOrderInNodes(AtlasMapping mapping) {
         List<Node> nodes = mapping.getNodes();
-        List<Long> orders = mapping.getNodeOrder().get(0).getOrder();
+        List<Long> orders = new ArrayList<>();
+        for (NodeOrder nodeOrder : mapping.getNodeOrder()) {
+            if (nodeOrder.getType() == 2) {
+                orders = nodeOrder.getOrder();
+            }
+        }
+        if (orders.size() == 0) {
+            orders = mapping.getNodeOrder().get(0).getOrder();
+        }
         for (Node node : nodes) {
             node.setOrder(orders.indexOf(node.getId()) + 1);
             if (node.getType() == 1) {
