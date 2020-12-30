@@ -458,13 +458,13 @@ public class AtlasUtil {
                 int parentHeight = viewGroup.getHeight();
 
                 float min = Math.min((float) parentHeight / childHeight, (float) parentWidth / childWidth);
-                if (min >= 1.3f) {
-                    min = 1.3f;
+                if (min >= 1.6f) {
+                    min = 1.6f;
                 }
 
                 if (min <= 1f) {
-                    if (min <= 0.6f) {
-                        min = 0.6f;
+                    if (min <= 0.4f) {
+                        min = 0.4f;
                     }
                     float index = (1.0f - min) / 0.05f;
                     BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
