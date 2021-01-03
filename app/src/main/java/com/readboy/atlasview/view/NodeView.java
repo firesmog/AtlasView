@@ -9,12 +9,16 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,6 +60,10 @@ public class NodeView extends RelativeLayout {
     private int[] colors;
     private AlphaAnimation animation;
     private TextView tvOrderCircle;
+    private FrameLayout flCircle;
+    private TextView tv1;
+    private TextView tv2;
+    private int circleGap = 14;
 
     public NodeView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
@@ -88,15 +96,7 @@ public class NodeView extends RelativeLayout {
     }
 
     @SuppressLint("WrongConstant")
-    private void initTvOrder() {
-
-        if (node.getFloor() != 0) {
-            tvOrder.setText(String.valueOf(node.getFloor()));
-            tvOrder.setTextColor(numberColor);
-            tvOrder.setTextSize(orderSize);
-        }
-
-//        colors = new int[]{context.getResources().getColor(R.color.color_31cfff), context.getResources().getColor(R.color.color_0097e6)};
+    private void initTvOrder(TextView textView,boolean reduce) {
 
         //创建Drawable对象
         if (null != node) {
@@ -118,21 +118,35 @@ public class NodeView extends RelativeLayout {
             drawable.setShape(OVAL);
         }
 
-        if (node.getShape().getRadius() > 0) {
-            tvOrder.setWidth(node.getShape().getRadius() * 2);
-            tvOrder.setHeight(node.getShape().getRadius() * 2);
-        } else {
+       if(reduce){
+           if (node.getShape().getRadius() > 0) {
+               textView.setWidth(node.getShape().getRadius() * 2 - circleGap);
+               textView.setHeight(node.getShape().getRadius() * 2 - circleGap);
+           } else {
+               textView.setWidth(node.getShape().getWidth() - circleGap);
+               textView.setHeight(node.getShape().getWidth() - circleGap);
+           }
+       }else {
+           if (node.getShape().getRadius() > 0) {
+               textView.setWidth(node.getShape().getRadius() * 2);
+               textView.setHeight(node.getShape().getRadius() * 2);
+           } else {
+               textView.setWidth(node.getShape().getWidth());
+               textView.setHeight(node.getShape().getWidth());
+           }
+       }
 
-            tvOrder.setWidth(node.getShape().getWidth());
-            tvOrder.setHeight(node.getShape().getWidth());
+        textView.setBackground(drawable);
+
+        if (node.getFloor() != 0) {
+            textView.setText(String.valueOf(node.getFloor()));
+            textView.setTextColor(numberColor);
+            textView.setTextSize(orderSize);
         }
-
-        tvOrder.setBackground(drawable);
-
         if (marginSize != -1) {
-            LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+            LayoutParams lp = (LayoutParams) textView.getLayoutParams();
             lp.topMargin = (int) marginSize;
-            tvOrder.setLayoutParams(lp);
+            textView.setLayoutParams(lp);
         }
     }
 
@@ -148,7 +162,7 @@ public class NodeView extends RelativeLayout {
         nodeShape = node.getShape().getType();
         nodeId = node.getId();
         initTvName();
-        initTvOrder();
+        initTvOrder(tvOrder,false);
     }
 
     public NodeView(Context context) {
@@ -162,6 +176,9 @@ public class NodeView extends RelativeLayout {
         tvName = (TextView) inflate.findViewById(R.id.tv_name);
         tvOrder = (TextView) inflate.findViewById(R.id.tv_order);
         tvOrderCircle = (TextView) inflate.findViewById(R.id.tv_circle);
+        flCircle = (FrameLayout) inflate.findViewById(R.id.fl_circle);
+        tv1 = (TextView)findViewById(R.id.tv_wave_1);
+        tv2 = (TextView)findViewById(R.id.tv_wave_2);
     }
 
 
@@ -174,33 +191,89 @@ public class NodeView extends RelativeLayout {
         tvName.setTextColor(nameColor);
     }
 
-    private String nameFormat(String str) {
-        int length = str.length();
-        List<Integer> index = new ArrayList<>();
-        for (int i = length; i > 0; i--) {
-            if (i % 5 == 0) {
-                index.add(i);
-            }
-        }
-        StringBuilder stringBuilder = new StringBuilder(str);
-        for (int i : index) {
-            stringBuilder.insert(i, "\n");
-        }
-        return stringBuilder.toString();
+    public void showSpreadView(){
+        tvOrderCircle.setVisibility(GONE);
+        setFlCircleWidthHeight();
+        tvOrder.setVisibility(GONE);
+        tv1.setVisibility(VISIBLE);
+        tv2.setVisibility(VISIBLE);
+        initTvOrder(tv1,true);
+        initTvOrder(tv2,true);
+        setAnim1();
+        setAnim2();
     }
 
-    public void startAnimationOut() {
-        animation = new AlphaAnimation(1.0f, 0.4f);
-        animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        animation.setRepeatCount(Animation.INFINITE);
-        animation.setRepeatMode(Animation.REVERSE);
-        animation.setDuration(2000);
-        tvOrderCircle.startAnimation(animation);
+    private void setFlCircleWidthHeight(){
+        RelativeLayout.LayoutParams lp = (LayoutParams) flCircle.getLayoutParams();
+
+        if (node.getShape().getRadius() > 0) {
+            lp.width= (int) ((node.getShape().getRadius() * 2 - circleGap) *2f);
+            lp.height =  (int) ((node.getShape().getRadius() * 2 - circleGap) *2f);
+
+        } else {
+            lp.width=  (int) ((node.getShape().getWidth() - circleGap) *2f);
+            lp.height = (int) ((node.getShape().getWidth() - circleGap) *2f);
+        }
+        lp.topMargin = -2*circleGap;
+        lp.leftMargin = -3*circleGap;
+
+        flCircle.setLayoutParams(lp);
+
     }
+
+    private void setImageViewWidthHeight(ImageView view){
+        ViewGroup.LayoutParams lp = view.getLayoutParams();
+        if (node.getShape().getRadius() > 0) {
+            lp.width= node.getShape().getRadius() * 2 - circleGap;
+            lp.height = node.getShape().getRadius() * 2 - circleGap;
+
+        } else {
+            lp.width= node.getShape().getWidth() - circleGap;
+            lp.height = node.getShape().getWidth() - circleGap;
+        }
+        view.setLayoutParams(lp);
+    }
+
+
+    private void setAnim1() {
+        AnimationSet as = new AnimationSet(true);
+        //缩放动画，以中心从原始放大到1.4倍
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.3f, 1.0f, 1.3f,
+                ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
+                ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+        //渐变动画
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.5f);
+        scaleAnimation.setDuration(800);
+        scaleAnimation.setRepeatCount(Animation.INFINITE);
+        alphaAnimation.setRepeatCount(Animation.INFINITE);
+        as.setDuration(800);
+        as.addAnimation(scaleAnimation);
+        as.addAnimation(alphaAnimation);
+        tv1.startAnimation(as);
+    }
+
+    private void setAnim2() {
+        AnimationSet as = new AnimationSet(true);
+        //缩放动画，以中心从1.4倍放大到1.8倍
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.3f, 1.6f, 1.3f, 1.6f,
+                ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
+                ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+        //渐变动画
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0.5f, 0.1f);
+        scaleAnimation.setDuration(800);
+        scaleAnimation.setRepeatCount(Animation.INFINITE);
+        alphaAnimation.setRepeatCount(Animation.INFINITE);
+        as.setDuration(800);
+        as.addAnimation(scaleAnimation);
+        as.addAnimation(alphaAnimation);
+        tv2.startAnimation(as);
+    }
+
 
     public void clearAnimation() {
-        if (null != animation) {
-            this.getTvOrder().clearAnimation();
+        if(null != flCircle && flCircle.getVisibility() == VISIBLE){
+            tv1.clearAnimation();
+            tv2.clearAnimation();
         }
     }
 
@@ -225,14 +298,13 @@ public class NodeView extends RelativeLayout {
             tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
             tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
         }
-        LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+        LayoutParams lp = (LayoutParams) flCircle.getLayoutParams();
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
         int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
         top = DensityUtils.dp2px(getContext(), top);
         lp2.topMargin = top;
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);
-        startAnimationOut();
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -254,7 +326,6 @@ public class NodeView extends RelativeLayout {
         lp2.topMargin = top;
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);
-        startAnimationOut();
     }
 
 

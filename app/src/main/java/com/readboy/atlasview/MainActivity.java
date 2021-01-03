@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         model.setMapping(mapping);
         model.setCanvasBean(canvasBean);
         model.setModels(models);
-        editMapTreeView.setTouchAble(false);
+        editMapTreeView.setTouchAble(true);
         editMapTreeView.setTreeModel(model);
         editMapTreeView.setMTreeViewItemClick(new TreeViewItemClick() {
             @Override

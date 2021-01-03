@@ -374,6 +374,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         // 增加推荐节点跳动效果
         if (nodeView.getNode().isRecommend()) {
             nodeView.showRecommendNode();
+            nodeView.showSpreadView();
         }
         //todo Lzy 设置是否可见
         if (!poll.isVisibility()) {
