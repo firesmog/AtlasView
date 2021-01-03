@@ -277,17 +277,17 @@ public class NodeView extends RelativeLayout {
         }
     }
 
-    public void showRecommendNode() {
+    public void showRecommendNode(boolean suggest) {
         if (Constants.SHAPE_RECTANGLE.equals(nodeShape)) {
-            showRect();
+            showRect(suggest);
         } else {
-            showCircle();
+            showCircle(suggest);
         }
     }
 
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void showCircle() {
+    private void showCircle(boolean suggest) {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_circle));
         int addRadius = 10;
         if (node.getShape().getRadius() > 0) {
@@ -302,13 +302,18 @@ public class NodeView extends RelativeLayout {
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
         int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
         top = DensityUtils.dp2px(getContext(), top);
-        lp2.topMargin = top;
+        if(suggest){
+            lp2.topMargin = circleGap/2  + top/3;
+        }else {
+            lp2.topMargin = top;
+
+        }
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void showRect() {
+    private void showRect(boolean suggest) {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_rect));
         int addRadius = 10;
         if (node.getShape().getRadius() > 0) {
@@ -323,7 +328,12 @@ public class NodeView extends RelativeLayout {
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
         int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
         top = DensityUtils.dp2px(getContext(), top);
-        lp2.topMargin = top;
+        if(suggest){
+            lp2.topMargin = circleGap/2  + top/3;
+        }else {
+            lp2.topMargin = top;
+
+        }
         tvOrderCircle.setLayoutParams(lp2);
         tvOrderCircle.setVisibility(VISIBLE);
     }

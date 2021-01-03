@@ -371,10 +371,11 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 return true;
             }
         });
+
         // 增加推荐节点跳动效果
         if (nodeView.getNode().getName().contains("认识秒")) {
-            nodeView.showRecommendNode();
             nodeView.showSpreadView();
+            nodeView.showRecommendNode(true);
         }
         //todo Lzy 设置是否可见
         if (!poll.isVisibility()) {
