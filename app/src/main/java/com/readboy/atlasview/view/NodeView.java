@@ -194,9 +194,9 @@ public class NodeView extends RelativeLayout {
     public void showSpreadView(){
         tvOrderCircle.setVisibility(GONE);
         setFlCircleWidthHeight();
-        tvOrder.setVisibility(GONE);
         tv1.setVisibility(VISIBLE);
         tv2.setVisibility(VISIBLE);
+        initTvOrder(tvOrder,true);
         initTvOrder(tv1,true);
         initTvOrder(tv2,true);
         setAnim1();
@@ -238,7 +238,7 @@ public class NodeView extends RelativeLayout {
     private void setAnim1() {
         AnimationSet as = new AnimationSet(true);
         //缩放动画，以中心从原始放大到1.4倍
-        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.3f, 1.0f, 1.3f,
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.35f, 1.0f, 1.35f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
         //渐变动画
@@ -255,7 +255,7 @@ public class NodeView extends RelativeLayout {
     private void setAnim2() {
         AnimationSet as = new AnimationSet(true);
         //缩放动画，以中心从1.4倍放大到1.8倍
-        ScaleAnimation scaleAnimation = new ScaleAnimation(1.3f, 1.6f, 1.3f, 1.6f,
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.35f, 1.62f, 1.35f, 1.62f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
         //渐变动画
@@ -319,7 +319,7 @@ public class NodeView extends RelativeLayout {
             tvOrderCircle.setWidth(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
             tvOrderCircle.setHeight(node.getShape().getWidth() + DensityUtils.dp2px(getContext(), addRadius * 2));
         }
-        LayoutParams lp = (LayoutParams) tvOrder.getLayoutParams();
+        LayoutParams lp = (LayoutParams) flCircle.getLayoutParams();
         LayoutParams lp2 = (LayoutParams) tvOrderCircle.getLayoutParams();
         int top = DensityUtils.px2dp(getContext(), lp.topMargin) - addRadius;
         top = DensityUtils.dp2px(getContext(), top);
