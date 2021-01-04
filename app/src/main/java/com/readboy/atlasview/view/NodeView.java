@@ -306,7 +306,7 @@ public class NodeView extends RelativeLayout {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void showRect(boolean suggest) {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_rect));
-        int addRadius = 7;
+        int addRadius = 6;
         if (node.getShape().getRadius() > 0) {
             tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
             tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));

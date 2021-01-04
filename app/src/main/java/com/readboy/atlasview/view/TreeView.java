@@ -37,7 +37,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private GestureDetector mGestureDetector;
     private boolean isTouchAble = true;
 
-    private int LineMarginToNode = 3;
+    private int LineMarginToNode = 6;
 
     public int getLineMarginToNode() {
         return LineMarginToNode;
@@ -239,9 +239,27 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
                 }
 
-                int fromX, fromY, toX, toY;
 
-                if (sxLine > txLine) {
+
+                int fromX, fromY, toX, toY;
+                fromX = (int) (sxLine - startX + firstNodeMargin );
+                toX = (int) (txLine - startX + firstNodeMargin );
+                fromY = (int) (syLine - startY + firstNodeMargin);
+                toY = (int) (tyLine - startY + firstNodeMargin) ;
+                if ((degrees <= 135 && degrees >= 45)) {
+                    toY = (int) (tyLine - startY + firstNodeMargin + 1.5*LineMarginToNode);
+                } else if ((degrees >= 225 || degrees <= -45)) {
+                    toY = (int) (tyLine - startY + firstNodeMargin + 0.5*LineMarginToNode);
+                } else if (degrees > -45 && degrees < 45) {
+                    toX = (int) (txLine - startX + firstNodeMargin - LineMarginToNode);
+                } else {
+                    toX = (int) (txLine - startX + firstNodeMargin + LineMarginToNode);
+                }
+
+
+
+
+               /* if (sxLine > txLine) {
                     fromX = (int) (sxLine - startX + firstNodeMargin - LineMarginToNode);
                     toX = (int) (txLine - startX + firstNodeMargin + LineMarginToNode);
                 } else {
@@ -255,7 +273,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 } else {
                     fromY = (int) (syLine - startY + firstNodeMargin + LineMarginToNode);
                     toY = (int) (tyLine - startY + firstNodeMargin - LineMarginToNode);
-                }
+                }*/
 
                 canvas.drawLine(fromX, fromY, toX, toY, mPaint);
                 mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
