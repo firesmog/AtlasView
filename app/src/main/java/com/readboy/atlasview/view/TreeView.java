@@ -247,13 +247,18 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 fromY = (int) (syLine - startY + firstNodeMargin);
                 toY = (int) (tyLine - startY + firstNodeMargin) ;
                 if ((degrees <= 135 && degrees >= 45)) {
+                    fromY = (int) (syLine - startY  + firstNodeMargin + 0.5*LineMarginToNode);
                     toY = (int) (tyLine - startY + firstNodeMargin + 1.5*LineMarginToNode);
                 } else if ((degrees >= 225 || degrees <= -45)) {
                     toY = (int) (tyLine - startY + firstNodeMargin + 0.5*LineMarginToNode);
+                    fromY = (int) (syLine - startY + firstNodeMargin + 1.5*LineMarginToNode);
                 } else if (degrees > -45 && degrees < 45) {
                     toX = (int) (txLine - startX + firstNodeMargin - LineMarginToNode);
+                    fromX = (int) (sxLine - startX + firstNodeMargin + LineMarginToNode);
                 } else {
                     toX = (int) (txLine - startX + firstNodeMargin + LineMarginToNode);
+                    fromX = (int) (sxLine - startX + firstNodeMargin - LineMarginToNode);
+
                 }
 
 
