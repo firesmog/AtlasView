@@ -37,7 +37,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private GestureDetector mGestureDetector;
     private boolean isTouchAble = true;
 
-    private int LineMarginToNode = 0;
+    private int LineMarginToNode = 3;
 
     public int getLineMarginToNode() {
         return LineMarginToNode;
@@ -147,22 +147,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
     }
 
-    private void drawRect(Canvas canvas) {
-        if (mTreeModel != null) {
-            List<Node> nodes = mTreeModel.getMapping().getNodes();
-            LinkedHashMap<Long, Node> models = mTreeModel.getModels();
-            double startX = mTreeModel.getCanvasBean().getStartX();
-            double startY = mTreeModel.getCanvasBean().getStartY();
-            for (Node node : nodes) {
-                mPaint.setColor(mContext.getResources().getColor(R.color.black));
-                mPaint.setStyle(Paint.Style.STROKE);
-                mPaint.setStrokeWidth(2);
-                int radius = node.getShape().getRadius();
-                canvas.drawRect((int) (node.getX() - startX - radius + firstNodeMargin), (int) (node.getY() - startY - radius + firstNodeMargin), (int) (node.getX() + radius - startX + firstNodeMargin), (int) (node.getY() + radius - startY) + firstNodeMargin, mPaint);
 
-            }
-        }
-    }
 
     private void drawLine(Canvas canvas) {
         if (mTreeModel != null) {
@@ -174,7 +159,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
             for (Link link : links) {
                 mPaint.setColor(mContext.getResources().getColor(R.color.color_5A63D3));
-                mPaint.setStrokeWidth(4f);
+                mPaint.setStrokeWidth(3.5f);
                 Node source = models.get(link.getSourceid());
                 Node target = models.get(link.getTargetid());
                 if (target == null || source == null) {
@@ -272,10 +257,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                     toY = (int) (tyLine - startY + firstNodeMargin - LineMarginToNode);
                 }
 
-                //canvas.drawLine((int)( source.getX() - startX + leftMargin), (int) (source.getY() - startY + topMargin),(int) (target.getX() - startX + leftMargin), (int) (target.getY() - startY + topMargin), mPaint);
                 canvas.drawLine(fromX, fromY, toX, toY, mPaint);
                 mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-                ViewUtil.drawTrangle(canvas, mPaint, fromX, fromY, toX, toY, 10, 5);
+                ViewUtil.drawTrangle(canvas, mPaint, fromX, fromY, toX , toY, 10, 5);
             }
             mPaint.setStyle(Paint.Style.STROKE);
 
@@ -361,6 +345,8 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             @Override
             public void onClick(View v) {
                 performTreeItemClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
+                hideAllRecommendNode();
+                nodeView.showRecommendNode(nodeView.getNode().isRecommend());
             }
 
         });
@@ -373,9 +359,8 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         });
 
         // 增加推荐节点跳动效果
-        if (nodeView.getNode().getName().contains("认识秒")) {
+        if (nodeView.getNode().isRecommend()) {
             nodeView.showSpreadView();
-            nodeView.showRecommendNode(true);
         }
         //todo Lzy 设置是否可见
         if (!poll.isVisibility()) {
@@ -428,6 +413,19 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
             }
         }
         return view;
+    }
+
+    public NodeView findNodeViewByNodeId(long id){
+        Node node = mTreeModel.getModels().get(id);
+        return (NodeView) findNodeViewFromNode(node);
+    }
+
+    public void hideAllRecommendNode(){
+        int size = getChildCount();
+        for (int i = 0; i < size; i++) {
+            View childView = getChildAt(i);
+            ((NodeView)childView).hideRecommendNode();
+        }
     }
 
     public MoveAndScaleHandler getmMoveAndScaleHandler() {

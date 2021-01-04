@@ -221,19 +221,6 @@ public class NodeView extends RelativeLayout {
 
     }
 
-    private void setImageViewWidthHeight(ImageView view){
-        ViewGroup.LayoutParams lp = view.getLayoutParams();
-        if (node.getShape().getRadius() > 0) {
-            lp.width= node.getShape().getRadius() * 2 - circleGap;
-            lp.height = node.getShape().getRadius() * 2 - circleGap;
-
-        } else {
-            lp.width= node.getShape().getWidth() - circleGap;
-            lp.height = node.getShape().getWidth() - circleGap;
-        }
-        view.setLayoutParams(lp);
-    }
-
 
     private void setAnim1() {
         AnimationSet as = new AnimationSet(true);
@@ -285,11 +272,15 @@ public class NodeView extends RelativeLayout {
         }
     }
 
+    public void hideRecommendNode(){
+        tvOrderCircle.setVisibility(GONE);
+    }
+
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void showCircle(boolean suggest) {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_circle));
-        int addRadius = 10;
+        int addRadius = 6;
         if (node.getShape().getRadius() > 0) {
             tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
             tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
@@ -315,7 +306,7 @@ public class NodeView extends RelativeLayout {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void showRect(boolean suggest) {
         tvOrderCircle.setBackground(getContext().getResources().getDrawable(R.drawable.shape_tv_rect));
-        int addRadius = 10;
+        int addRadius = 7;
         if (node.getShape().getRadius() > 0) {
             tvOrderCircle.setWidth(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
             tvOrderCircle.setHeight(node.getShape().getRadius() * 2 + DensityUtils.dp2px(getContext(), addRadius * 2));
