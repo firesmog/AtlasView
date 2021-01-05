@@ -188,6 +188,7 @@ public class Node implements Comparator<Node> {
                 ", grasp=" + grasp +
                 ", visibility=" + visibility +
                 ", is_study=" + is_study +
+                ", isRecommend=" + isRecommend +
                 '}';
     }
 

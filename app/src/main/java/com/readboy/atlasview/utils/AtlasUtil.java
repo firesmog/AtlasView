@@ -154,6 +154,8 @@ public class AtlasUtil {
     public static void setOrderInNodes(AtlasMapping mapping) {
         List<Node> nodes = mapping.getNodes();
         List<Long> orders = new ArrayList<>();
+        List<Node> knowledgeNodes = new ArrayList<>();
+        Node recommendNode = null;
         for (NodeOrder nodeOrder : mapping.getNodeOrder()) {
             if (nodeOrder.getType() == 2) {
                 orders = nodeOrder.getOrder();
@@ -166,8 +168,38 @@ public class AtlasUtil {
             node.setOrder(orders.indexOf(node.getId()) + 1);
             if (node.getType() == 1) {
                 node.setVisibility(true);
+                knowledgeNodes.add(node);
+            }
+
+            if(node.isRecommend() ){
+                recommendNode = node;
             }
         }
+
+        Collections.sort(knowledgeNodes, new Node());
+        if(null == recommendNode ){
+            knowledgeNodes.get(0).setRecommend(true);
+        }else {
+            for (int i = 0;i < knowledgeNodes.size(); i++) {
+                Node notStudy = knowledgeNodes.get(i);
+                if(!recommendNode.isIs_study() && recommendNode.getKeypoint() == notStudy.getId() && !notStudy.isIs_study()){
+                    notStudy.setRecommend(true);
+                    recommendNode.setRecommend(false);
+                    LogUtils.d("setOrderInNodes1111 == " + notStudy.toString() );
+                    return;
+
+                }
+                if(!knowledgeNodes.get(i).isIs_study()){
+                    int index1 = orders.indexOf(notStudy);
+                    int index2 = orders.indexOf(recommendNode);
+                    if(index2 > index1){
+                        recommendNode.setRecommend(false);
+                        notStudy.setRecommend(true);
+                    }
+                }
+            }
+        }
+        LogUtils.d("setOrderInNodes == " + recommendNode.toString() );
     }
 
     public static void setOrderFloorInNodes(AtlasMapping mapping) {
@@ -185,6 +217,21 @@ public class AtlasUtil {
         }
     }
 
+
+    public static void initRecommendNode(AtlasMapping mapping) {
+        int count = 1;
+        List<Node> nodes = mapping.getNodes();
+        List<Node> result = new ArrayList<>();
+        for (Node node : nodes) {
+            if (node.getType() == 1) {
+                result.add(node);
+            }
+        }
+        Collections.sort(result, new Node());
+        for (Node node : result) {
+            node.setFloor(count++);
+        }
+    }
 
     //按照后台提供的已学考点（或知识点）的id，找出所有需要展示的链路上的节点（可重复）保存起来
     public static List<Node> findQuestionNode(AtlasBean bean, List<Long> ids) {
