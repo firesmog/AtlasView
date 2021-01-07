@@ -34,7 +34,6 @@ public class AtlasUtil {
     //找到图谱中的所有知识点
     public static List<Node> findKnowledgeNode(AtlasBean bean) {
         if (null == bean) {
-            LogUtils.d("findFirstQueNode findKnowledgeNode is null");
             return null;
         }
         List<Node> result = new ArrayList<>();
@@ -50,7 +49,6 @@ public class AtlasUtil {
     //找到图谱中的所有根节点
     public static List<Node> findRootKnowledgeNode(AtlasBean bean) {
         if (null == bean) {
-            LogUtils.d("findFirstQueNode findKnowledgeNode is null");
             return null;
         }
 
@@ -156,9 +154,11 @@ public class AtlasUtil {
         List<Long> orders = new ArrayList<>();
         List<Node> knowledgeNodes = new ArrayList<>();
         Node recommendNode = null;
+
         for (NodeOrder nodeOrder : mapping.getNodeOrder()) {
             if (nodeOrder.getType() == 2) {
                 orders = nodeOrder.getOrder();
+
             }
         }
         if (orders.size() == 0) {
@@ -179,13 +179,16 @@ public class AtlasUtil {
         Collections.sort(knowledgeNodes, new Node());
         if(null == recommendNode ){
             knowledgeNodes.get(0).setRecommend(true);
+            recommendNode = knowledgeNodes.get(0);
+
         }else {
-            for (int i = 0;i < knowledgeNodes.size(); i++) {
+
+            for (int i = 0;null != knowledgeNodes && knowledgeNodes.size() > 0 && i < knowledgeNodes.size(); i++) {
                 Node notStudy = knowledgeNodes.get(i);
+
                 if(!recommendNode.isIs_study() && recommendNode.getKeypoint() == notStudy.getId() && !notStudy.isIs_study()){
                     notStudy.setRecommend(true);
                     recommendNode.setRecommend(false);
-                    LogUtils.d("setOrderInNodes1111 == " + notStudy.toString() );
                     return;
 
                 }
@@ -263,14 +266,12 @@ public class AtlasUtil {
         for (Long id : ids) {
             //1、跳过已经筛选过的知识点，只对考点做处理
             if (knowledgePointId.contains(id)) {
-                LogUtils.d("findQuestionNode id1111 = " + id);
                 continue;
             }
 
             //2、若当前考点属于已经筛选过的知识点，则跳过该考点
             Node curQueNode = findQueNodeAccordId(id, org);
             if (curQueNode != null && knowledgePointId.contains(curQueNode.getKeypoint())) {
-                LogUtils.d("findQuestionNode id2222= " + curQueNode.toString());
                 continue;
             }
 
@@ -286,7 +287,6 @@ public class AtlasUtil {
         for (Node node : org) {
             if (node.getKeypoint() == id) {
                 results.add(node);
-                LogUtils.d("findQuestionNode id0000 = " + node.toString());
             }
         }
         return results;
@@ -329,14 +329,8 @@ public class AtlasUtil {
         List<Node> org = bean.getData().getMapping().getNodes();
         Iterator<Node> it = org.iterator();
 
-        for (Node node : filterNode) {
-            LogUtils.d("getFilterAtlasBean next1111 = " + node.getName());
-        }
-
-
         while (it.hasNext()) {
             Node next = it.next();
-            LogUtils.d("getFilterAtlasBean next = " + next.getName());
 
             if (!filterNode.contains(next)) {
                 it.remove();
@@ -539,7 +533,6 @@ public class AtlasUtil {
                     }
                     float index = (1.0f - min) / 0.05f;
                     BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
-                    LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
 
                     index = b.intValue();
                     editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 - (int) index));
@@ -552,7 +545,6 @@ public class AtlasUtil {
 
                 float index = (min - 1.0f) / 0.05f;
                 BigDecimal b = new BigDecimal(index).setScale(0, BigDecimal.ROUND_HALF_UP);
-                LogUtils.d("childHeight = " + childHeight + ", childWidth = " + childWidth + ", prH = " + parentHeight + ", prW = " + parentWidth + ", min = " + min + ", index = " + b);
 
                 index = b.intValue();
                 editMapTreeView.getmMoveAndScaleHandler().setCurIndex((12 + (int) index));

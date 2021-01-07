@@ -83,7 +83,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         for (int i = 0; i < size; i++) {
             measureChild(getChildAt(i), widthMeasureSpec, heightMeasureSpec);
         }
-        Log.d("TreeView", "onMeasure ===> ");
         if (mTreeModel != null) {
             layoutChildren();
             setMeasuredDimension((int) mTreeModel.getCanvasBean().getWidth() + 300,
@@ -261,25 +260,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
                 }
 
-
-
-
-               /* if (sxLine > txLine) {
-                    fromX = (int) (sxLine - startX + firstNodeMargin - LineMarginToNode);
-                    toX = (int) (txLine - startX + firstNodeMargin + LineMarginToNode);
-                } else {
-                    fromX = (int) (sxLine - startX + firstNodeMargin + LineMarginToNode);
-                    toX = (int) (txLine - startX + firstNodeMargin - LineMarginToNode);
-                }
-
-                if (syLine > tyLine) {
-                    fromY = (int) (syLine - startY + firstNodeMargin - LineMarginToNode);
-                    toY = (int) (tyLine - startY + firstNodeMargin + LineMarginToNode);
-                } else {
-                    fromY = (int) (syLine - startY + firstNodeMargin + LineMarginToNode);
-                    toY = (int) (tyLine - startY + firstNodeMargin - LineMarginToNode);
-                }*/
-
                 canvas.drawLine(fromX, fromY, toX, toY, mPaint);
                 mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
                 ViewUtil.drawTrangle(canvas, mPaint, fromX, fromY, toX , toY, 10, 5);
@@ -307,7 +287,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 radius = node.getShape().getWidth() / 2;
             }
             double gap = (tvName.getWidth() - 2 * radius);
-            LogUtils.d("nodeView.getChildAt(0) == " + gap);
 
 
             if (gap > 0) {
@@ -349,7 +328,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 if (!model.isVisibility()) {
                     continue;
                 }
-                LogUtils.d(" addNoteViews == " + model.toString());
                 addNodeViewToGroup(model);
             }
         }
