@@ -335,29 +335,35 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
     private View addNodeViewToGroup(Node poll) {
         final NodeView nodeView = new NodeView(mContext, null);
-        nodeView.setFocusable(true);
-        nodeView.setClickable(true);
+        if(isTouchAble){
+            nodeView.setFocusable(true);
+            nodeView.setClickable(true);
+            nodeView.getTvOrder().setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    performTreeItemClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
+                    hideAllRecommendNode();
+                    nodeView.showRecommendNode(nodeView.getNode().isRecommend());
+                }
+
+            });
+            nodeView.setOnLongClickListener(new OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    preformTreeItemLongClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
+                    return true;
+                }
+            });
+        }else {
+            nodeView.setFocusable(false);
+            nodeView.setClickable(false);
+        }
         nodeView.setSelected(false);
         nodeView.setNode(poll);
         LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         nodeView.setLayoutParams(lp);
-        nodeView.getTvOrder().setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                performTreeItemClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
-                hideAllRecommendNode();
-                nodeView.showRecommendNode(nodeView.getNode().isRecommend());
-            }
-
-        });
-        nodeView.setOnLongClickListener(new OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                preformTreeItemLongClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
-                return true;
-            }
-        });
 
         // 增加推荐节点跳动效果
         if (nodeView.getNode().isRecommend()) {
