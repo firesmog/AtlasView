@@ -149,6 +149,14 @@ public class AtlasUtil {
         }
     }
 
+    public static void setNoRecommendNode(AtlasMapping mapping){
+        if(null != mapping){
+            for (Node node : mapping.getNodes()) {
+                node.setRecommend(false);
+            }
+        }
+    }
+
     public static void setOrderInNodes(AtlasMapping mapping) {
         List<Node> nodes = mapping.getNodes();
         List<Long> orders = new ArrayList<>();
@@ -399,9 +407,9 @@ public class AtlasUtil {
         CanvasBean bean = new CanvasBean();
         List<Node> org = mapping.getNodes();
         for (Node node : org) {
-            if (!node.isVisibility()) {
+            /*if (!node.isVisibility()) {
                 continue;
-            }
+            }*/
             if (node.getX() > bean.getEndX()) {
                 bean.setEndX(node.getX());
             }

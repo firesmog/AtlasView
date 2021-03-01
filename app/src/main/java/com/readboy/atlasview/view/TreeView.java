@@ -38,6 +38,7 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     private boolean isTouchAble = true;
 
     private int LineMarginToNode = 6;
+    private boolean isTest;
 
     public int getLineMarginToNode() {
         return LineMarginToNode;
@@ -165,9 +166,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                     continue;
                 }
                 //todo Lzy 不可见则不画线
-                if (!target.isVisibility()) {
+                /*if (!target.isVisibility()) {
                     continue;
-                }
+                }*/
 
                 int sRadius = source.getShape().getRadius();
                 int tRadius = target.getShape().getRadius();
@@ -270,6 +271,10 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         }
     }
 
+    public void setIsTestFinish(boolean isTest){
+        this.isTest = isTest;
+    }
+
     private void layoutChildren() {
         final int size = getChildCount();
         double startX = mTreeModel.getCanvasBean().getStartX();
@@ -307,7 +312,12 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
     /**
      * 清除所有的NoteView
      */
-    private void clearAllNoteViews() {
+    public void clearAllNoteViews() {
+        clearAllAnimation();
+        removeAllViews();
+    }
+
+    public void clearAllAnimation() {
         int count = getChildCount();
         if (count > 0) {
             for (int i = 0; i < count; i++) {
@@ -315,7 +325,6 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 childView.getTvOrder().clearAnimation();
             }
         }
-        removeAllViews();
     }
 
     /**
@@ -325,9 +334,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
         if (mTreeModel != null) {
             List<Node> nodes = mTreeModel.getMapping().getNodes();
             for (Node model : nodes) {
-                if (!model.isVisibility()) {
+                /*if (!model.isVisibility()) {
                     continue;
-                }
+                }*/
                 addNodeViewToGroup(model);
             }
         }
@@ -344,7 +353,9 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
                 public void onClick(View v) {
                     performTreeItemClick(poll.getId(), poll.getType(), poll.getName(), poll.getFrequency(), poll.getScorePercent(), poll.getGrasp());
                     hideAllRecommendNode();
-                    nodeView.showRecommendNode(nodeView.getNode().isRecommend());
+                    if(isTest){
+                        nodeView.showRecommendNode(nodeView.getNode().isRecommend());
+                    }
                 }
 
             });
@@ -366,13 +377,14 @@ public class TreeView extends ViewGroup implements ScaleGestureDetector.OnScaleG
 
 
         // 增加推荐节点跳动效果
-        if (nodeView.getNode().isRecommend()) {
+        if (nodeView.getNode().isRecommend() && isTest) {
             nodeView.showSpreadView();
+            LogUtils.d("showSpreadView == " + nodeView.getNode().getName());
         }
         //todo Lzy 设置是否可见
-        if (!poll.isVisibility()) {
+        /*if (!poll.isVisibility()) {
             nodeView.setVisibility(GONE);
-        }
+        }*/
 
         this.addView(nodeView);
         return nodeView;

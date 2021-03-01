@@ -225,7 +225,7 @@ public class NodeView extends RelativeLayout {
     private void setAnim1() {
         AnimationSet as = new AnimationSet(true);
         //缩放动画，以中心从原始放大到1.4倍
-        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.35f, 1.0f, 1.35f,
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.4f, 1.0f, 1.4f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
         //渐变动画
@@ -242,7 +242,7 @@ public class NodeView extends RelativeLayout {
     private void setAnim2() {
         AnimationSet as = new AnimationSet(true);
         //缩放动画，以中心从1.4倍放大到1.8倍
-        ScaleAnimation scaleAnimation = new ScaleAnimation(1.35f, 1.62f, 1.35f, 1.62f,
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.4f, 1.7f, 1.4f, 1.7f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
                 ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
         //渐变动画
